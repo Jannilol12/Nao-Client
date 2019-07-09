@@ -218,8 +218,12 @@ public class controller_main implements Initializable {
         	            		outObjects.add(outObject);
         	            	}
         	            	
-        	            	System.out.print(outArray.toJSONString());
-//        	            	sender.sendMessage();
+        	            	JSONObject sendOut = new JSONObject();
+        	            	sendOut.add("type", "RunP");
+        	            	sendOut.add("value", prog.name);
+        	            	sendOut.add("inputs", outArray);
+        	            	System.out.print(sendOut.toJSONString());
+        	            	sender.sendMessage(sendOut.toJSONString());
         	            }
         	            
                 	}
