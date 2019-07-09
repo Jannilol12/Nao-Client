@@ -194,6 +194,10 @@ public class controller_main implements Initializable {
         	            				colorPicker.setPromptText(prompt);
         	            			
         	            			currentNode = colorPicker;
+        	            		} else if(type.equalsIgnoreCase("checkbox")) {
+        	            			CheckBox checkBox = new CheckBox();
+        	            			currentNode = checkBox;
+        	            			
         	            		} else //Add here more
         	            			continue;
         	            		
@@ -219,9 +223,12 @@ public class controller_main implements Initializable {
         	            		
         	            		if(node instanceof TextField) {
         	            			outObject.add("value", ((TextField) node).getText());
-        	            		}else if(node instanceof ColorPicker) {
+        	            		} else if(node instanceof ColorPicker) {
         	            			outObject.add("value", ((ColorPicker) node).getValue().toString());
-        	            		}//Add here more
+        	            		} else if(node instanceof CheckBox) {
+        	            			outObject.add("value", ((CheckBox) node).isSelected());
+        	            		}
+        	            		//Add here more
         	            		
         	            		outObject.add("id", node.getId());
         	            		outObjects.add(outObject);
