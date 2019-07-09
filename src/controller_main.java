@@ -1,11 +1,18 @@
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
+import components.json.JSONArray;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBase;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -127,8 +134,37 @@ public class controller_main implements Initializable {
         list.setOnMouseClicked(event -> {
             if(event.getClickCount() == 2){
                 Zwischenspeicher prog = list.getSelectionModel().getSelectedItem();
-                if(prog != null)
-                    sender.sendMessage("{\"type\":\"RunP\", \"value\":\"" + prog.name +"\"}");
+                if(prog != null) {
+                	if(prog.getInputArgs() == null)
+                		sender.sendMessage("{\"type\":\"RunP\", \"value\":\"" + prog.name +"\"}");
+                	else {
+                		
+                		Alert alert = new Alert(AlertType.CONFIRMATION);
+        	            DialogPane root = alert.getDialogPane();
+
+        	            for (ButtonType buttonType : root.getButtonTypes()) {
+        	                ButtonBase button = (ButtonBase) root.lookupButton(buttonType);
+        	                button.setOnAction(evt -> {
+        	                    alert.close();
+        	                });
+        	            }
+        	            
+        	            alert.setHeaderText("Arguments Required");
+        	            
+        	            //TODO add Inputs
+        	            JSONArray inputArray = prog.getInputArgs();
+        	            
+        	            for(Object obj : inputArray.getList()) {
+        	            	//TODO
+        	            }
+        	            
+        	            
+        	            
+        	            Optional<ButtonType> result = alert.showAndWait();
+        	            if(result.get() == ButtonType.OK); //TODO send Command
+        	            
+                	}
+                }
             }
         });
 
