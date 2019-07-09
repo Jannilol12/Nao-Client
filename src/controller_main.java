@@ -13,24 +13,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonBase;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 
 public class controller_main implements Initializable {
+
+    @FXML
+    private Slider arms_speed;
+
     @FXML
     private TextField Steps;
 
@@ -299,5 +294,25 @@ public class controller_main implements Initializable {
         //TODO test
         //  {"name":"test", "inputs" : [{"type":"text", "prompt":"test", "id":"eingabe"}, {"type":"text", "prompt":"test", "id":"test2"}]}
         list.getItems().add(new Zwischenspeicher(JSONParser.parse("{\"name\":\"test\", \"inputs\" : [{\"type\":\"text\", \"prompt\":\"test\", \"id\":\"eingabe\"}, {\"type\":\"text\", \"prompt\":\"test\", \"id\":\"test2\"}]}")));
+    }
+
+    @FXML
+    void LShoulderPitch_Down(MouseEvent event) {
+        sender.sendMessage("{\"type\":\"LShoulderPitch_Down\", \"value\":" + arms_speed.getValue() +"}");
+    }
+
+    @FXML
+    void LShoulderPitch_Up(MouseEvent event) {
+
+    }
+
+    @FXML
+    void LShoulderRoll_Left(MouseEvent event) {
+
+    }
+
+    @FXML
+    void LShoulderRoll_Right(MouseEvent event) {
+
     }
 }
