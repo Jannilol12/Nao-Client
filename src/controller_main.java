@@ -1,22 +1,29 @@
 import java.net.URL;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import components.json.JSONArray;
+import components.json.JSONObject;
+import components.json.finder.JSONFinder;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonBase;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DialogPane;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 
 
 public class controller_main implements Initializable {
@@ -135,7 +142,9 @@ public class controller_main implements Initializable {
             if(event.getClickCount() == 2){
                 Zwischenspeicher prog = list.getSelectionModel().getSelectedItem();
                 if(prog != null) {
-                	if(prog.getInputArgs() == null)
+                	JSONArray inputArray = prog.getInputArgs();
+                	
+                	if(inputArray == null)
                 		sender.sendMessage("{\"type\":\"RunP\", \"value\":\"" + prog.name +"\"}");
                 	else {
                 		
@@ -152,16 +161,65 @@ public class controller_main implements Initializable {
         	            alert.setHeaderText("Arguments Required");
         	            
         	            //TODO add Inputs
-        	            JSONArray inputArray = prog.getInputArgs();
+        	            GridPane gridPane = new GridPane();
+        	            gridPane.setHgap(10);
+        	            gridPane.setVgap(10);
+        	            
+        	            List<Node> inputNodes = new LinkedList<>();
         	            
         	            for(Object obj : inputArray.getList()) {
-        	            	//TODO
+        	            	if(obj == null) continue;
+        	            	
+        	            	if(obj instanceof JSONObject) {
+        	            		JSONObject input = (JSONObject) obj;
+        	            		
+        	            		String id = JSONFinder.getString("id", input);
+        	            		String type = JSONFinder.getString("type", input);
+        	            		if(type == null || id == null) continue;
+        	            		String prompt = JSONFinder.getString("prompt", input);
+        	            		
+        	            		Node currentNode = null;
+        	            		
+        	            		if(type.equalsIgnoreCase("text")) {
+        	            			TextField textField = new TextField();
+        	            			if(prompt != null)
+        	            				textField.setPromptText(prompt);
+        	            			
+        	            			currentNode = textField;
+        	            		} else
+        	            			continue;
+        	            		
+        	            		currentNode.setId("id");
+        	            		inputNodes.add(currentNode);
+        	            		
+        	            		int row = gridPane.getRowCount();
+        	            		gridPane.add(new Label(id + ":"), row, 0);
+        	            		gridPane.add(currentNode, row, 1);
+        	            	}
         	            }
         	            
-        	            
+        	            alert.getDialogPane().setContent(gridPane);
         	            
         	            Optional<ButtonType> result = alert.showAndWait();
-        	            if(result.get() == ButtonType.OK); //TODO send Command
+        	            if(result.get() == ButtonType.OK) { //TODO send Command
+        	            	List<JSONObject> outObjects = new LinkedList<>();
+        	            	JSONArray outArray = new JSONArray(outObjects);
+        	            	
+        	            	for(Node node : inputNodes) {
+        	            		JSONObject outObject = new JSONObject();
+        	            		
+        	            		if(node instanceof TextField) {
+        	            			outObject.add("value", ((TextField) node).getText());
+        	            		}
+        	            		
+        	            		outObject.add("id", node.getId());
+        	            		
+        	            		outObjects.add(outObject);
+        	            	}
+        	            	
+        	            	System.out.print(outArray.toJSONString());
+//        	            	sender.sendMessage();
+        	            }
         	            
                 	}
                 }
