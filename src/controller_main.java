@@ -18,6 +18,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonBase;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -187,6 +188,12 @@ public class controller_main implements Initializable {
         	            				textField.setPromptText(prompt);
         	            			
         	            			currentNode = textField;
+        	            		} else if(type.equalsIgnoreCase("color")) {
+        	            			ColorPicker colorPicker = new ColorPicker();
+        	            			if(prompt != null)
+        	            				colorPicker.setPromptText(prompt);
+        	            			
+        	            			currentNode = colorPicker;
         	            		} else //Add here more
         	            			continue;
         	            		
@@ -212,6 +219,8 @@ public class controller_main implements Initializable {
         	            		
         	            		if(node instanceof TextField) {
         	            			outObject.add("value", ((TextField) node).getText());
+        	            		}else if(node instanceof ColorPicker) {
+        	            			outObject.add("value", ((ColorPicker) node).getValue().toString());
         	            		}//Add here more
         	            		
         	            		outObject.add("id", node.getId());
