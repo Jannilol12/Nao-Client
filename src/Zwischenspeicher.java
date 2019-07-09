@@ -23,7 +23,15 @@ public class Zwischenspeicher {
         this.inputArgs = inputArgs;
     }
 
-    @Override
+    public String getName() {
+		return name;
+	}
+
+	public JSONArray getInputArgs() {
+		return inputArgs;
+	}
+
+	@Override
     public String toString(){
         return name;
     }
