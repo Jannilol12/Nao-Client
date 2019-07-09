@@ -1,14 +1,26 @@
+import components.json.JSONArray;
 import components.json.JSONObject;
 import components.json.abstractJSON;
 import components.json.finder.JSONFinder;
 
 public class Zwischenspeicher {
-    boolean useArgs;
     String name;
+    JSONArray inputArgs;
 
     public Zwischenspeicher(abstractJSON json){
         name = JSONFinder.getString("name", json);
-        useArgs = JSONFinder.getBoolean("useArgs", json);
+        
+        if(json instanceof JSONObject) {
+        	abstractJSON abstractJSON = ((JSONObject) json).get("inputs");
+        	if(abstractJSON instanceof JSONArray)
+        		inputArgs = (JSONArray) abstractJSON;
+        }
+        
+    }
+    
+    public Zwischenspeicher(abstractJSON json, JSONArray inputArgs){
+        name = JSONFinder.getString("name", json);
+        this.inputArgs = inputArgs;
     }
 
     @Override
