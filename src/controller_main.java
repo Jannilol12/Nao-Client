@@ -203,10 +203,23 @@ public class controller_main implements Initializable {
         	            		} else if(type.equalsIgnoreCase("int")) {
         	            			int min = JSONFinder.getInt("min", input);
         	            			int max = JSONFinder.getInt("max", input);
+        	            			if(max < min)max = min + 1;
         	            			int def = JSONFinder.getInt("def", input);
+        	            			if(def < min || def > max) def = min;
         	            			
         	            			Spinner<Integer> spinner = new Spinner<>();
         	            			SpinnerValueFactory<Integer> spinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(min, max, def);
+        	            			spinner.setValueFactory(spinnerValueFactory);
+        	            			currentNode = spinner;
+        	            		} else if(type.equalsIgnoreCase("double")) {
+        	            			double min = JSONFinder.getDouble("min", input);
+        	            			double max = JSONFinder.getDouble("max", input);
+        	            			if(max < min)max = min + 1;
+        	            			double def = JSONFinder.getDouble("def", input);
+        	            			if(def < min || def > max) def = min;
+        	            			
+        	            			Spinner<Double> spinner = new Spinner<>();
+        	            			SpinnerValueFactory<Double> spinnerValueFactory = new SpinnerValueFactory.DoubleSpinnerValueFactory(min, max, def);
         	            			spinner.setValueFactory(spinnerValueFactory);
         	            			currentNode = spinner;
         	            			
