@@ -22,6 +22,8 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -194,9 +196,19 @@ public class controller_main implements Initializable {
         	            				colorPicker.setPromptText(prompt);
         	            			
         	            			currentNode = colorPicker;
-        	            		} else if(type.equalsIgnoreCase("checkbox")) {
-        	            			CheckBox checkBox = new CheckBox();
+        	            		} else if(type.equalsIgnoreCase("boolean")) {
+        	            			CheckBox checkBox = new CheckBox("");
         	            			currentNode = checkBox;
+        	            			
+        	            		} else if(type.equalsIgnoreCase("int")) {
+        	            			int min = JSONFinder.getInt("min", input);
+        	            			int max = JSONFinder.getInt("max", input);
+        	            			int def = JSONFinder.getInt("def", input);
+        	            			
+        	            			Spinner<Integer> spinner = new Spinner<>();
+        	            			SpinnerValueFactory<Integer> spinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(min, max, def);
+        	            			spinner.setValueFactory(spinnerValueFactory);
+        	            			currentNode = spinner;
         	            			
         	            		} else //Add here more
         	            			continue;
@@ -227,6 +239,8 @@ public class controller_main implements Initializable {
         	            			outObject.add("value", ((ColorPicker) node).getValue().toString());
         	            		} else if(node instanceof CheckBox) {
         	            			outObject.add("value", ((CheckBox) node).isSelected());
+        	            		} else if(node instanceof Spinner<?>) {
+        	            			outObject.add("value", ((Spinner<?>) node).getValue());
         	            		}
         	            		//Add here more
         	            		
