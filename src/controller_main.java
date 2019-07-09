@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import components.json.JSONArray;
 import components.json.JSONObject;
 import components.json.finder.JSONFinder;
+import components.json.parser.JSONParser;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -186,22 +187,23 @@ public class controller_main implements Initializable {
         	            				textField.setPromptText(prompt);
         	            			
         	            			currentNode = textField;
-        	            		} else
+        	            		} else //Add here more
         	            			continue;
         	            		
-        	            		currentNode.setId("id");
+        	            		currentNode.setId(id);
         	            		inputNodes.add(currentNode);
         	            		
         	            		int row = gridPane.getRowCount();
-        	            		gridPane.add(new Label(id + ":"), row, 0);
-        	            		gridPane.add(currentNode, row, 1);
+        	            		gridPane.add(new Label(id + ":"), 0, row);
+        	            		gridPane.add(currentNode, 1, row);
         	            	}
         	            }
         	            
-        	            alert.getDialogPane().setContent(gridPane);
+        	            root.setContent(gridPane);
+        	            root.setMinWidth(500);
         	            
         	            Optional<ButtonType> result = alert.showAndWait();
-        	            if(result.get() == ButtonType.OK) { //TODO send Command
+        	            if(result.get() == ButtonType.OK) {
         	            	List<JSONObject> outObjects = new LinkedList<>();
         	            	JSONArray outArray = new JSONArray(outObjects);
         	            	
@@ -210,10 +212,9 @@ public class controller_main implements Initializable {
         	            		
         	            		if(node instanceof TextField) {
         	            			outObject.add("value", ((TextField) node).getText());
-        	            		}
+        	            		}//Add here more
         	            		
         	            		outObject.add("id", node.getId());
-        	            		
         	            		outObjects.add(outObject);
         	            	}
         	            	
@@ -247,5 +248,9 @@ public class controller_main implements Initializable {
                 }
             }
         }).start();
+        
+        //TODO test
+        //  {"name":"test", "inputs" : [{"type":"text", "prompt":"test", "id":"eingabe"}, {"type":"text", "prompt":"test", "id":"test2"}]}
+        list.getItems().add(new Zwischenspeicher(JSONParser.parse("{\"name\":\"test\", \"inputs\" : [{\"type\":\"text\", \"prompt\":\"test\", \"id\":\"eingabe\"}, {\"type\":\"text\", \"prompt\":\"test\", \"id\":\"test2\"}]}")));
     }
 }
