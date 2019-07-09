@@ -276,7 +276,7 @@ public class controller_main implements Initializable {
 
         new Thread( () -> {
             while(true) {
-                if (sender.socket == null || sender.socket.isClosed()) {
+                if (sender.isClosed()) {
                     if(connect_image != false) {
                         connected.setImage(new Image(controller_main.class.getResourceAsStream("/icons/getrennt.png")));
                         connect_image = false;

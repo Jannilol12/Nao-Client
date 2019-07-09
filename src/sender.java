@@ -21,6 +21,7 @@ public class sender {
         destroy();
         try {
             socket = new Socket(ip , port);
+            socket.setKeepAlive(false);
             dout = new DataOutputStream(socket.getOutputStream());
             dis = new DataInputStream(socket.getInputStream());
             startReadingThread();
@@ -91,5 +92,12 @@ public class sender {
             socket = null;
             dout = null;
         }
+    }
+
+    public static boolean isClosed() {
+    	if(socket == null) return true;
+    	if(socket.isClosed()) return true;
+    	
+    	return false;
     }
 }
