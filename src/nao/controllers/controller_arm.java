@@ -120,5 +120,69 @@ public class controller_arm implements Initializable{
 			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RShoulderRoll_Right\", \"value\":" + arms_speed.getValue() +"}");
 		});
 		
+		new ButtonLongPress(REllbow_Up, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(REllbow_Down, () -> {
+			//TODO
+		});
+
+		new ButtonLongPress(REllbow_Left, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(REllbow_Right, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(LEllbow_Up, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(LEllbow_Down, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(LEllbow_Left, () -> {
+			//TODO
+		});
+
+		new ButtonLongPress(LEllbow_Right, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(LHand_Up, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(LHand_Down, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(LHand_Left, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(LHand_Right, () -> {
+			//TODO
+		});
+
+		new ButtonLongPress(RHand_Up, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(RHand_Down, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(RHand_Left, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(RHand_Right, () -> {
+			//TODO
+		});
+		
 	}
 }

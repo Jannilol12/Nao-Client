@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import nao.events.ButtonLongPress;
 
 public class controller_leg implements Initializable{
 	@FXML
@@ -86,7 +87,101 @@ public class controller_leg implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
 		
+		new ButtonLongPress(LHip_Up, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(LHip_Down, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(LHip_Left, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(LHip_Right, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(RHip_Up, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(RHip_Down, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(RHip_Left, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(RHip_Right, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(RKnee_Up, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(RKnee_Down, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(RKnee_Left, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(RKnee_Right, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(LKnee_Up, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(LKnee_Down, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(LKnee_Left, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(LKnee_Right, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(LAnkle_Up, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(LAnkle_Down, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(LAnkle_Left, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(LAnkle_Right, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(RAnkle_Up, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(RAnkle_Down, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(RAnkle_Left, () -> {
+			//TODO
+		});
+		
+		new ButtonLongPress(RAnkle_Right, () -> {
+			//TODO
+		});
 	}
 }
