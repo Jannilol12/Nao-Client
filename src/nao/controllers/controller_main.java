@@ -1,3 +1,4 @@
+package nao.controllers;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,36 +14,28 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBase;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-
+import nao.sender;
+import tes.tester;
 
 public class controller_main implements Initializable {
-
-    @FXML
-    private Slider arms_speed;
     
-    @FXML
-    private Slider head_speed;
-    
-    @FXML
-    private Slider leg_speed;
-
-    @FXML
-    private TextField Steps;
-
-    @FXML
-    private CheckBox checkSteps;
-
     @FXML
     private ListView<Zwischenspeicher> list;
-
-    @FXML
-    private TextField degree;
 
     @FXML
     private TextField ip;
@@ -75,63 +68,12 @@ public class controller_main implements Initializable {
     }
 
     @FXML
-    void backwards(ActionEvent event) {
-        if(checkSteps.isSelected()){
-            sender.sendMessage("{\"type\":\"Backwards\", \"value\":\"" + Integer.parseInt(Steps.getText()) +"\"");
-        }
-        else {
-            sender.sendMessage("{\"type\":\"Backwards\", \"value\":\"0\"}");
-        }
-    }
-
-    @FXML
     void connect(ActionEvent event) {
         try {
             sender.connected(ip.getText(), Integer.parseInt(port.getText()));
 
         }
         catch(Exception err) {}
-    }
-
-
-    @FXML
-    void forward(ActionEvent event) {
-        if(checkSteps.isSelected()){
-            sender.sendMessage("{\"type\":\"Forward\", \"value\":\"" + Integer.parseInt(Steps.getText()) +"\"");
-        }
-        else {
-            sender.sendMessage("{\"type\":\"Forward\", \"value\":\"0\"}");
-        }
-    }
-
-    @FXML
-    void left(ActionEvent event) {
-        if(checkSteps.isSelected()){
-            sender.sendMessage("{\"type\":\"Left\", \"value\":\"" + Integer.parseInt(Steps.getText()) +"\"");
-        }
-        else {
-            sender.sendMessage("{\"type\":\"Left\", \"value\":\"0\"}");
-        }
-    }
-
-    @FXML
-    void right(ActionEvent event) {
-        if(checkSteps.isSelected()){
-            sender.sendMessage("{\"type\":\"Right\", \"value\":\"" + Integer.parseInt(Steps.getText()) +"\"");
-        }
-        else {
-            sender.sendMessage("{\"type\":\"Right\", \"value\":\"0\"}");
-        }
-    }
-
-    @FXML
-    void stop(ActionEvent event) {
-        sender.sendMessage("{\"type\":\"Stop\", \"value\":\"0\"}");
-    }
-
-    @FXML
-    void rotate(ActionEvent event) {
-        sender.sendMessage("{\"type\":\"Rotate\", \"value\":\"" + Integer.parseInt(degree.getText()) +"\"}");
     }
 
     @FXML
@@ -142,6 +84,7 @@ public class controller_main implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cmain = this;
+        tester.load();
 
         list.setOnMouseClicked(event -> {
             if(event.getClickCount() == 2){
@@ -300,45 +243,5 @@ public class controller_main implements Initializable {
         //TODO test
         //  {"name":"test", "inputs" : [{"type":"text", "prompt":"test", "id":"eingabe"}, {"type":"text", "prompt":"test", "id":"test2"}]}
         list.getItems().add(new Zwischenspeicher(JSONParser.parse("{\"name\":\"test\", \"inputs\" : [{\"type\":\"text\", \"prompt\":\"test\", \"id\":\"eingabe\"}, {\"type\":\"text\", \"prompt\":\"test\", \"id\":\"test2\"}]}")));
-    }
-
-    @FXML
-    void LShoulderPitch_Down(MouseEvent event) {
-        sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LShoulderPitch_Down\", \"value\":" + arms_speed.getValue() +"}");
-    }
-
-    @FXML
-    void LShoulderPitch_Up(MouseEvent event) {
-    	sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LShoulderPitch_Up\", \"value\":" + arms_speed.getValue() +"}");
-    }
-
-    @FXML
-    void LShoulderRoll_Left(MouseEvent event) {
-    	sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LShoulderRoll_Left\", \"value\":" + arms_speed.getValue() +"}");
-    }
-
-    @FXML
-    void LShoulderRoll_Right(MouseEvent event) {
-    	sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LShoulderRoll_Right\", \"value\":" + arms_speed.getValue() +"}");
-    }
-    
-    @FXML
-    void HeadPitch_Down(MouseEvent event) {
-    	sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"HeadPitch_Down\", \"value\":" + head_speed.getValue() +"}");
-    }
-
-    @FXML
-    void HeadPitch_Up(MouseEvent event) {
-    	sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"HeadPitch_Up\", \"value\":" + head_speed.getValue() +"}");
-    }
-
-    @FXML
-    void HeadYaw_Left(MouseEvent event) {
-    	sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"HeadYaw_Left\", \"value\":" + head_speed.getValue() +"}");
-    }
-
-    @FXML
-    void HeadYaw_Right(MouseEvent event) {
-    	sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"HeadYaw_Right\", \"value\":" + head_speed.getValue() +"}");
     }
 }

@@ -1,3 +1,4 @@
+package nao;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +17,7 @@ public class MainFrame extends Application{
 		});
 
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MainFrame.class.getResource("/fxml/Display.fxml"));
+		loader.setLocation(MainFrame.class.getResource("/nao/fxml/Display.fxml"));
 		try {
 			scene = new Scene(loader.load());
 			stage.setScene(scene);

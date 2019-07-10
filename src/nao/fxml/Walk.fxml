@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="200.0" prefWidth="200.0">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="200.0" prefWidth="200.0" fx:controller="nao.controllers.controller_walk">
    <center>
       <GridPane maxHeight="-Infinity" maxWidth="-Infinity" BorderPane.alignment="CENTER">
         <columnConstraints>
