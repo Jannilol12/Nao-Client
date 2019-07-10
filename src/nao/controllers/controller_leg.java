@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import nao.events.ButtonLongPress;
+import nao.sender;
 
 public class controller_leg implements Initializable{
 	@FXML
@@ -44,22 +45,10 @@ public class controller_leg implements Initializable{
     private Button RKnee_Down;
 
     @FXML
-    private Button RKnee_Left;
-
-    @FXML
-    private Button RKnee_Right;
-
-    @FXML
     private Button LKnee_Up;
 
     @FXML
     private Button LKnee_Down;
-
-    @FXML
-    private Button LKnee_Left;
-
-    @FXML
-    private Button LKnee_Right;
 
     @FXML
     private Button LAnkle_Up;
@@ -89,99 +78,82 @@ public class controller_leg implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		new ButtonLongPress(LHip_Up, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LHipPitch_Up\", \"value\":" + leg_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(LHip_Down, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LHipPitch_Down\", \"value\":" + leg_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(LHip_Left, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LHipRoll_Left\", \"value\":" + leg_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(LHip_Right, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LHipRoll_Right\", \"value\":" + leg_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(RHip_Up, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RHipPitch_Up\", \"value\":" + leg_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(RHip_Down, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RHipPitch_Down\", \"value\":" + leg_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(RHip_Left, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RHipRoll_Left\", \"value\":" + leg_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(RHip_Right, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RHipRoll_Right\", \"value\":" + leg_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(RKnee_Up, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RKneePitch_Up\", \"value\":" + leg_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(RKnee_Down, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RKneePitch_Down\", \"value\":" + leg_speed.getValue() + "}");
 		});
-		
-		new ButtonLongPress(RKnee_Left, () -> {
-			//TODO
-		});
-		
-		new ButtonLongPress(RKnee_Right, () -> {
-			//TODO
-		});
-		
 		new ButtonLongPress(LKnee_Up, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LKneePitch_Up\", \"value\":" + leg_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(LKnee_Down, () -> {
-			//TODO
-		});
-		
-		new ButtonLongPress(LKnee_Left, () -> {
-			//TODO
-		});
-		
-		new ButtonLongPress(LKnee_Right, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LKneePitch_Down\", \"value\":" + leg_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(LAnkle_Up, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LAnklePitch_Up\", \"value\":" + leg_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(LAnkle_Down, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LAnklePitch_Down\", \"value\":" + leg_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(LAnkle_Left, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LAnkleRoll_Left\", \"value\":" + leg_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(LAnkle_Right, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LAnkleRoll_Right\", \"value\":" + leg_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(RAnkle_Up, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RAnklePitch_Up\", \"value\":" + leg_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(RAnkle_Down, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RAnklePitch_Down\", \"value\":" + leg_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(RAnkle_Left, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RAnkleRoll_Left\", \"value\":" + leg_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(RAnkle_Right, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RAnkleRoll_Right\", \"value\":" + leg_speed.getValue() +"}");
 		});
 	}
 }

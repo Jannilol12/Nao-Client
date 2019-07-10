@@ -108,8 +108,8 @@ public class controller_arm implements Initializable{
 			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RShoulderPitch_Up\", \"value\":" + arms_speed.getValue() +"}");
 		});
 		
-		new ButtonLongPress(LShoulderPitch_Down, () -> {
-			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LShoulderPitch_Down\", \"value\":" + arms_speed.getValue() +"}");
+		new ButtonLongPress(RShoulderPitch_Down, () -> {
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RShoulderPitch_Down\", \"value\":" + arms_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(RShoulderRoll_Left, () -> {
@@ -121,67 +121,67 @@ public class controller_arm implements Initializable{
 		});
 		
 		new ButtonLongPress(REllbow_Up, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RElbowRoll_Down\", \"value\":" + arms_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(REllbow_Down, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RElbowRoll_Up\", \"value\":" + arms_speed.getValue() +"}");
 		});
 
 		new ButtonLongPress(REllbow_Left, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RElbowYaw_Right\", \"value\":" + arms_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(REllbow_Right, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RElbowYaw_Left\", \"value\":" + arms_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(LEllbow_Up, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LElbowRoll_Up\", \"value\":" + arms_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(LEllbow_Down, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LElbowRoll_Down\", \"value\":" + arms_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(LEllbow_Left, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LElbowYaw_Right\", \"value\":" + arms_speed.getValue() +"}");
 		});
 
 		new ButtonLongPress(LEllbow_Right, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LElbowYaw_Left\", \"value\":" + arms_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(LHand_Up, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LHand_Up\", \"value\":" + arms_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(LHand_Down, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LHand_Down\", \"value\":" + arms_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(LHand_Left, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LWristYaw_Up\", \"value\":" + arms_speed.getValue() + "}");
 		});
-		
+
 		new ButtonLongPress(LHand_Right, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LWristYaw_Down\", \"value\":" + arms_speed.getValue() +"}");
 		});
 
 		new ButtonLongPress(RHand_Up, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RHand_Up\", \"value\":" + arms_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(RHand_Down, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RHand_Down\", \"value\":" + arms_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(RHand_Left, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RWristYaw_Up\", \"value\":" + arms_speed.getValue() +"}");
 		});
 		
 		new ButtonLongPress(RHand_Right, () -> {
-			//TODO
+			sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"RWristYaw_Down\", \"value\":" + arms_speed.getValue() +"}");
 		});
 		
 	}

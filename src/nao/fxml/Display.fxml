@@ -50,7 +50,7 @@
       </GridPane>
    </top>
    <center>
-      <TabPane BorderPane.alignment="CENTER">
+      <TabPane style="-fx-border-color: lightgray;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
          <tabs>
             <Tab text="Laufen">
                <content>

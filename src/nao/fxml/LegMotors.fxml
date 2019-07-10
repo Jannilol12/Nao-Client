@@ -165,24 +165,6 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="RKnee_Left" mnemonicParsing="false" GridPane.rowIndex="1">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../icons/pfeil_links.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="RKnee_Right" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../icons/pfeil_rechts.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
                      </children>
                   </GridPane>
                   <GridPane GridPane.rowIndex="1">
@@ -211,24 +193,6 @@
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../icons/pfeil_unten.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="LKnee_Left" mnemonicParsing="false" GridPane.rowIndex="1">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../icons/pfeil_links.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="LKnee_Right" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../icons/pfeil_rechts.png" />
                                  </image>
                               </ImageView>
                            </graphic>
