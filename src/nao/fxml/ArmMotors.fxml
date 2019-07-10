@@ -47,7 +47,7 @@
                         <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" onMousePressed="#LShoulderPitch_Up" GridPane.columnIndex="1">
+                        <Button mnemonicParsing="false" fx:id="#LShoulderPitch_Up" GridPane.columnIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -56,7 +56,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" onMouseDragged="#LShoulderPitch_Down" onMousePressed="#LShoulderPitch_Down" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button mnemonicParsing="false" fx:id="#LShoulderPitch_Down" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -65,7 +65,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" onMousePressed="#LShoulderRoll_Left" GridPane.rowIndex="1">
+                        <Button mnemonicParsing="false" fx:id="#LShoulderRoll_Left" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -74,7 +74,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" onMousePressed="#LShoulderRoll_Right" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Button mnemonicParsing="false" fx:id="#LShoulderRoll_Right" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -97,7 +97,7 @@
                         <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" onMousePressed="#RShoulderPitch_Up" GridPane.columnIndex="1">
+                        <Button mnemonicParsing="false" fx:id="#RShoulderPitch_Up" GridPane.columnIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -106,7 +106,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" onMousePressed="#RShoulderPitch_Down" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button mnemonicParsing="false" fx:id="#RShoulderPitch_Down" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -115,7 +115,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" onMousePressed="#RShoulderRoll_Left" GridPane.rowIndex="1">
+                        <Button mnemonicParsing="false" fx:id="#RShoulderRoll_Left" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -124,7 +124,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" onMousePressed="#RShoulderRoll_Right" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Button mnemonicParsing="false" fx:id="#RShoulderRoll_Right" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
