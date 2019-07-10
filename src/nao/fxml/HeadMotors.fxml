@@ -34,38 +34,38 @@
                   <RowConstraints minHeight="0.0" valignment="CENTER" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" fx:id="#HeadPitch_Up" GridPane.columnIndex="1">
+                  <Button mnemonicParsing="false" fx:id="HeadPitch_Up" GridPane.columnIndex="1">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/pfeil_oben.png" />
+                              <Image url="@../../icons/pfeil_oben.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="#HeadPitch_Down" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Button fx:id="HeadPitch_Down" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/pfeil_unten.png" />
+                              <Image url="@../../icons/pfeil_unten.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" fx:id="#HeadYaw_Left" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" fx:id="HeadYaw_Left" GridPane.rowIndex="1">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/pfeil_links.png" />
+                              <Image url="@../../icons/pfeil_links.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" fx:id="#HeadYaw_Right" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" fx:id="HeadYaw_Right" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/pfeil_rechts.png" />
+                              <Image url="@../../icons/pfeil_rechts.png" />
                            </image>
                         </ImageView>
                      </graphic>
