@@ -37,6 +37,54 @@ public class controller_arm implements Initializable{
 	
 	@FXML
 	private Button RShoulderRoll_Right;
+	
+	@FXML
+	private Button REllbow_Up;
+	
+	@FXML
+	private Button REllbow_Down;
+	
+	@FXML
+	private Button REllbow_Left;
+	
+	@FXML
+	private Button REllbow_Right;
+	
+	@FXML
+	private Button LEllbow_Up;
+	
+	@FXML
+	private Button LEllbow_Down;
+	
+	@FXML
+	private Button LEllbow_Left;
+	
+	@FXML
+	private Button LEllbow_Right;
+	
+	@FXML
+	private Button LHand_Up;
+	
+	@FXML
+	private Button LHand_Down;
+	
+	@FXML
+	private Button LHand_Left;
+	
+	@FXML
+	private Button LHand_Right;
+	
+	@FXML
+	private Button RHand_Up;
+	
+	@FXML
+	private Button RHand_Down;
+	
+	@FXML
+	private Button RHand_Left;
+	
+	@FXML
+	private Button RHand_Right;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

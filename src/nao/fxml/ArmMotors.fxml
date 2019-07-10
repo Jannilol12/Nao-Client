@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="nao.controllers.controller_arm">
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nao.controllers.controller_arm">
    <center>
       <GridPane hgap="5.0" vgap="5.0">
          <columnConstraints>
@@ -47,7 +47,7 @@
                         <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" fx:id="LShoulderPitch_Up" GridPane.columnIndex="1">
+                        <Button fx:id="LShoulderPitch_Up" mnemonicParsing="false" GridPane.columnIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -56,7 +56,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" fx:id="LShoulderPitch_Down" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button fx:id="LShoulderPitch_Down" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -65,7 +65,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" fx:id="LShoulderRoll_Left" GridPane.rowIndex="1">
+                        <Button fx:id="LShoulderRoll_Left" mnemonicParsing="false" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -74,7 +74,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" fx:id="LShoulderRoll_Right" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Button fx:id="LShoulderRoll_Right" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -97,7 +97,7 @@
                         <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" fx:id="RShoulderPitch_Up" GridPane.columnIndex="1">
+                        <Button fx:id="RShoulderPitch_Up" mnemonicParsing="false" GridPane.columnIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -106,7 +106,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" fx:id="RShoulderPitch_Down" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button fx:id="RShoulderPitch_Down" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -115,7 +115,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" fx:id="RShoulderRoll_Left" GridPane.rowIndex="1">
+                        <Button fx:id="RShoulderRoll_Left" mnemonicParsing="false" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -124,7 +124,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" fx:id="RShoulderRoll_Right" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Button fx:id="RShoulderRoll_Right" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -147,7 +147,7 @@
                         <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" GridPane.columnIndex="1">
+                        <Button fx:id="REllbow_Up" mnemonicParsing="false" GridPane.columnIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -156,7 +156,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button fx:id="REllbow_Down" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -165,7 +165,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" GridPane.rowIndex="1">
+                        <Button fx:id="REllbow_Left" mnemonicParsing="false" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -174,7 +174,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Button fx:id="REllbow_Right" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -197,7 +197,7 @@
                         <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" GridPane.columnIndex="1">
+                        <Button fx:id="LEllbow_Up" mnemonicParsing="false" GridPane.columnIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -206,7 +206,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button fx:id="LEllbow_Down" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -215,7 +215,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" GridPane.rowIndex="1">
+                        <Button fx:id="LEllbow_Left" mnemonicParsing="false" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -224,7 +224,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Button fx:id="LEllbow_Right" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -247,7 +247,7 @@
                         <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" GridPane.columnIndex="1">
+                        <Button fx:id="LHand_Up" mnemonicParsing="false" GridPane.columnIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -256,7 +256,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button fx:id="LHand_Down" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -265,7 +265,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" GridPane.rowIndex="1">
+                        <Button fx:id="LHand_Left" mnemonicParsing="false" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -274,7 +274,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Button fx:id="LHand_Right" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -297,7 +297,7 @@
                         <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" GridPane.columnIndex="1">
+                        <Button fx:id="RHand_Up" mnemonicParsing="false" GridPane.columnIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -306,7 +306,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button fx:id="RHand_Down" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -315,7 +315,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" GridPane.rowIndex="1">
+                        <Button fx:id="RHand_Left" mnemonicParsing="false" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -324,7 +324,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Button fx:id="RHand_Right" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
