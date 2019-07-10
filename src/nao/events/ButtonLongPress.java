@@ -8,6 +8,7 @@ public class ButtonLongPress {
 	private volatile boolean pressed;
 	private Runnable runnable;
 	private Thread thread;
+	private int sleep = 100;
 	
 	public ButtonLongPress(Button button) {
 		this.button = button;
@@ -17,6 +18,13 @@ public class ButtonLongPress {
 	public ButtonLongPress(Button button, Runnable runnable) {
 		this.button = button;
 		this.runnable = runnable;
+		init();
+	}
+	
+	public ButtonLongPress(Button button, Runnable runnable, int sleep) {
+		this.button = button;
+		this.runnable = runnable;
+		this.sleep = sleep;
 		init();
 	}
 	
@@ -39,7 +47,7 @@ public class ButtonLongPress {
 					while(pressed && !this.isInterrupted()) {
 						runnable.run();
 						try {
-							sleep(50);
+							sleep(sleep);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
