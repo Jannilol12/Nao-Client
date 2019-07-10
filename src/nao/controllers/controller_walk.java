@@ -15,6 +15,11 @@ public class controller_walk {
     
     @FXML
     private TextField degree;
+
+    @FXML
+    void Wake_Up(ActionEvent event) {
+        sender.sendMessage("{\"type\":\"Wakeup\"}");
+    }
 	
 	@FXML
     void forward(ActionEvent event) {

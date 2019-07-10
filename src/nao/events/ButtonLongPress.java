@@ -8,7 +8,7 @@ public class ButtonLongPress {
 	private volatile boolean pressed;
 	private Runnable runnable;
 	private Thread thread;
-	private int sleep = 100;
+	private int sleep = 1000;
 	
 	public ButtonLongPress(Button button) {
 		this.button = button;
