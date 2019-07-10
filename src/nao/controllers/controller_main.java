@@ -30,7 +30,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import nao.sender;
-import tes.tester;
 
 public class controller_main implements Initializable {
     
@@ -71,7 +70,6 @@ public class controller_main implements Initializable {
     void connect(ActionEvent event) {
         try {
             sender.connected(ip.getText(), Integer.parseInt(port.getText()));
-
         }
         catch(Exception err) {}
     }
@@ -84,7 +82,6 @@ public class controller_main implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cmain = this;
-        tester.load();
 
         list.setOnMouseClicked(event -> {
             if(event.getClickCount() == 2){
