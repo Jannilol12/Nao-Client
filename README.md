@@ -2,7 +2,7 @@
 ## Beschreibung
 P-Seminar Projekt des Gym.-Roth
 ## BUGS
-  - [ ] MovePressedEvent not working correctly in \*Motors.fxml
+  - [ ] Buttons in \*Motors.fxml must be use ButtonLongPress Class
 ## TODO
 ### FXML
   - [ ] Add Code Button in HeadMotors.fxml, ArmsMotors.fxml, LegMotors.fxml
