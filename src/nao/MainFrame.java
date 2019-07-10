@@ -3,6 +3,7 @@ package nao;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -11,6 +12,8 @@ public class MainFrame extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 		Scene scene = null;
+
+		stage.getIcons().add(new Image(MainFrame.class.getResourceAsStream("/icons/JJ.png")));
 
 		stage.setOnCloseRequest(event -> {
 			System.exit(0);
