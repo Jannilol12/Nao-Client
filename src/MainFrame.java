@@ -16,7 +16,7 @@ public class MainFrame extends Application{
 		});
 
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MainFrame.class.getResource("/Display.fxml"));
+		loader.setLocation(MainFrame.class.getResource("/fxml/Display.fxml"));
 		try {
 			scene = new Scene(loader.load());
 			stage.setScene(scene);

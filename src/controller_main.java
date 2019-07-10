@@ -25,6 +25,12 @@ public class controller_main implements Initializable {
 
     @FXML
     private Slider arms_speed;
+    
+    @FXML
+    private Slider head_speed;
+    
+    @FXML
+    private Slider leg_speed;
 
     @FXML
     private TextField Steps;
@@ -298,21 +304,41 @@ public class controller_main implements Initializable {
 
     @FXML
     void LShoulderPitch_Down(MouseEvent event) {
-        sender.sendMessage("{\"type\":\"LShoulderPitch_Down\", \"value\":" + arms_speed.getValue() +"}");
+        sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LShoulderPitch_Down\", \"value\":" + arms_speed.getValue() +"}");
     }
 
     @FXML
     void LShoulderPitch_Up(MouseEvent event) {
-
+    	sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LShoulderPitch_Up\", \"value\":" + arms_speed.getValue() +"}");
     }
 
     @FXML
     void LShoulderRoll_Left(MouseEvent event) {
-
+    	sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LShoulderRoll_Left\", \"value\":" + arms_speed.getValue() +"}");
     }
 
     @FXML
     void LShoulderRoll_Right(MouseEvent event) {
+    	sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"LShoulderRoll_Right\", \"value\":" + arms_speed.getValue() +"}");
+    }
+    
+    @FXML
+    void HeadPitch_Down(MouseEvent event) {
+    	sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"HeadPitch_Down\", \"value\":" + head_speed.getValue() +"}");
+    }
 
+    @FXML
+    void HeadPitch_Up(MouseEvent event) {
+    	sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"HeadPitch_Up\", \"value\":" + head_speed.getValue() +"}");
+    }
+
+    @FXML
+    void HeadYaw_Left(MouseEvent event) {
+    	sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"HeadYaw_Left\", \"value\":" + head_speed.getValue() +"}");
+    }
+
+    @FXML
+    void HeadYaw_Right(MouseEvent event) {
+    	sender.sendMessage("{\"type\":\"motors\", \"motorname\":\"HeadYaw_Right\", \"value\":" + head_speed.getValue() +"}");
     }
 }
