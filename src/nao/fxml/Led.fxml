@@ -3,15 +3,14 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ColorPicker?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane hgap="5.0" maxWidth="1.7976931348623157E308" vgap="5.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane hgap="10.0" maxWidth="1.7976931348623157E308" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nao.controllers.controller_led">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -26,84 +25,9 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <MenuButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Gehirn">
-         <items>
-            <MenuItem mnemonicParsing="false" text="Alle" />
-            <MenuItem mnemonicParsing="false" text="Links" />
-            <MenuItem mnemonicParsing="false" text="Rechts" />
-            <MenuItem mnemonicParsing="false" text="0" />
-            <MenuItem mnemonicParsing="false" text="1" />
-            <MenuItem mnemonicParsing="false" text="2" />
-            <MenuItem mnemonicParsing="false" text="3" />
-            <MenuItem mnemonicParsing="false" text="4" />
-            <MenuItem mnemonicParsing="false" text="5" />
-            <MenuItem mnemonicParsing="false" text="6" />
-            <MenuItem mnemonicParsing="false" text="7" />
-            <MenuItem mnemonicParsing="false" text="8" />
-            <MenuItem mnemonicParsing="false" text="9" />
-            <MenuItem mnemonicParsing="false" text="10" />
-            <MenuItem mnemonicParsing="false" text="11" />
-         </items>
-      </MenuButton>
-      <MenuButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Ohr Links" GridPane.rowIndex="1">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Alle" />
-          <MenuItem mnemonicParsing="false" text="0" />
-            <MenuItem mnemonicParsing="false" text="1" />
-            <MenuItem mnemonicParsing="false" text="2" />
-            <MenuItem mnemonicParsing="false" text="3" />
-            <MenuItem mnemonicParsing="false" text="4" />
-            <MenuItem mnemonicParsing="false" text="5" />
-            <MenuItem mnemonicParsing="false" text="6" />
-            <MenuItem mnemonicParsing="false" text="7" />
-            <MenuItem mnemonicParsing="false" text="8" />
-            <MenuItem mnemonicParsing="false" text="9" />
-        </items>
-      </MenuButton>
-      <TextField GridPane.rowIndex="5" />
-      <ColorPicker GridPane.columnIndex="1" GridPane.rowIndex="5" />
-      <MenuButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Ohr Rechts" GridPane.columnIndex="1" GridPane.rowIndex="1">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Alle" />
-          <MenuItem mnemonicParsing="false" text="0" />
-            <MenuItem mnemonicParsing="false" text="1" />
-            <MenuItem mnemonicParsing="false" text="2" />
-            <MenuItem mnemonicParsing="false" text="3" />
-            <MenuItem mnemonicParsing="false" text="4" />
-            <MenuItem mnemonicParsing="false" text="5" />
-            <MenuItem mnemonicParsing="false" text="6" />
-            <MenuItem mnemonicParsing="false" text="7" />
-            <MenuItem mnemonicParsing="false" text="8" />
-            <MenuItem mnemonicParsing="false" text="9" />
-        </items>
-      </MenuButton>
-      <MenuButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Auge Links" GridPane.rowIndex="2">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Alle" />
-          <MenuItem mnemonicParsing="false" text="0" />
-            <MenuItem mnemonicParsing="false" text="1" />
-            <MenuItem mnemonicParsing="false" text="2" />
-            <MenuItem mnemonicParsing="false" text="3" />
-            <MenuItem mnemonicParsing="false" text="4" />
-            <MenuItem mnemonicParsing="false" text="5" />
-            <MenuItem mnemonicParsing="false" text="6" />
-            <MenuItem mnemonicParsing="false" text="7" />
-        </items>
-      </MenuButton>
-      <MenuButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Auge Rechts" GridPane.columnIndex="1" GridPane.rowIndex="2">
-         <items>
-            <MenuItem mnemonicParsing="false" text="Alle" />
-            <MenuItem mnemonicParsing="false" text="0" />
-            <MenuItem mnemonicParsing="false" text="1" />
-            <MenuItem mnemonicParsing="false" text="2" />
-            <MenuItem mnemonicParsing="false" text="3" />
-            <MenuItem mnemonicParsing="false" text="4" />
-            <MenuItem mnemonicParsing="false" text="5" />
-            <MenuItem mnemonicParsing="false" text="6" />
-            <MenuItem mnemonicParsing="false" text="7" />
-         </items>
-      </MenuButton>
-      <Button alignment="CENTER_RIGHT" mnemonicParsing="false" text="Start" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <TextField fx:id="Fade" maxWidth="1.7976931348623157E308" promptText="Fade" GridPane.rowIndex="5" />
+      <ColorPicker fx:id="Colour" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#Start_btn" text="Start" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -111,15 +35,13 @@
             <Insets right="10.0" />
          </GridPane.margin>
       </Button>
-      <MenuButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Fuß Links" GridPane.rowIndex="3">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Fuß" />
-        </items>
-      </MenuButton>
-      <MenuButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Fuß Rechts" GridPane.columnIndex="1" GridPane.rowIndex="3">
-         <items>
-            <MenuItem mnemonicParsing="false" text="Fuß" />
-         </items>
-      </MenuButton>
+      <ComboBox fx:id="Gehirn" maxWidth="1.7976931348623157E308" promptText="Gehirn" />
+      <ComboBox fx:id="Ohr_Links" maxWidth="1.7976931348623157E308" promptText="Ohr Links" GridPane.rowIndex="1" />
+      <ComboBox fx:id="Ohr_Rechts" maxWidth="1.7976931348623157E308" promptText="Ohr Rechts" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <ComboBox fx:id="Auge_Links" maxWidth="1.7976931348623157E308" promptText="Auge Links" GridPane.rowIndex="2" />
+      <ComboBox fx:id="Auge_Rechts" maxWidth="1.7976931348623157E308" promptText="Auge Rechts" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <ComboBox fx:id="Fuss_Links" maxWidth="1.7976931348623157E308" promptText="Fuß Links" GridPane.rowIndex="3" />
+      <ComboBox fx:id="Fuss_Rechts" maxWidth="1.7976931348623157E308" promptText="Fuß Rechts" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <ComboBox fx:id="method" maxWidth="1.7976931348623157E308" GridPane.rowIndex="6" />
    </children>
 </GridPane>

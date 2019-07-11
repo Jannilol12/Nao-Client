@@ -24,7 +24,7 @@ public class controller_walk {
 	@FXML
     void forward(ActionEvent event) {
         if(checkSteps.isSelected()){
-            sender.sendMessage("{\"type\":\"Forward\", \"value\":\"" + Integer.parseInt(Steps.getText()) +"\"");
+            sender.sendMessage("{\"type\":\"Forward\", \"value\":\"" + Integer.parseInt(Steps.getText()) +"\"}");
         }
         else {
             sender.sendMessage("{\"type\":\"Forward\", \"value\":\"0\"}");
@@ -34,7 +34,7 @@ public class controller_walk {
 	@FXML
     void backwards(ActionEvent event) {
         if(checkSteps.isSelected()){
-            sender.sendMessage("{\"type\":\"Backwards\", \"value\":\"" + Integer.parseInt(Steps.getText()) +"\"");
+            sender.sendMessage("{\"type\":\"Backwards\", \"value\":\"" + Integer.parseInt(Steps.getText()) +"\"}");
         }
         else {
             sender.sendMessage("{\"type\":\"Backwards\", \"value\":\"0\"}");
@@ -44,7 +44,7 @@ public class controller_walk {
     @FXML
     void left(ActionEvent event) {
         if(checkSteps.isSelected()){
-            sender.sendMessage("{\"type\":\"Left\", \"value\":\"" + Integer.parseInt(Steps.getText()) +"\"");
+            sender.sendMessage("{\"type\":\"Left\", \"value\":\"" + Integer.parseInt(Steps.getText()) +"\"}");
         }
         else {
             sender.sendMessage("{\"type\":\"Left\", \"value\":\"0\"}");
@@ -54,7 +54,7 @@ public class controller_walk {
     @FXML
     void right(ActionEvent event) {
         if(checkSteps.isSelected()){
-            sender.sendMessage("{\"type\":\"Right\", \"value\":\"" + Integer.parseInt(Steps.getText()) +"\"");
+            sender.sendMessage("{\"type\":\"Right\", \"value\":\"" + Integer.parseInt(Steps.getText()) +"\"}");
         }
         else {
             sender.sendMessage("{\"type\":\"Right\", \"value\":\"0\"}");

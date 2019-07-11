@@ -72,6 +72,11 @@
                 <fx:include source="@../../LegMotors.fxml" />
               </content>
             </Tab>
+            <Tab text="Led">
+                <content>
+                    <fx:include source="@../../Led.fxml" />
+                </content>
+            </Tab>
          </tabs>
          <opaqueInsets>
             <Insets />
