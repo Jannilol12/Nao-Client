@@ -23,6 +23,8 @@ public class sender {
     }
 
     public synchronized static void reconnect(){
+    	if(ip == null || ip.isEmpty() || port < 0) return;
+    	
         destroy();
         try {
             socket = new Socket(ip , port);
