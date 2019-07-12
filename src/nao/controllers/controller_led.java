@@ -158,7 +158,6 @@ public class controller_led implements Initializable {
             }
         }catch (NumberFormatException err){
             System.out.println("NumberFormatException");
-            err.printStackTrace();
         }
 
         Gehirn.getSelectionModel().clearSelection();
