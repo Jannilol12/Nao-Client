@@ -56,62 +56,24 @@ public class controller_led implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Gehirn.getItems().add("Alle");
-        Gehirn.getItems().add("0");
-        Gehirn.getItems().add("1");
-        Gehirn.getItems().add("2");
-        Gehirn.getItems().add("3");
-        Gehirn.getItems().add("4");
-        Gehirn.getItems().add("5");
-        Gehirn.getItems().add("6");
-        Gehirn.getItems().add("7");
-        Gehirn.getItems().add("8");
-        Gehirn.getItems().add("9");
-        Gehirn.getItems().add("10");
-        Gehirn.getItems().add("11");
+        for(int i = 0; i <= 11; i++) 
+        	Gehirn.getItems().add(i+"");
 
         Ohr_Links.getItems().add("Alle");
-        Ohr_Links.getItems().add("1");
-        Ohr_Links.getItems().add("2");
-        Ohr_Links.getItems().add("3");
-        Ohr_Links.getItems().add("4");
-        Ohr_Links.getItems().add("5");
-        Ohr_Links.getItems().add("6");
-        Ohr_Links.getItems().add("7");
-        Ohr_Links.getItems().add("8");
-        Ohr_Links.getItems().add("9");
-        Ohr_Links.getItems().add("10");
+        for(int i = 1; i <= 10; i++) 
+        	Ohr_Links.getItems().add(i+"");
 
         Ohr_Rechts.getItems().add("Alle");
-        Ohr_Rechts.getItems().add("1");
-        Ohr_Rechts.getItems().add("2");
-        Ohr_Rechts.getItems().add("3");
-        Ohr_Rechts.getItems().add("4");
-        Ohr_Rechts.getItems().add("5");
-        Ohr_Rechts.getItems().add("6");
-        Ohr_Rechts.getItems().add("7");
-        Ohr_Rechts.getItems().add("8");
-        Ohr_Rechts.getItems().add("9");
-        Ohr_Rechts.getItems().add("10");
+        for(int i = 1; i <= 10; i++) 
+        	Ohr_Rechts.getItems().add(i+"");
 
         Auge_Links.getItems().add("Alle");
-        Auge_Links.getItems().add("1");
-        Auge_Links.getItems().add("2");
-        Auge_Links.getItems().add("3");
-        Auge_Links.getItems().add("4");
-        Auge_Links.getItems().add("5");
-        Auge_Links.getItems().add("6");
-        Auge_Links.getItems().add("7");
-        Auge_Links.getItems().add("8");
+        for(int i = 1; i <= 8; i++) 
+        	Ohr_Rechts.getItems().add(i+"");
 
         Auge_Rechts.getItems().add("Alle");
-        Auge_Rechts.getItems().add("1");
-        Auge_Rechts.getItems().add("2");
-        Auge_Rechts.getItems().add("3");
-        Auge_Rechts.getItems().add("4");
-        Auge_Rechts.getItems().add("5");
-        Auge_Rechts.getItems().add("6");
-        Auge_Rechts.getItems().add("7");
-        Auge_Rechts.getItems().add("8");
+        for(int i = 1; i <= 8; i++) 
+        	Ohr_Rechts.getItems().add(i+"");
 
         Fuss_Links.getItems().add("Alle");
         Fuss_Links.getItems().add("Blue");
