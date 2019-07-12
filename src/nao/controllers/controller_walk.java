@@ -2,11 +2,17 @@ package nao.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import nao.sender;
 
-public class controller_walk {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class controller_walk implements Initializable {
 	@FXML
     private TextField Steps;
 
@@ -15,6 +21,12 @@ public class controller_walk {
     
     @FXML
     private TextField degree;
+
+    @FXML
+    private ComboBox<String> PostureBox;
+
+    @FXML
+    private TextField PostureSpeed;
 
     @FXML
     void Wake_Up(ActionEvent event) {
@@ -69,5 +81,22 @@ public class controller_walk {
     @FXML
     void rotate(ActionEvent event) {
         sender.sendMessage("{\"type\":\"Rotate\", \"value\":\"" + Integer.parseInt(degree.getText()) +"\"}");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        PostureBox.getItems().add("Stand");
+        PostureBox.getItems().add("StandInit");
+        PostureBox.getItems().add("StandZero");
+        PostureBox.getItems().add("Crouch");
+        PostureBox.getItems().add("Sit");
+        PostureBox.getItems().add("SitRelax");
+        PostureBox.getItems().add("LyingBelly");
+        PostureBox.getItems().add("LyingBack");
+    }
+
+    @FXML
+    void PostureStart(ActionEvent event) {
+        sender.sendMessage("{\"type\":\"posture\", \"position\": \"" + PostureBox.getSelectionModel().getSelectedItem() + "\", \"speed\":" + Float.parseFloat(PostureSpeed.getText()) + "}");
     }
 }

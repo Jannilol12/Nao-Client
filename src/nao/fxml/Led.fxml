@@ -45,7 +45,7 @@
       <ComboBox fx:id="Auge_Rechts" maxWidth="1.7976931348623157E308" promptText="Auge Rechts" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <ComboBox fx:id="Fuss_Links" maxWidth="1.7976931348623157E308" promptText="Fuß Links" GridPane.rowIndex="3" />
       <ComboBox fx:id="Fuss_Rechts" maxWidth="1.7976931348623157E308" promptText="Fuß Rechts" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <ComboBox fx:id="method" maxWidth="1.7976931348623157E308" GridPane.rowIndex="8" />
+      <ComboBox fx:id="method" maxWidth="1.7976931348623157E308" promptText="Methode" GridPane.rowIndex="8" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Random Eyes" GridPane.rowIndex="4">
          <font>
             <Font name="System Bold" size="12.0" />

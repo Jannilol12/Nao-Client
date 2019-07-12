@@ -29,9 +29,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import nao.Battery;
 import nao.sender;
 
 public class controller_main implements Initializable {
+	private Battery b = new Battery();
     
     @FXML
     private ListView<Zwischenspeicher> list;
@@ -70,6 +72,7 @@ public class controller_main implements Initializable {
     void connect(ActionEvent event) {
         try {
             sender.connected(ip.getText(), Integer.parseInt(port.getText()));
+            b.sendBattery();
         }
         catch(Exception err) {}
     }
@@ -77,6 +80,7 @@ public class controller_main implements Initializable {
     @FXML
     void destroy(ActionEvent event) {
         sender.destroy();
+        b.stopBattery();
     }
 
     @Override
