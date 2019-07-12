@@ -1,5 +1,8 @@
 package nao.controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -7,10 +10,6 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import nao.sender;
-
-import java.awt.image.ColorConvertOp;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class controller_led implements Initializable {
 
@@ -135,7 +134,8 @@ public class controller_led implements Initializable {
             if(!random_duration.getText().isEmpty()){
                 sender.sendMessage("{\"type\":\"leds\",\"method\": \"random\", \"duration\":" + Float.parseFloat(random_duration.getText())+ "}");
             }else if(!rotate_duration.getText().isEmpty() && !rotate_rotation.getText().isEmpty()){
-                int rgb = (int) Colour.getValue().getRed() << 8*2 + (int) Colour.getValue().getGreen() << 8 + (int) Colour.getValue().getBlue();
+                int rgb = ((int) Colour.getValue().getRed() << 8*2) + ((int) Colour.getValue().getGreen() << 8) + (int) Colour.getValue().getBlue();
+//                System.out.println(rgb + " " + Integer.toBinaryString(rgb));
                 sender.sendMessage("{\"type\":\"leds\",\"method\": \"rotate\", \"rgbe\":" + rgb + ", \"timeR\":" + Float.parseFloat(rotate_rotation.getText()) + ", \"timeD\":" + Float.parseFloat(rotate_rotation.getText()) + "}");
             }else {
                 if (Gehirn.getSelectionModel().getSelectedItem() != null) {
