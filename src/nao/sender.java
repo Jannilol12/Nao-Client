@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.Socket;
 
 import nao.controllers.controller_main;
+import nao.debugger.Debugger;
 
 public class sender {
     public static Socket socket;
