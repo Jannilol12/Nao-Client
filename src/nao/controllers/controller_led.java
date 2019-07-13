@@ -77,19 +77,9 @@ public class controller_led implements Initializable {
         for(int i = 1; i <= 8; i++) 
         	Ohr_Rechts.getItems().add(i+"");
 
-        Fuss_Links.getItems().add("Alle");
-        Fuss_Links.getItems().add("Blue");
-        Fuss_Links.getItems().add("Green");
-        Fuss_Links.getItems().add("Red");
-
-        Fuss_Rechts.getItems().add("Alle");
-        Fuss_Rechts.getItems().add("Blue");
-        Fuss_Rechts.getItems().add("Green");
-        Fuss_Rechts.getItems().add("Red");
-
-        method.getItems().add("rgb");
-        method.getItems().add("on");
-        method.getItems().add("off");
+        Fuss_Links.getItems().addAll("Alle", "Blue", "Green", "Red");
+        Fuss_Rechts.getItems().addAll("Alle", "Blue", "Green", "Red");
+        method.getItems().addAll("rgb", "on", "off");
     }
 
     @FXML

@@ -3,6 +3,7 @@ package nao.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import components.json.JSONObject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -34,42 +35,34 @@ public class controller_walk implements Initializable {
 	
 	@FXML
     void forward(ActionEvent event) {
-        if(checkSteps.isSelected()){
-            sender.sendMessage("{\"type\":\"Forward\", \"value\":\"" + Integer.parseInt(Steps.getText()) +"\"}");
-        }
-        else {
-            sender.sendMessage("{\"type\":\"Forward\", \"value\":\"0\"}");
-        }
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.add("type", "Forward");
+		jsonObject.add("value", checkSteps.isSelected() ? Integer.parseInt(Steps.getText()) + "" : "0");
+		sender.sendMessage(jsonObject.toJSONString());
     }
 	
 	@FXML
     void backwards(ActionEvent event) {
-        if(checkSteps.isSelected()){
-            sender.sendMessage("{\"type\":\"Backwards\", \"value\":\"" + Integer.parseInt(Steps.getText()) +"\"}");
-        }
-        else {
-            sender.sendMessage("{\"type\":\"Backwards\", \"value\":\"0\"}");
-        }
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.add("type", "Backwards");
+		jsonObject.add("value", checkSteps.isSelected() ? Integer.parseInt(Steps.getText()) + "" : "0");
+		sender.sendMessage(jsonObject.toJSONString());
     }
 
     @FXML
     void left(ActionEvent event) {
-        if(checkSteps.isSelected()){
-            sender.sendMessage("{\"type\":\"Left\", \"value\":\"" + Integer.parseInt(Steps.getText()) +"\"}");
-        }
-        else {
-            sender.sendMessage("{\"type\":\"Left\", \"value\":\"0\"}");
-        }
+    	JSONObject jsonObject = new JSONObject();
+		jsonObject.add("type", "Left");
+		jsonObject.add("value", checkSteps.isSelected() ? Integer.parseInt(Steps.getText()) + "" : "0");
+		sender.sendMessage(jsonObject.toJSONString());
     }
 
     @FXML
     void right(ActionEvent event) {
-        if(checkSteps.isSelected()){
-            sender.sendMessage("{\"type\":\"Right\", \"value\":\"" + Integer.parseInt(Steps.getText()) +"\"}");
-        }
-        else {
-            sender.sendMessage("{\"type\":\"Right\", \"value\":\"0\"}");
-        }
+    	JSONObject jsonObject = new JSONObject();
+		jsonObject.add("type", "Right");
+		jsonObject.add("value", checkSteps.isSelected() ? Integer.parseInt(Steps.getText()) + "" : "0");
+		sender.sendMessage(jsonObject.toJSONString());
     }
 
     @FXML
@@ -84,14 +77,7 @@ public class controller_walk implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        PostureBox.getItems().add("Stand");
-        PostureBox.getItems().add("StandInit");
-        PostureBox.getItems().add("StandZero");
-        PostureBox.getItems().add("Crouch");
-        PostureBox.getItems().add("Sit");
-        PostureBox.getItems().add("SitRelax");
-        PostureBox.getItems().add("LyingBelly");
-        PostureBox.getItems().add("LyingBack");
+    	PostureBox.getItems().addAll("Stand", "StandInit", "StandZero", "Crouch", "Sit", "SitRelax", "LyingBelly", "LyingBack");
     }
 
     @FXML
