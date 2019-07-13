@@ -50,13 +50,17 @@ public class sender {
             reconnect();
         
         if(text != null && dout != null ) {
+        	if(Debugger.isEnable())
+        		System.out.println("Sending: " + text);
+        	
             try {
                 dout.writeUTF(text);
                 dout.flush();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+        } else if(Debugger.isEnable())
+        	System.out.println("Send (Failed): " + text);
     }
 
     private synchronized static void startReadingThread(){
