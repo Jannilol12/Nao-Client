@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 import components.json.JSONArray;
 import components.json.JSONObject;
 import components.json.finder.JSONFinder;
-import components.json.parser.JSONParser;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -240,9 +239,5 @@ public class controller_main implements Initializable {
                 }
             }
         }).start();
-        
-        //TODO test
-        //  {"name":"test", "inputs" : [{"type":"text", "prompt":"test", "id":"eingabe"}, {"type":"text", "prompt":"test", "id":"test2"}]}
-        list.getItems().add(new Zwischenspeicher(JSONParser.parse("{\"name\":\"test\", \"inputs\" : [{\"type\":\"text\", \"prompt\":\"test\", \"id\":\"eingabe\"}, {\"type\":\"text\", \"prompt\":\"test\", \"id\":\"test2\"}]}")));
     }
 }
