@@ -9,8 +9,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainFrame extends Application{
+	public static Stage stage;
 	@Override
 	public void start(Stage stage) throws Exception {
+		this.stage = stage;
 		Scene scene = null;
 
 		stage.getIcons().add(new Image(MainFrame.class.getResourceAsStream("/icons/JJ.png")));

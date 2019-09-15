@@ -84,7 +84,7 @@
             </Tab>
             <Tab text="Audio">
                <content>
-                  <fx:include source="@../../Led.fxml" />
+                  <fx:include maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="@../../AudioPlayer.fxml" />
                </content>
             </Tab>
          </tabs>

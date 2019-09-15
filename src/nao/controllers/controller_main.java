@@ -28,11 +28,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import nao.Battery;
+import nao.SendWhile;
 import nao.sender;
 
 public class controller_main implements Initializable {
-	private Battery b = new Battery();
+	private SendWhile b = new SendWhile();
     
     @FXML
     private ListView<Zwischenspeicher> list;
