@@ -12,13 +12,18 @@ import nao.SendWhile;
 import nao.sender;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.Base64;
 import java.util.ResourceBundle;
 
 public class controller_audioPlayer implements Initializable {
     public static controller_audioPlayer caP;
     private SendWhile s = new SendWhile();
     private File file;
+    private String fileName;
 
     public controller_audioPlayer(){
         caP = this;
@@ -91,12 +96,33 @@ public class controller_audioPlayer implements Initializable {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Hier du müssen Datei auswählen!");
             file = fileChooser.showOpenDialog(MainFrame.stage);
+            fileName = file.getName();
 
         }
 
         @FXML
         void fileUpload(ActionEvent event) {
+            JSONObject jsonObject = new JSONObject();
+            try {
+                FileInputStream fileInputStream = new FileInputStream(file);
+                byte[] bytes = new byte[30000];
+                int length = 0;
+                while((length = fileInputStream.read(bytes)) != -1){
+                    byte[] base64 = Base64.getEncoder().encode(Arrays.copyOf(bytes, length));
+                    jsonObject.add("type", "audioPlayer");
+                    jsonObject.add("function", "file");
+                    jsonObject.add("bytes", new String(base64, "UTF-8"));
+                    sender.sendMessage(jsonObject.toJSONString());
 
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            jsonObject.add("type", "audioPlayer");
+            jsonObject.add("function", "file");
+            jsonObject.add("name", fileName);
+            jsonObject.add("end", "end");
+            sender.sendMessage(jsonObject.toJSONString());
         }
 
         @FXML
