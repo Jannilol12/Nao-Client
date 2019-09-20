@@ -114,6 +114,7 @@ public class controller_audioPlayer implements Initializable {
                 byte[] base64 = Base64.getEncoder().encode(Arrays.copyOf(bytes, length));
                 jsonObject.add("type", "audioPlayer");
                 jsonObject.add("function", "file");
+                jsonObject.add("name", fileName);
                 jsonObject.add("bytes", new String(base64, "UTF-8"));
                 sender.sendMessage(jsonObject.toJSONString());
 

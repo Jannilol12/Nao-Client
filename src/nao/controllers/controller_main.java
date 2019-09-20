@@ -72,6 +72,7 @@ public class controller_main implements Initializable {
         try {
             sender.connected(ip.getText(), Integer.parseInt(port.getText()));
             b.sendBattery();
+            b.sendVolume();
         }
         catch(Exception err) {}
     }
