@@ -16,7 +16,7 @@ public class SendWhile {
                 while (!this.isInterrupted() && !sender.isClosed()) {
                     JSONObject jsonObject = new JSONObject();
                     jsonObject.add("type", "audioPlayer");
-                    jsonObject.add("function", "getVolume");
+                    jsonObject.add("function", "getPosition");
                     sender.sendMessage(jsonObject.toJSONString());
                     try {
                         Thread.sleep(1000);
@@ -27,6 +27,7 @@ public class SendWhile {
         };
         a.start();
     }
+
     public synchronized void stopAudioPlayer(){
         if(a == null) return;
 
@@ -34,6 +35,12 @@ public class SendWhile {
         a = null;
     }
 
+    public synchronized void sendVolume(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.add("type", "audioPlayer");
+        jsonObject.add("function", "getVolume");
+        sender.sendMessage(jsonObject.toJSONString());
+    }
 
     public synchronized void sendBattery(){
         if(t != null){
@@ -54,8 +61,8 @@ public class SendWhile {
         t.start();
     }
     public synchronized void stopBattery(){
-    	if(t == null) return;
-    	
+        if(t == null) return;
+
         t.interrupt();
         t = null;
     }
