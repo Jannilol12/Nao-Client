@@ -51,65 +51,22 @@ public class controller_audioPlayer implements Initializable {
     @FXML
     private ComboBox<String> FileSelector;
 
-    @FXML
-    void FileLoadButton(ActionEvent event) {
-        int id = FileSelector.getSelectionModel().getSelectedIndex();
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.add("type", "audioPlayer");
-        jsonObject.add("function", "setId");
-        jsonObject.add("Id", id );
-        sender.sendMessage(jsonObject.toJSONString());
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        volume.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.add("type", "audioPlayer");
+                jsonObject.add("function", "volume");
+                jsonObject.add("masterVolume", t1);
+                sender.sendMessage(jsonObject.toJSONString());
+            }
+        });
     }
 
-    public void loadFiles(List<String> strings){
-        FileSelector.getItems().addAll(strings);
-    }
-
-    public void setTime(double time){
-        int minutes = (int) time/60;
-        int seconds = (int)time - (minutes*60);
-        Length.setText( minutes + ":" + seconds);
-    }
-
-    public void setVolume(double volume) {
-        this.volume.setValue(volume);
-    }
-
-    public void setPosition(double time){
-        int minutes = (int) time/60;
-        int seconds = (int)time - (minutes*60);
-        this.time.setText(minutes + ":" + seconds);
-    }
-
-    @FXML
-    void DeleteAllFiles(ActionEvent event) {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.add("type", "audioPlayer");
-        jsonObject.add("function", "deleteFiles");
-        sender.sendMessage(jsonObject.toJSONString());
-    }
-
-    @FXML
-    void Jump(ActionEvent event) {
-        int minute = 0;
-        int seconds = 0;
-        int jumpSeconds = 0;
-
-        try{
-            minute = Integer.parseInt(jumpMinute.getText());
-        }catch (NumberFormatException e) {}
-        try{
-            seconds = Integer.parseInt(jumpSecond.getText());
-        }catch (NumberFormatException e) {}
-
-        jumpSeconds = minute*60 + seconds;
-
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.add("type", "audioPlayer");
-        jsonObject.add("function", "jump");
-        jsonObject.add("jumpToFloat", (float) jumpSeconds );
-        sender.sendMessage(jsonObject.toJSONString());
-    }
+    //---------------- FILES ------------------------------
 
     @FXML
     void fileSelect(ActionEvent event) {
@@ -145,6 +102,51 @@ public class controller_audioPlayer implements Initializable {
         jsonObject.add("end", "end");
         sender.sendMessage(jsonObject.toJSONString());
         s.sendFileRequest();
+    }
+
+    @FXML
+    void FileLoadButton(ActionEvent event) {
+        int id = FileSelector.getSelectionModel().getSelectedIndex();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.add("type", "audioPlayer");
+        jsonObject.add("function", "setId");
+        jsonObject.add("Id", id );
+        sender.sendMessage(jsonObject.toJSONString());
+    }
+
+    public void loadFiles(List<String> strings){
+        FileSelector.getItems().addAll(strings);
+    }
+
+    @FXML
+    void unloadAllFiles(ActionEvent event) {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.add("type", "audioPlayer");
+        jsonObject.add("function", "unloadFiles");
+        sender.sendMessage(jsonObject.toJSONString());
+    }
+
+    @FXML
+    void DeleteAllFiles(ActionEvent event) {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.add("type", "audioPlayer");
+        jsonObject.add("function", "deleteFiles");
+        sender.sendMessage(jsonObject.toJSONString());
+    }
+
+    @FXML
+    void DeleteFile(ActionEvent event) {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.add("type", "audioPlayer");
+        jsonObject.add("function", "deleteFile");
+        jsonObject.add("fileDelete", FileSelector.getSelectionModel().getSelectedItem());
+        sender.sendMessage(jsonObject.toJSONString());
+    }
+
+    //---------- VOLUME, PLAY, PAUSE ---------------------------
+
+    public void setVolume(double volume) {
+        this.volume.setValue(volume);
     }
 
     @FXML
@@ -184,32 +186,49 @@ public class controller_audioPlayer implements Initializable {
         sender.sendMessage(jsonObject.toJSONString());
     }
 
-    @FXML
-    void unloadAllFiles(ActionEvent event) {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.add("type", "audioPlayer");
-        jsonObject.add("function", "unloadFiles");
-        sender.sendMessage(jsonObject.toJSONString());
+
+    //--------------- TIME ----------------------
+
+    public void setTime(double time){
+        int minutes = (int) time/60;
+        int seconds = (int)time - (minutes*60);
+        Length.setText( minutes + ":" + seconds);
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        volume.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.add("type", "audioPlayer");
-                jsonObject.add("function", "volume");
-                jsonObject.add("masterVolume", t1);
-                sender.sendMessage(jsonObject.toJSONString());
-            }
-        });
 
+
+    public void setPosition(double time){
+        int minutes = (int) time/60;
+        int seconds = (int)time - (minutes*60);
+        this.time.setText(minutes + ":" + seconds);
+    }
+
+    @FXML
+    void Jump(ActionEvent event) {
+        int minute = 0;
+        int seconds = 0;
+        int jumpSeconds = 0;
+
+        try{
+            minute = Integer.parseInt(jumpMinute.getText());
+        }catch (NumberFormatException e) {}
+        try{
+            seconds = Integer.parseInt(jumpSecond.getText());
+        }catch (NumberFormatException e) {}
+
+        jumpSeconds = minute*60 + seconds;
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.add("type", "audioPlayer");
+        jsonObject.add("function", "jump");
+        jsonObject.add("jumpToFloat", (float) jumpSeconds );
+        sender.sendMessage(jsonObject.toJSONString());
+    }
 
 //        JSONObject jsonObject = new JSONObject();
 //        jsonObject.add("type", "audioPlayer");
 //        jsonObject.add("function", "getVolume");
 //        sender.sendMessage(jsonObject.toJSONString());
-    }
+
 }
 
