@@ -7,6 +7,9 @@ import nao.controllers.controller_audioPlayer;
 import nao.controllers.controller_commands;
 import nao.controllers.controller_main;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class MainReceiver {
     public static void receiveText(String text){
         abstractJSON json = JSONParser.parse(text);
@@ -41,6 +44,11 @@ public class MainReceiver {
                     case "getPosition":
                         double position = JSONFinder.getDouble("Position", json);
                         controller_audioPlayer.caP.setPosition(position);
+                        break;
+                    case "getFiles":
+                        List<String> list = new LinkedList<>();
+                        list = (List<String>) JSONFinder.getList("File",json);
+                        controller_audioPlayer.caP.loadFiles(list);
                         break;
                 }
                 break;

@@ -28,11 +28,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import nao.SendWhile;
+import nao.SendMessages;
 import nao.sender;
 
 public class controller_main implements Initializable {
-	private SendWhile b = new SendWhile();
+	private SendMessages b = new SendMessages();
     
     @FXML
     private ListView<Zwischenspeicher> list;
@@ -73,6 +73,7 @@ public class controller_main implements Initializable {
             sender.connected(ip.getText(), Integer.parseInt(port.getText()));
             b.sendBattery();
             b.sendVolume();
+            b.sendFileRequest();
         }
         catch(Exception err) {}
     }

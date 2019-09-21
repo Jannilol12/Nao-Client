@@ -2,7 +2,7 @@ package nao;
 
 import components.json.JSONObject;
 
-public class SendWhile {
+public class SendMessages {
     private Thread t;
     private Thread a;
 
@@ -39,6 +39,13 @@ public class SendWhile {
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "getVolume");
+        sender.sendMessage(jsonObject.toJSONString());
+    }
+
+    public synchronized void sendFileRequest(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.add("type", "audioPlayer");
+        jsonObject.add("function", "getFiles");
         sender.sendMessage(jsonObject.toJSONString());
     }
 

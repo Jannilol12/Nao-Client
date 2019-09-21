@@ -11,20 +11,20 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import nao.MainFrame;
-import nao.SendWhile;
+import nao.SendMessages;
 import nao.sender;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Base64;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class controller_audioPlayer implements Initializable {
     public static controller_audioPlayer caP;
-    private SendWhile s = new SendWhile();
+    private SendMessages s = new SendMessages();
     private File file;
     private String fileName;
 
@@ -49,11 +49,15 @@ public class controller_audioPlayer implements Initializable {
     private Text Length;
 
     @FXML
-    private ComboBox<?> FileSelector;
+    private ComboBox<String> FileSelector;
 
     @FXML
     void FileLoadButton(ActionEvent event) {
 
+    }
+
+    public void loadFiles(List<String> strings){
+        FileSelector.getItems().addAll(strings);
     }
 
     public void setTime(double time){
@@ -135,6 +139,7 @@ public class controller_audioPlayer implements Initializable {
         jsonObject.add("name", fileName);
         jsonObject.add("end", "end");
         sender.sendMessage(jsonObject.toJSONString());
+        s.sendFileRequest();
     }
 
     @FXML
