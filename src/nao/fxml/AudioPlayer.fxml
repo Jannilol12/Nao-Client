@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -13,9 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nao.controllers.controller_audioPlayer">
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nao.controllers.controller_audioPlayer">
    <top>
-      <GridPane hgap="5.0" minWidth="-Infinity" BorderPane.alignment="CENTER">
+      <GridPane hgap="5.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
@@ -26,16 +27,16 @@
         </rowConstraints>
          <children>
             <Button mnemonicParsing="false" onAction="#fileSelect" text="Datei auswählen" GridPane.columnIndex="1" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dateiname">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Text>
             <Button maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#fileUpload" text="Datei Hochladen" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dateiname">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -51,13 +52,14 @@
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <GridPane alignment="TOP_RIGHT" hgap="10.0" GridPane.rowIndex="1">
+            <GridPane alignment="TOP_RIGHT" hgap="10.0" GridPane.rowIndex="2">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
@@ -77,7 +79,7 @@
                   <Insets bottom="5.0" right="20.0" />
                </GridPane.margin>
             </GridPane>
-            <GridPane hgap="5.0" GridPane.rowIndex="2">
+            <GridPane hgap="5.0" GridPane.rowIndex="3">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -99,7 +101,7 @@
                   <Insets bottom="5.0" />
                </GridPane.margin>
             </GridPane>
-            <GridPane alignment="CENTER" hgap="5.0" GridPane.rowIndex="3">
+            <GridPane alignment="CENTER" hgap="5.0" GridPane.rowIndex="4">
               <columnConstraints>
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
@@ -148,7 +150,7 @@
                   </Button>
                </children>
             </GridPane>
-            <GridPane alignment="TOP_RIGHT" hgap="5.0">
+            <GridPane alignment="TOP_RIGHT" hgap="5.0" GridPane.rowIndex="1">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
@@ -180,6 +182,22 @@
                      </font>
                   </Text>
                </children>
+            </GridPane>
+            <GridPane hgap="10.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ComboBox fx:id="FileSelector" prefWidth="150.0" />
+                  <Button mnemonicParsing="false" onAction="#FileLoadButton" text="Datei Laden" GridPane.columnIndex="1" />
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
             </GridPane>
          </children>
          <BorderPane.margin>

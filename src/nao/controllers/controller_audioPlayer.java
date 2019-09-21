@@ -5,6 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -47,6 +48,13 @@ public class controller_audioPlayer implements Initializable {
     @FXML
     private Text Length;
 
+    @FXML
+    private ComboBox<?> FileSelector;
+
+    @FXML
+    void FileLoadButton(ActionEvent event) {
+
+    }
 
     public void setTime(double time){
         int minutes = (int) time/60;
