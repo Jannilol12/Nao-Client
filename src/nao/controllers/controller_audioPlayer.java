@@ -53,7 +53,12 @@ public class controller_audioPlayer implements Initializable {
 
     @FXML
     void FileLoadButton(ActionEvent event) {
-
+        int id = FileSelector.getSelectionModel().getSelectedIndex();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.add("type", "audioPlayer");
+        jsonObject.add("function", "setId");
+        jsonObject.add("Id", id );
+        sender.sendMessage(jsonObject.toJSONString());
     }
 
     public void loadFiles(List<String> strings){
