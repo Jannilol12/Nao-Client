@@ -52,6 +52,39 @@ public class MainReceiver {
                         break;
                 }
                 break;
+            case "temperature":
+                String HeadYaw = JSONFinder.getString( "HeadYaw", json);
+                String HeadPitch = JSONFinder.getString( "HeadPitch", json);
+                String LElbowYaw = JSONFinder.getString( "LElbowYaw", json);
+                String LElbowRoll = JSONFinder.getString( "LElbowRoll", json);
+                String RElbowYaw = JSONFinder.getString( "RElbowYaw", json);
+                String RElbowRoll = JSONFinder.getString( "RElbowRoll", json);
+                String LHand = JSONFinder.getString( "LHand", json);
+                String LWristYaw = JSONFinder.getString( "LWristYaw", json);
+                String RHand = JSONFinder.getString( "RHand", json);
+                String RWristYaw = JSONFinder.getString( "RWristYaw", json);
+                String LShoulderPitch = JSONFinder.getString( "LShoulderPitch", json);
+                String LShoulderRoll = JSONFinder.getString( "LShoulderRoll", json);
+                String RShoulderPitch = JSONFinder.getString( "RShoulderPitch", json);
+                String RShoulderRoll = JSONFinder.getString( "RShoulderRoll", json);
+                String RHipRoll = JSONFinder.getString( "RHipRoll", json);
+                String LHipRoll = JSONFinder.getString( "LHipRoll", json);
+                String RHipYawPitch = JSONFinder.getString( "RHipYawPitch", json);
+                String LHipYawPitch = JSONFinder.getString( "LHipYawPitch", json);
+                String RHipPitch = JSONFinder.getString( "RHipPitch", json);
+                String LHipPitch = JSONFinder.getString( "LHipPitch", json);
+                String RKneePitch = JSONFinder.getString( "RKneePitch", json);
+                String LKneePitch = JSONFinder.getString( "LKneePitch", json);
+                String RAnklePitch = JSONFinder.getString( "RAnklePitch", json);
+                String LAnklePitch = JSONFinder.getString( "LAnklePitch", json);
+                String RAnkleRoll = JSONFinder.getString( "RAnkleRoll", json);
+                String LAnkleRoll = JSONFinder.getString( "LAnkleRoll", json);
+                String HeadCPU = JSONFinder.getString( "HeadCPU", json);
+                String Battery = JSONFinder.getString( "Battery", json);
+
+                controller_commands.cc.setTemperatureText(Battery, LHand, HeadCPU, HeadYaw, LElbowYaw, LShoulderPitch, RHand, LHipPitch, HeadPitch, LElbowRoll, LShoulderRoll, LWristYaw, RWristYaw, LHipRoll, LKneePitch, RElbowYaw, RElbowRoll, RShoulderPitch, RShoulderRoll, RHipPitch, RHipRoll, LHipYawPitch, LAnklePitch, RHipYawPitch, LAnkleRoll, RAnklePitch, RAnkleRoll, RKneePitch);
+                break;
+
             default:
                 System.out.println("Nothing to do O.o");
                 break;

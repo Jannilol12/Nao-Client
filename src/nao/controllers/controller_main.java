@@ -74,6 +74,7 @@ public class controller_main implements Initializable {
             b.sendBattery();
             b.sendVolume();
             b.sendFileRequest();
+            b.sendTemperature();
         }
         catch(Exception err) {}
     }
@@ -82,6 +83,7 @@ public class controller_main implements Initializable {
     void destroy(ActionEvent event) {
         sender.destroy();
         b.stopBattery();
+        b.stopTemperature();
     }
 
     @Override

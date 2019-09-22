@@ -5,6 +5,7 @@ import components.json.JSONObject;
 public class SendMessages {
     private Thread t;
     private Thread a;
+    private Thread x;
 
     public synchronized void sendAudioPlayer(){
         if(a != null){
@@ -67,10 +68,39 @@ public class SendMessages {
         };
         t.start();
     }
+
     public synchronized void stopBattery(){
         if(t == null) return;
 
         t.interrupt();
         t = null;
+    }
+
+    public synchronized void sendTemperature(){
+        if(x != null){
+            return;
+        }
+        x = new Thread(){
+            @Override
+            public void run() {
+                while (!this.isInterrupted() && !sender.isClosed()) {
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.add("type", "temperature");
+                    sender.sendMessage(jsonObject.toJSONString());
+                    try {
+                        Thread.sleep(30000);
+                    } catch (InterruptedException e) {}
+                }
+                x = null;
+            }
+        };
+        x.start();
+    }
+
+    public synchronized void stopTemperature(){
+        if(x == null) return;
+
+        x.interrupt();
+        x = null;
     }
 }
