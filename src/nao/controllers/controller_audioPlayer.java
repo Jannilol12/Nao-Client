@@ -96,11 +96,6 @@ public class controller_audioPlayer implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        jsonObject.add("type", "audioPlayer");
-        jsonObject.add("function", "file");
-        jsonObject.add("name", fileName);
-        jsonObject.add("end", "end");
-        sender.sendMessage(jsonObject.toJSONString());
         s.sendFileRequest();
     }
 
