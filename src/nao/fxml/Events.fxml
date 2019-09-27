@@ -13,7 +13,6 @@
       <GridPane hgap="10.0" vgap="10.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
         </columnConstraints>
         <rowConstraints>
@@ -22,8 +21,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ToggleButton fx:id="FeetContactButton" mnemonicParsing="false" onAction="#FeetContact" style="-fx-background-color: Red;" text="Feet Contact" textFill="WHITE" GridPane.columnIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bodenkontakt:" GridPane.columnIndex="1" />
+            <ToggleButton fx:id="FeetContactButton" mnemonicParsing="false" onAction="#FeetContact" style="-fx-background-color: Red;" text="Feet Contact" textFill="WHITE" GridPane.columnIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bodenkontakt:" />
+            <ToggleButton fx:id="SpeechRecognitionButton" mnemonicParsing="false" onAction="#SpeechRecognition" style="-fx-background-color: Red;" text="Speech Recognition" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Spracherkennung" GridPane.rowIndex="1" />
          </children>
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
