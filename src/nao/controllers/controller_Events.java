@@ -10,13 +10,16 @@ import nao.sender;
 public class controller_Events {
     private boolean isFeetContactButtonSelected = false;
     private boolean isSpeechRecognitionButtonSelected = false;
-
+    private boolean isSonarButtonSelected = false;
 
     @FXML
     private ToggleButton FeetContactButton;
+
     @FXML
     private ToggleButton SpeechRecognitionButton;
 
+    @FXML
+    private ToggleButton SonarButton;
 
     @FXML
     void FeetContact(ActionEvent event) {
@@ -59,6 +62,29 @@ public class controller_Events {
             JSONObject jsonObject = new JSONObject();
             jsonObject.add("type", "Events");
             jsonObject.add("function", "SpeechRecognition");
+            jsonObject.add("boolean",  "true");
+            sender.sendMessage(jsonObject.toJSONString());
+        }
+    }
+
+    @FXML
+    void Sonar(ActionEvent event) {
+        if(isSonarButtonSelected){
+            SonarButton.setStyle("-fx-background-color: Red");
+            isSonarButtonSelected = false;
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.add("type", "Events");
+            jsonObject.add("function", "Sonar");
+            jsonObject.add("boolean",  "false");
+            sender.sendMessage(jsonObject.toJSONString());
+        } else{
+            SonarButton.setStyle("-fx-background-color: Green");
+            isSonarButtonSelected = true;
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.add("type", "Events");
+            jsonObject.add("function", "Sonar");
             jsonObject.add("boolean",  "true");
             sender.sendMessage(jsonObject.toJSONString());
         }
