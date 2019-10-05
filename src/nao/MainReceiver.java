@@ -2,10 +2,7 @@ package nao;
 import components.json.abstractJSON;
 import components.json.finder.JSONFinder;
 import components.json.parser.JSONParser;
-import nao.controllers.Zwischenspeicher;
-import nao.controllers.controller_audioPlayer;
-import nao.controllers.controller_commands;
-import nao.controllers.controller_main;
+import nao.controllers.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -18,6 +15,10 @@ public class MainReceiver {
         if(type == null) return;
 
         switch (type){
+            case "Names":
+                List<String> names = (List<String>) JSONFinder.getList("Names",json);
+                controller_Events.cE.setVocabulary(names);
+                break;
             case "ProgAdd":
                 if(controller_main.cmain != null){
                     Zwischenspeicher zwischenspeicher = new Zwischenspeicher(json);
@@ -29,6 +30,10 @@ public class MainReceiver {
                     int batt = JSONFinder.getInt("battery", json);
                     controller_commands.cc.setBatteryText(batt);
                 }
+                break;
+            case "SpeechRecognition":
+                List<String> voc = (List<String>) JSONFinder.getList("Voc",json);
+                controller_Events.cE.setVocabulary(voc);
                 break;
             case "audioPlayer":
                 String function = JSONFinder.getString("function", json);

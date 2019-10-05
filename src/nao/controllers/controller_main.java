@@ -75,6 +75,8 @@ public class controller_main implements Initializable {
             b.sendVolume();
             b.sendFileRequest();
             b.sendTemperature();
+            b.sendVocabulary();
+            b.sendNames();
         }
         catch(Exception err) {}
     }

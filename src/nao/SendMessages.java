@@ -50,6 +50,20 @@ public class SendMessages {
         sender.sendMessage(jsonObject.toJSONString());
     }
 
+    public synchronized void sendVocabulary(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.add("type", "SpeechRecognition");
+        jsonObject.add("function", "getVocabulary");
+        sender.sendMessage(jsonObject.toJSONString());
+    }
+
+    public synchronized void sendNames(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.add("type", "SpeechRecognition");
+        jsonObject.add("function", "getName");
+        sender.sendMessage(jsonObject.toJSONString());
+    }
+
     public synchronized void sendBattery(){
         if(t != null){
             return;
