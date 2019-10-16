@@ -54,6 +54,11 @@ public class controller_audioPlayer implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.add("type", "audioPlayer");
+        jsonObject.add("function", "getVolume");
+        sender.sendMessage(jsonObject.toJSONString());
+
         volume.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
@@ -74,7 +79,6 @@ public class controller_audioPlayer implements Initializable {
         fileChooser.setTitle("Hier du müssen Datei auswählen!");
         file = fileChooser.showOpenDialog(MainFrame.stage);
         fileName = file.getName();
-
     }
 
     @FXML
@@ -101,11 +105,12 @@ public class controller_audioPlayer implements Initializable {
 
     @FXML
     void FileLoadButton(ActionEvent event) {
-        int id = FileSelector.getSelectionModel().getSelectedIndex();
+        String name = FileSelector.getSelectionModel().getSelectedItem();
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "setId");
-        jsonObject.add("Id", id );
+        jsonObject.add("filename", name );
+        System.out.println(name);
         sender.sendMessage(jsonObject.toJSONString());
     }
 
@@ -146,21 +151,20 @@ public class controller_audioPlayer implements Initializable {
 
     @FXML
     void pause(ActionEvent event) {
-        s.stopAudioPlayer();
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "pause");
         sender.sendMessage(jsonObject.toJSONString());
+        s.stopAudioPlayer();
     }
 
     @FXML
     void play(ActionEvent event) {
-        s.sendAudioPlayer();
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "play");
         sender.sendMessage(jsonObject.toJSONString());
-
+        s.sendAudioPlayer();
     }
 
     @FXML
@@ -220,10 +224,7 @@ public class controller_audioPlayer implements Initializable {
         sender.sendMessage(jsonObject.toJSONString());
     }
 
-//        JSONObject jsonObject = new JSONObject();
-//        jsonObject.add("type", "audioPlayer");
-//        jsonObject.add("function", "getVolume");
-//        sender.sendMessage(jsonObject.toJSONString());
+
 
 }
 

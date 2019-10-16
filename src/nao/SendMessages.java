@@ -31,7 +31,6 @@ public class SendMessages {
 
     public synchronized void stopAudioPlayer(){
         if(a == null) return;
-
         a.interrupt();
         a = null;
     }
