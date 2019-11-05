@@ -17,7 +17,7 @@ public class MainReceiver {
         switch (type){
             case "Names":
                 List<String> names = (List<String>) JSONFinder.getList("Names",json);
-                controller_Events.cE.setVocabulary(names);
+                controller_Events.cE.setNames(names);
                 break;
             case "ProgAdd":
                 if(controller_main.cmain != null){
@@ -34,6 +34,10 @@ public class MainReceiver {
             case "SpeechRecognition":
                 List<String> voc = (List<String>) JSONFinder.getList("Voc",json);
                 controller_Events.cE.setVocabulary(voc);
+                break;
+            case "FaceDetection":
+                List<String> faces = (List<String>) JSONFinder.getList("Faces",json);
+                controller_Events.cE.setNames(faces);
                 break;
             case "audioPlayer":
                 String function = JSONFinder.getString("function", json);
@@ -56,6 +60,11 @@ public class MainReceiver {
                         controller_audioPlayer.caP.loadFiles(list);
                         break;
                 }
+                break;
+            case "Behavior":
+                List<String> listBehaviors = new LinkedList<>();
+                listBehaviors = (List<String>) JSONFinder.getList("Behaviors",json);
+                controller_behavior.cB.loadFiles(listBehaviors);
                 break;
             case "temperature":
                 String HeadYaw = JSONFinder.getString( "HeadYaw", json);

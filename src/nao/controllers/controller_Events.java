@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import nao.SendMessages;
 import nao.sender;
 
 import java.util.List;
@@ -65,14 +66,15 @@ public class controller_Events {
         jsonObject.add("function", "LearnFace");
         jsonObject.add("String",  FaceName.getText());
         sender.sendMessage(jsonObject.toJSONString());
+        SendMessages.sendFaces();
     }
 
     @FXML
     void FaceDelete(ActionEvent event) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "Events");
-        jsonObject.add("function", "LearnFace");
-        jsonObject.add("String",  FaceBox.getSelectionModel().getSelectedItem());
+        jsonObject.add("function", "DeleteFace");
+        jsonObject.add("Face",  FaceBox.getSelectionModel().getSelectedItem());
         sender.sendMessage(jsonObject.toJSONString());
     }
 
@@ -104,7 +106,6 @@ public class controller_Events {
         if(isFaceTrackingSelected){
             FaceTrackingButton.setStyle("-fx-background-color: Red");
             isFaceTrackingSelected = false;
-
             JSONObject jsonObject = new JSONObject();
             jsonObject.add("type", "Events");
             jsonObject.add("function", "FaceTracking");
@@ -113,7 +114,6 @@ public class controller_Events {
         } else{
             FaceTrackingButton.setStyle("-fx-background-color: Green");
             isFaceTrackingSelected = true;
-
             JSONObject jsonObject = new JSONObject();
             jsonObject.add("type", "Events");
             jsonObject.add("function", "FaceTracking");

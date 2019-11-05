@@ -24,7 +24,6 @@ import java.util.ResourceBundle;
 
 public class controller_audioPlayer implements Initializable {
     public static controller_audioPlayer caP;
-    private SendMessages s = new SendMessages();
     private File file;
     private String fileName;
 
@@ -100,7 +99,7 @@ public class controller_audioPlayer implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        s.sendFileRequest();
+        SendMessages.sendFileRequest();
     }
 
     @FXML
@@ -155,7 +154,7 @@ public class controller_audioPlayer implements Initializable {
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "pause");
         sender.sendMessage(jsonObject.toJSONString());
-        s.stopAudioPlayer();
+        SendMessages.stopAudioPlayer();
     }
 
     @FXML
@@ -164,12 +163,12 @@ public class controller_audioPlayer implements Initializable {
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "play");
         sender.sendMessage(jsonObject.toJSONString());
-        s.sendAudioPlayer();
+        SendMessages.sendAudioPlayer();
     }
 
     @FXML
     void playRepeat(ActionEvent event) {
-        s.sendAudioPlayer();
+        SendMessages.sendAudioPlayer();
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "playInLoop");
@@ -178,7 +177,7 @@ public class controller_audioPlayer implements Initializable {
 
     @FXML
     void stop(ActionEvent event) {
-        s.stopAudioPlayer();
+        SendMessages.stopAudioPlayer();
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "stop");

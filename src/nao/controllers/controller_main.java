@@ -32,7 +32,6 @@ import nao.SendMessages;
 import nao.sender;
 
 public class controller_main implements Initializable {
-	private SendMessages b = new SendMessages();
     
     @FXML
     private ListView<Zwischenspeicher> list;
@@ -71,12 +70,13 @@ public class controller_main implements Initializable {
     void connect(ActionEvent event) {
         try {
             sender.connected(ip.getText(), Integer.parseInt(port.getText()));
-            b.sendBattery();
-            b.sendVolume();
-            b.sendFileRequest();
-            b.sendTemperature();
-            b.sendVocabulary();
-            b.sendNames();
+            SendMessages.sendBattery();
+            SendMessages.sendVolume();
+            SendMessages.sendFileRequest();
+            SendMessages.sendTemperature();
+            SendMessages.sendVocabulary();
+            SendMessages.sendFaces();
+            SendMessages.sendBehavior();
         }
         catch(Exception err) {}
     }
@@ -84,8 +84,8 @@ public class controller_main implements Initializable {
     @FXML
     void destroy(ActionEvent event) {
         sender.destroy();
-        b.stopBattery();
-        b.stopTemperature();
+        SendMessages.stopBattery();
+        SendMessages.stopTemperature();
     }
 
     @Override

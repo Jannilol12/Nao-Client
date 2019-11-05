@@ -3,11 +3,11 @@ package nao;
 import components.json.JSONObject;
 
 public class SendMessages {
-    private Thread t;
-    private Thread a;
-    private Thread x;
+    private static Thread t;
+    private static Thread a;
+    private static Thread x;
 
-    public synchronized void sendAudioPlayer(){
+    public static synchronized void sendAudioPlayer(){
         if(a != null){
             return;
         }
@@ -29,41 +29,48 @@ public class SendMessages {
         a.start();
     }
 
-    public synchronized void stopAudioPlayer(){
+    public static synchronized void stopAudioPlayer(){
         if(a == null) return;
         a.interrupt();
         a = null;
     }
 
-    public synchronized void sendVolume(){
+    public static synchronized void sendVolume(){
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "getVolume");
         sender.sendMessage(jsonObject.toJSONString());
     }
 
-    public synchronized void sendFileRequest(){
+    public static synchronized void sendFileRequest(){
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "getFiles");
         sender.sendMessage(jsonObject.toJSONString());
     }
 
-    public synchronized void sendVocabulary(){
+    public static synchronized void sendVocabulary(){
         JSONObject jsonObject = new JSONObject();
-        jsonObject.add("type", "SpeechRecognition");
+        jsonObject.add("type", "Events");
         jsonObject.add("function", "getVocabulary");
         sender.sendMessage(jsonObject.toJSONString());
     }
 
-    public synchronized void sendNames(){
+    public static synchronized void sendFaces(){
         JSONObject jsonObject = new JSONObject();
-        jsonObject.add("type", "SpeechRecognition");
-        jsonObject.add("function", "getName");
+        jsonObject.add("type", "Events");
+        jsonObject.add("function", "getFaces");
         sender.sendMessage(jsonObject.toJSONString());
     }
 
-    public synchronized void sendBattery(){
+    public static synchronized void sendBehavior(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.add("type", "Behavior");
+        jsonObject.add("function", "getBehaviors");
+        sender.sendMessage(jsonObject.toJSONString());
+    }
+
+    public static synchronized void sendBattery(){
         if(t != null){
             return;
         }
@@ -82,14 +89,14 @@ public class SendMessages {
         t.start();
     }
 
-    public synchronized void stopBattery(){
+    public static synchronized void stopBattery(){
         if(t == null) return;
 
         t.interrupt();
         t = null;
     }
 
-    public synchronized void sendTemperature(){
+    public static synchronized void sendTemperature(){
         if(x != null){
             return;
         }
@@ -110,7 +117,7 @@ public class SendMessages {
         x.start();
     }
 
-    public synchronized void stopTemperature(){
+    public static synchronized void stopTemperature(){
         if(x == null) return;
 
         x.interrupt();
