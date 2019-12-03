@@ -56,7 +56,6 @@ public class controller_behavior {
         jsonObject.add("function", "play");
         jsonObject.add("name", FileSelector.getSelectionModel().getSelectedItem());
         sender.sendMessage(jsonObject.toJSONString());
-        SendMessages.sendAudioPlayer();
     }
 
     @FXML
@@ -76,7 +75,6 @@ public class controller_behavior {
         jsonObject.add("type", "Behavior");
         jsonObject.add("function", "stop");
         sender.sendMessage(jsonObject.toJSONString());
-        SendMessages.sendAudioPlayer();
     }
 
     @FXML
