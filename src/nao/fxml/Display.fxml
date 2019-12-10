@@ -107,6 +107,11 @@
                      <fx:include source="@../../AutonomousLife.fxml" />
                  </content>
              </Tab>
+             <Tab text="Touch">
+                 <content>
+                     <fx:include source="@../../Touch.fxml" />
+                 </content>
+             </Tab>
          </tabs>
          <opaqueInsets>
             <Insets />
