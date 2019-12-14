@@ -114,6 +114,7 @@ public class controller_audioPlayer implements Initializable {
     }
 
     public void loadFiles(List<String> strings){
+        FileSelector.getItems().removeAll();
         FileSelector.getItems().addAll(strings);
     }
 

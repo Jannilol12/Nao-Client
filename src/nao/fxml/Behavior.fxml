@@ -51,7 +51,7 @@
           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ComboBox fx:id="FileSelector" prefWidth="150.0" />
+            <ComboBox fx:id="FileSelectorBehavior" prefWidth="150.0" />
             <Button mnemonicParsing="false" onAction="#FileLoadButton" text="Laden" GridPane.columnIndex="1" />
             <Button mnemonicParsing="false" onAction="#RemoveFileButton" text="Löschen" GridPane.columnIndex="2" />
          </children>

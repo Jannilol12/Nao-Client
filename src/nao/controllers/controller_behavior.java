@@ -32,15 +32,16 @@ public class controller_behavior {
 
 
     @FXML
-    private ComboBox<String> FileSelector;
+    private ComboBox<String> FileSelectorBehavior;
 
     public void loadFiles(List<String> strings){
-        FileSelector.getItems().addAll(strings);
+        System.out.println("Load Behaviors!");
+        FileSelectorBehavior.getItems().addAll(strings);
     }
 
     @FXML
     void FileLoadButton(ActionEvent event) {
-        String name = FileSelector.getSelectionModel().getSelectedItem();
+        String name = FileSelectorBehavior.getSelectionModel().getSelectedItem();
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "Behavior");
         jsonObject.add("function", "setId");
@@ -54,13 +55,13 @@ public class controller_behavior {
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "Behavior");
         jsonObject.add("function", "play");
-        jsonObject.add("name", FileSelector.getSelectionModel().getSelectedItem());
+        jsonObject.add("name", FileSelectorBehavior.getSelectionModel().getSelectedItem());
         sender.sendMessage(jsonObject.toJSONString());
     }
 
     @FXML
     void RemoveFileButton(ActionEvent event) {
-        String name = FileSelector.getSelectionModel().getSelectedItem();
+        String name = FileSelectorBehavior.getSelectionModel().getSelectedItem();
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "Behavior");
         jsonObject.add("function", "removeBehavior");

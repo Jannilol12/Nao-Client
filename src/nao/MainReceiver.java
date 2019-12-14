@@ -36,8 +36,8 @@ public class MainReceiver {
                 controller_Events.cE.setVocabulary(voc);
                 break;
             case "FaceDetection":
-                List<String> faces = (List<String>) JSONFinder.getList("Faces",json);
-                controller_Events.cE.setNames(faces);
+                //List<String> faces = (List<String>) JSONFinder.getList("Faces",json);
+                //controller_Events.cE.setNames(faces);
                 break;
             case "audioPlayer":
                 String function = JSONFinder.getString("function", json);
@@ -67,6 +67,8 @@ public class MainReceiver {
                 controller_behavior.cB.loadFiles(listBehaviors);
                 break;
             case "temperature":
+                System.out.println("Receiving Temperatures!");
+
                 String HeadYaw = JSONFinder.getString( "HeadYaw", json);
                 String HeadPitch = JSONFinder.getString( "HeadPitch", json);
                 String LElbowYaw = JSONFinder.getString( "LElbowYaw", json);

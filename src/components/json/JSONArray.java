@@ -2,6 +2,7 @@ package components.json;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class JSONArray extends abstractJSON{
@@ -27,6 +28,28 @@ public class JSONArray extends abstractJSON{
 	
 	public List<?> getList(){
 		return array;
+	}
+
+	/**
+	 *
+	 * @return jsonarray list, but all jsonvalue will be set to his object value. List didn't contains null Objects
+	 */
+	public List<Object> toObjectList() {
+		List<Object> list = new LinkedList<>();
+		if(array == null)
+			return list;
+		
+		for (Object obj : array) {
+			Object input = obj;
+			
+			if (obj instanceof JSONValue)
+				input = ((JSONValue) obj).getValue();
+			
+			if(input != null)
+				list.add(obj);
+		}
+
+		return list;
 	}
 	
 	public Object[] toArray() {
