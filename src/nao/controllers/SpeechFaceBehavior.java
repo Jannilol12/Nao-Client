@@ -12,76 +12,73 @@ import nao.sender;
 import java.util.List;
 
 
-public class controller_Events {
-    private boolean isFeetContactButtonSelected = false;
+public class SpeechFaceBehavior {
     private boolean isSpeechRecognitionButtonSelected = false;
-    private boolean isSonarButtonSelected = false;
     private boolean isFaceDetectionSelected = false;
     private boolean isFaceTrackingSelected = false;
-    public static controller_Events cE;
+    public static SpeechFaceBehavior cE;
 
-    public controller_Events(){
+    public SpeechFaceBehavior(){
         cE = this;
     }
 
     public void setVocabulary(List<String> list){
-        VocList.getItems().addAll(list);
+        speechVocList.getItems().addAll(list);
     }
 
     public void setNames(List<String> list){
-        FaceBox.getItems().addAll(list);
+        faceBox.getItems().removeAll();
+        faceBox.getItems().addAll(list);
     }
 
     @FXML
-    private TextField VocText;
+    private TextField speechVocText;
 
     @FXML
-    private ComboBox<String> VocList;
+    private ComboBox<String> speechVocList;
 
     @FXML
-    private ToggleButton FaceDetectionButton;
+    private ToggleButton speechRecognitionButton;
 
     @FXML
-    private ToggleButton FaceTrackingButton;
+    private ToggleButton faceDetectionButton;
 
     @FXML
-    private ToggleButton FeetContactButton;
+    private ToggleButton faceTrackingButton;
 
     @FXML
-    private ToggleButton SpeechRecognitionButton;
+    private TextField faceName;
 
     @FXML
-    private ToggleButton SonarButton;
+    private ComboBox<String> faceBox;
 
     @FXML
-    private TextField FaceName;
+    private ComboBox<String> behaviorFileSelector;
 
     @FXML
-    private ComboBox<String> FaceBox;
-
-    @FXML
-    void FaceAdd(ActionEvent event) {
+    void faceAdd(ActionEvent event) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "Events");
         jsonObject.add("function", "LearnFace");
-        jsonObject.add("String",  FaceName.getText());
+        jsonObject.add("String",  faceName.getText());
         sender.sendMessage(jsonObject.toJSONString());
-        SendMessages.sendFaces();
+        SendMessages.sendFaceNames();
     }
 
     @FXML
-    void FaceDelete(ActionEvent event) {
+    void faceDelete(ActionEvent event) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "Events");
         jsonObject.add("function", "DeleteFace");
-        jsonObject.add("Face",  FaceBox.getSelectionModel().getSelectedItem());
+        jsonObject.add("Face",  faceBox.getSelectionModel().getSelectedItem());
         sender.sendMessage(jsonObject.toJSONString());
+        SendMessages.sendFaceNames();
     }
 
     @FXML
-    void FaceDetection(ActionEvent event) {
+    void faceDetection(ActionEvent event) {
         if(isFaceDetectionSelected){
-            FaceDetectionButton.setStyle("-fx-background-color: Red");
+            faceDetectionButton.setStyle("-fx-background-color: Red");
             isFaceDetectionSelected = false;
 
             JSONObject jsonObject = new JSONObject();
@@ -90,7 +87,7 @@ public class controller_Events {
             jsonObject.add("boolean",  "false");
             sender.sendMessage(jsonObject.toJSONString());
         } else{
-            FaceDetectionButton.setStyle("-fx-background-color: Green");
+            faceDetectionButton.setStyle("-fx-background-color: Green");
             isFaceDetectionSelected = true;
 
             JSONObject jsonObject = new JSONObject();
@@ -102,9 +99,9 @@ public class controller_Events {
     }
 
     @FXML
-    void FaceTracking(ActionEvent event) {
+    void faceTracking(ActionEvent event) {
         if(isFaceTrackingSelected){
-            FaceTrackingButton.setStyle("-fx-background-color: Red");
+            faceTrackingButton.setStyle("-fx-background-color: Red");
             isFaceTrackingSelected = false;
             JSONObject jsonObject = new JSONObject();
             jsonObject.add("type", "Events");
@@ -112,7 +109,7 @@ public class controller_Events {
             jsonObject.add("boolean",  "false");
             sender.sendMessage(jsonObject.toJSONString());
         } else{
-            FaceTrackingButton.setStyle("-fx-background-color: Green");
+            faceTrackingButton.setStyle("-fx-background-color: Green");
             isFaceTrackingSelected = true;
             JSONObject jsonObject = new JSONObject();
             jsonObject.add("type", "Events");
@@ -123,50 +120,29 @@ public class controller_Events {
     }
 
     @FXML
-    void AddVoc(ActionEvent event) {
+    void speechAddVoc(ActionEvent event) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "Events");
         jsonObject.add("function", "AddVocabulary");
-        jsonObject.add("String",  VocText.getText());
+        jsonObject.add("String",  speechVocText.getText());
         sender.sendMessage(jsonObject.toJSONString());
     }
 
     @FXML
-    void DeleteVoc(ActionEvent event) {
+    void speechDeleteVoc(ActionEvent event) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "Events");
         jsonObject.add("function", "DeleteVocabulary");
-        jsonObject.add("String",  VocList.getSelectionModel().getSelectedItem());
+        jsonObject.add("String",  speechVocList.getSelectionModel().getSelectedItem());
         sender.sendMessage(jsonObject.toJSONString());
     }
 
-    @FXML
-    void FeetContact(ActionEvent event) {
-        if(isFeetContactButtonSelected){
-            FeetContactButton.setStyle("-fx-background-color: Red");
-            isFeetContactButtonSelected = false;
 
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.add("type", "Events");
-            jsonObject.add("function", "FootContact");
-            jsonObject.add("boolean",  "false");
-            sender.sendMessage(jsonObject.toJSONString());
-        } else{
-            FeetContactButton.setStyle("-fx-background-color: Green");
-            isFeetContactButtonSelected = true;
-
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.add("type", "Events");
-            jsonObject.add("function", "FootContact");
-            jsonObject.add("boolean",  "true");
-            sender.sendMessage(jsonObject.toJSONString());
-        }
-    }
 
     @FXML
-    void SpeechRecognition(ActionEvent event) {
+    void speechRecognition(ActionEvent event) {
         if(isSpeechRecognitionButtonSelected){
-            SpeechRecognitionButton.setStyle("-fx-background-color: Red");
+            speechRecognitionButton.setStyle("-fx-background-color: Red");
             isSpeechRecognitionButtonSelected = false;
 
             JSONObject jsonObject = new JSONObject();
@@ -175,7 +151,7 @@ public class controller_Events {
             jsonObject.add("boolean",  "false");
             sender.sendMessage(jsonObject.toJSONString());
         } else{
-            SpeechRecognitionButton.setStyle("-fx-background-color: Green");
+            speechRecognitionButton.setStyle("-fx-background-color: Green");
             isSpeechRecognitionButtonSelected = true;
 
             JSONObject jsonObject = new JSONObject();
@@ -186,27 +162,42 @@ public class controller_Events {
         }
     }
 
-    @FXML
-    void Sonar(ActionEvent event) {
-        if(isSonarButtonSelected){
-            SonarButton.setStyle("-fx-background-color: Red");
-            isSonarButtonSelected = false;
-
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.add("type", "Events");
-            jsonObject.add("function", "Sonar");
-            jsonObject.add("boolean",  "false");
-            sender.sendMessage(jsonObject.toJSONString());
-        } else{
-            SonarButton.setStyle("-fx-background-color: Green");
-            isSonarButtonSelected = true;
-
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.add("type", "Events");
-            jsonObject.add("function", "Sonar");
-            jsonObject.add("boolean",  "true");
-            sender.sendMessage(jsonObject.toJSONString());
-        }
+    public void loadBehaviors(List<String> strings){
+        behaviorFileSelector.getItems().removeAll();
+        behaviorFileSelector.getItems().addAll(strings);
     }
+
+    @FXML
+    void behaviorPlay(ActionEvent event) {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.add("type", "Behavior");
+        jsonObject.add("function", "play");
+        jsonObject.add("name", behaviorFileSelector.getSelectionModel().getSelectedItem());
+        sender.sendMessage(jsonObject.toJSONString());
+    }
+
+    @FXML
+    void behaviorReload(ActionEvent event) {
+        SendMessages.sendBehavior();
+    }
+
+    @FXML
+    void behaviorRemove(ActionEvent event) {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.add("type", "Behavior");
+        jsonObject.add("function", "removeBehavior");
+        jsonObject.add("behaviorname", behaviorFileSelector.getSelectionModel().getSelectedItem() );
+        sender.sendMessage(jsonObject.toJSONString());
+        SendMessages.sendBehavior();
+    }
+
+    @FXML
+    void behaviorStop(ActionEvent event) {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.add("type", "Behavior");
+        jsonObject.add("function", "stop");
+        sender.sendMessage(jsonObject.toJSONString());
+    }
+
 
 }

@@ -4,13 +4,21 @@ import components.json.JSONObject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
 import nao.sender;
 
-public class controller_Events2 {
+public class Events {
+    private boolean isFeetContactButtonSelected = false;
+    private boolean isSonarButtonSelected = false;
     private boolean isBarcodeReaderSelected = false;
     private boolean isLandmarkSelected = false;
     private boolean isLaserSelected = false;
 
+    @FXML
+    private ToggleButton FeetContactButton;
+
+    @FXML
+    private ToggleButton SonarButton;
 
     @FXML
     private Button BarcodeReaderButton;
@@ -79,6 +87,52 @@ public class controller_Events2 {
             JSONObject jsonObject = new JSONObject();
             jsonObject.add("type", "Events");
             jsonObject.add("function", "Laser");
+            jsonObject.add("boolean",  "true");
+            sender.sendMessage(jsonObject.toJSONString());
+        }
+    }
+
+    @FXML
+    void FeetContact(ActionEvent event) {
+        if(isFeetContactButtonSelected){
+            FeetContactButton.setStyle("-fx-background-color: Red");
+            isFeetContactButtonSelected = false;
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.add("type", "Events");
+            jsonObject.add("function", "FootContact");
+            jsonObject.add("boolean",  "false");
+            sender.sendMessage(jsonObject.toJSONString());
+        } else{
+            FeetContactButton.setStyle("-fx-background-color: Green");
+            isFeetContactButtonSelected = true;
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.add("type", "Events");
+            jsonObject.add("function", "FootContact");
+            jsonObject.add("boolean",  "true");
+            sender.sendMessage(jsonObject.toJSONString());
+        }
+    }
+
+    @FXML
+    void Sonar(ActionEvent event) {
+        if(isSonarButtonSelected){
+            SonarButton.setStyle("-fx-background-color: Red");
+            isSonarButtonSelected = false;
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.add("type", "Events");
+            jsonObject.add("function", "Sonar");
+            jsonObject.add("boolean",  "false");
+            sender.sendMessage(jsonObject.toJSONString());
+        } else{
+            SonarButton.setStyle("-fx-background-color: Green");
+            isSonarButtonSelected = true;
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.add("type", "Events");
+            jsonObject.add("function", "Sonar");
             jsonObject.add("boolean",  "true");
             sender.sendMessage(jsonObject.toJSONString());
         }

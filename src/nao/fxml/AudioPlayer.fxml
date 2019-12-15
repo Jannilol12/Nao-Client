@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nao.controllers.controller_audioPlayer">
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nao.controllers.AudioPlayer">
    <top>
       <GridPane hgap="5.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -26,7 +26,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#fileSelect" text="Datei auswählen" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" onAction="#fileUploadSelect" text="Datei auswählen" GridPane.columnIndex="1" />
             <Button maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#fileUpload" text="Datei Hochladen" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets />
@@ -89,7 +89,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#Jump" text="Springen" GridPane.columnIndex="2" />
+                  <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#jumpTo" text="Springen" GridPane.columnIndex="2" />
                   <TextField fx:id="jumpSecond" maxWidth="-Infinity" promptText="Sekunde" GridPane.columnIndex="1" />
                   <TextField fx:id="jumpMinute" maxWidth="-Infinity" promptText="Minute">
                      <GridPane.margin>
@@ -161,7 +161,7 @@
                 <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text fx:id="time" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00" GridPane.columnIndex="1">
+                  <Text fx:id="positionTime" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00" GridPane.columnIndex="1">
                      <font>
                         <Font size="21.0" />
                      </font>
@@ -171,7 +171,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="Length" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00" GridPane.columnIndex="3">
+                  <Text fx:id="lengthOfFile" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00" GridPane.columnIndex="3">
                      <font>
                         <Font size="21.0" />
                      </font>
@@ -193,9 +193,9 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ComboBox fx:id="FileSelector" prefWidth="150.0" />
+                  <ComboBox fx:id="fileLoadSelect" prefWidth="150.0" promptText="Select file" />
                   <Button mnemonicParsing="false" onAction="#FileLoadButton" text="Laden" GridPane.columnIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#DeleteFile" text="Löschen" textFill="RED" GridPane.columnIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#fileDelete" text="Löschen" textFill="RED" GridPane.columnIndex="2" />
                </children>
                <GridPane.margin>
                   <Insets bottom="10.0" />
@@ -221,7 +221,7 @@
         </rowConstraints>
          <children>
             <Button mnemonicParsing="false" onAction="#unloadAllFiles" text="Unload All Files" />
-            <Button mnemonicParsing="false" onAction="#DeleteAllFiles" text="Delete All Files" textFill="RED" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" onAction="#deleteAllFiles" text="Delete All Files" textFill="RED" GridPane.columnIndex="1" />
          </children>
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

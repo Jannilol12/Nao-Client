@@ -22,15 +22,14 @@ import java.util.Base64;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class controller_audioPlayer implements Initializable {
-    public static controller_audioPlayer caP;
+public class AudioPlayer implements Initializable {
+    public static AudioPlayer caP;
     private File file;
     private String fileName;
 
-    public controller_audioPlayer(){
+    public AudioPlayer(){
         caP = this;
     }
-
 
     @FXML
     private TextField jumpSecond;
@@ -39,16 +38,16 @@ public class controller_audioPlayer implements Initializable {
     private TextField jumpMinute;
 
     @FXML
-    private Text time;
+    private Text positionTime;
 
     @FXML
     private Slider volume;
 
     @FXML
-    private Text Length;
+    private Text lengthOfFile;
 
     @FXML
-    private ComboBox<String> FileSelector;
+    private ComboBox<String> fileLoadSelect;
 
 
     @Override
@@ -73,7 +72,7 @@ public class controller_audioPlayer implements Initializable {
     //---------------- FILES ------------------------------
 
     @FXML
-    void fileSelect(ActionEvent event) {
+    void fileUploadSelect(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Hier du müssen Datei auswählen!");
         file = fileChooser.showOpenDialog(MainFrame.stage);
@@ -99,12 +98,12 @@ public class controller_audioPlayer implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        SendMessages.sendFileRequest();
+        SendMessages.sendAudioFiles();
     }
 
     @FXML
     void FileLoadButton(ActionEvent event) {
-        String name = FileSelector.getSelectionModel().getSelectedItem();
+        String name = fileLoadSelect.getSelectionModel().getSelectedItem();
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "setId");
@@ -114,8 +113,8 @@ public class controller_audioPlayer implements Initializable {
     }
 
     public void loadFiles(List<String> strings){
-        FileSelector.getItems().removeAll();
-        FileSelector.getItems().addAll(strings);
+        fileLoadSelect.getItems().removeAll();
+        fileLoadSelect.getItems().addAll(strings);
     }
 
     @FXML
@@ -127,7 +126,7 @@ public class controller_audioPlayer implements Initializable {
     }
 
     @FXML
-    void DeleteAllFiles(ActionEvent event) {
+    void deleteAllFiles(ActionEvent event) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "deleteFiles");
@@ -135,11 +134,11 @@ public class controller_audioPlayer implements Initializable {
     }
 
     @FXML
-    void DeleteFile(ActionEvent event) {
+    void fileDelete(ActionEvent event) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "deleteFile");
-        jsonObject.add("fileDelete", FileSelector.getSelectionModel().getSelectedItem());
+        jsonObject.add("fileDelete", fileLoadSelect.getSelectionModel().getSelectedItem());
         sender.sendMessage(jsonObject.toJSONString());
     }
 
@@ -155,7 +154,7 @@ public class controller_audioPlayer implements Initializable {
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "pause");
         sender.sendMessage(jsonObject.toJSONString());
-        SendMessages.stopAudioPlayer();
+        SendMessages.stopAudioPlayerPositionOfFile();
     }
 
     @FXML
@@ -164,12 +163,12 @@ public class controller_audioPlayer implements Initializable {
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "play");
         sender.sendMessage(jsonObject.toJSONString());
-        SendMessages.sendAudioPlayer();
+        SendMessages.sendAudioPlayerPositionOfFile();
     }
 
     @FXML
     void playRepeat(ActionEvent event) {
-        SendMessages.sendAudioPlayer();
+        SendMessages.sendAudioPlayerPositionOfFile();
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "playInLoop");
@@ -178,7 +177,7 @@ public class controller_audioPlayer implements Initializable {
 
     @FXML
     void stop(ActionEvent event) {
-        SendMessages.stopAudioPlayer();
+        SendMessages.stopAudioPlayerPositionOfFile();
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "stop");
@@ -188,10 +187,10 @@ public class controller_audioPlayer implements Initializable {
 
     //--------------- TIME ----------------------
 
-    public void setTime(double time){
-        int minutes = (int) time/60;
-        int seconds = (int)time - (minutes*60);
-        Length.setText( minutes + ":" + seconds);
+    public void setPositionTime(double positionTime){
+        int minutes = (int) positionTime /60;
+        int seconds = (int) positionTime - (minutes*60);
+        lengthOfFile.setText( minutes + ":" + seconds);
     }
 
 
@@ -199,11 +198,11 @@ public class controller_audioPlayer implements Initializable {
     public void setPosition(double time){
         int minutes = (int) time/60;
         int seconds = (int)time - (minutes*60);
-        this.time.setText(minutes + ":" + seconds);
+        this.positionTime.setText(minutes + ":" + seconds);
     }
 
     @FXML
-    void Jump(ActionEvent event) {
+    void jumpTo(ActionEvent event) {
         int minute = 0;
         int seconds = 0;
         int jumpSeconds = 0;

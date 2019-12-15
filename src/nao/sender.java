@@ -4,7 +4,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-import nao.controllers.controller_main;
+import nao.controllers.MainController;
 import nao.debugger.Debugger;
 
 public class sender {
@@ -36,8 +36,8 @@ public class sender {
             dis = new DataInputStream(socket.getInputStream());
             startReadingThread();
 
-            if(controller_main.cmain != null)
-                controller_main.cmain.clearProgs();
+            if(MainController.cmain != null)
+                MainController.cmain.clearProgs();
 
             sender.sendMessage("{\"type\":\"ListP\"}");
         } catch (IOException e) {

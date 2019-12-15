@@ -3,6 +3,7 @@ import components.json.abstractJSON;
 import components.json.finder.JSONFinder;
 import components.json.parser.JSONParser;
 import nao.controllers.*;
+import nao.controllers.RobotSystem;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,57 +18,57 @@ public class MainReceiver {
         switch (type){
             case "Names":
                 List<String> names = (List<String>) JSONFinder.getList("Names",json);
-                controller_Events.cE.setNames(names);
+                SpeechFaceBehavior.cE.setNames(names);
                 break;
             case "ProgAdd":
-                if(controller_main.cmain != null){
+                if(MainController.cmain != null){
                     Zwischenspeicher zwischenspeicher = new Zwischenspeicher(json);
-                    controller_main.cmain.addProg(zwischenspeicher);
+                    MainController.cmain.addProg(zwischenspeicher);
                 }
                 break;
             case "battery":
-                if(controller_commands.cc != null){
+                if(RobotSystem.cc != null){
                     int batt = JSONFinder.getInt("battery", json);
-                    controller_commands.cc.setBatteryText(batt);
+                    RobotSystem.cc.setBatteryText(batt);
                 }
                 break;
             case "SpeechRecognition":
                 List<String> voc = (List<String>) JSONFinder.getList("Voc",json);
-                controller_Events.cE.setVocabulary(voc);
+                SpeechFaceBehavior.cE.setVocabulary(voc);
                 break;
             case "FaceDetection":
-                //List<String> faces = (List<String>) JSONFinder.getList("Faces",json);
-                //controller_Events.cE.setNames(faces);
+                List<String> faces = (List<String>) JSONFinder.getList("Faces",json);
+                SpeechFaceBehavior.cE.setNames(faces);
                 break;
             case "audioPlayer":
                 String function = JSONFinder.getString("function", json);
                 switch(function){
                     case "getVol":
                         double volume = JSONFinder.getDouble("getVol", json);
-                        controller_audioPlayer.caP.setVolume(volume);
+                        AudioPlayer.caP.setVolume(volume);
                         break;
                     case "getLength":
                         double length = JSONFinder.getDouble("Length", json);
-                        controller_audioPlayer.caP.setTime(length);
+                        AudioPlayer.caP.setPositionTime(length);
                         break;
                     case "getPosition":
                         double position = JSONFinder.getDouble("Position", json);
-                        controller_audioPlayer.caP.setPosition(position);
+                        AudioPlayer.caP.setPosition(position);
                         break;
                     case "getFiles":
                         List<String> list = new LinkedList<>();
                         list = (List<String>) JSONFinder.getList("File",json);
-                        controller_audioPlayer.caP.loadFiles(list);
+                        AudioPlayer.caP.loadFiles(list);
                         break;
                 }
                 break;
             case "Behavior":
                 List<String> listBehaviors = new LinkedList<>();
                 listBehaviors = (List<String>) JSONFinder.getList("Behaviors",json);
-                controller_behavior.cB.loadFiles(listBehaviors);
+                SpeechFaceBehavior.cE.loadBehaviors(listBehaviors);
                 break;
             case "temperature":
-                System.out.println("Receiving Temperatures!");
+                java.lang.System.out.println("Receiving Temperatures!");
 
                 String HeadYaw = JSONFinder.getString( "HeadYaw", json);
                 String HeadPitch = JSONFinder.getString( "HeadPitch", json);
@@ -98,11 +99,11 @@ public class MainReceiver {
                 String HeadCPU = JSONFinder.getString( "HeadCPU", json);
                 String Battery = JSONFinder.getString( "Battery", json);
 
-                controller_commands.cc.setTemperatureText(Battery, LHand, HeadCPU, HeadYaw, LElbowYaw, LShoulderPitch, RHand, LHipPitch, HeadPitch, LElbowRoll, LShoulderRoll, LWristYaw, RWristYaw, LHipRoll, LKneePitch, RElbowYaw, RElbowRoll, RShoulderPitch, RShoulderRoll, RHipPitch, RHipRoll, LHipYawPitch, LAnklePitch, RHipYawPitch, LAnkleRoll, RAnklePitch, RAnkleRoll, RKneePitch);
+                RobotSystem.cc.setTemperatureText(Battery, LHand, HeadCPU, HeadYaw, LElbowYaw, LShoulderPitch, RHand, LHipPitch, HeadPitch, LElbowRoll, LShoulderRoll, LWristYaw, RWristYaw, LHipRoll, LKneePitch, RElbowYaw, RElbowRoll, RShoulderPitch, RShoulderRoll, RHipPitch, RHipRoll, LHipYawPitch, LAnklePitch, RHipYawPitch, LAnkleRoll, RAnklePitch, RAnkleRoll, RKneePitch);
                 break;
 
             default:
-                System.out.println("Nothing to do O.o");
+                java.lang.System.out.println("Nothing to do O.o");
                 break;
         }
     }

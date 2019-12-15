@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="808.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nao.controllers.controller_main">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nao.controllers.MainController">
    <left>
       <ListView fx:id="list" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -50,31 +50,31 @@
       </GridPane>
    </top>
    <center>
-      <TabPane style="-fx-border-color: lightgray;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+      <TabPane tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
          <tabs>
-            <Tab text="Commands">
+            <Tab text="System">
               <content>
-                <fx:include source="@../../Commands.fxml" />
+                <fx:include source="@../../RobotSystem.fxml" />
               </content>
             </Tab>
-            <Tab text="Laufen">
+            <Tab text="Move">
                <content>
-                  <fx:include source="@../../Walk.fxml" />
+                  <fx:include source="@../../Move.fxml" />
                </content>
             </Tab>
-            <Tab text="Kopf">
+            <Tab text="Head">
             	<content>
-         			<fx:include source="@../../HeadMotors.fxml" />
+         			<fx:include source="@../../Head.fxml" />
         		</content>
         	</Tab>
-            <Tab text="Arme">
+            <Tab text="Arms">
                <content>
-                  <fx:include source="@../../ArmMotors.fxml" />
+                  <fx:include source="@../../Arms.fxml" />
                </content>
             </Tab>
-            <Tab text="Beine">
+            <Tab text="Legs">
               <content>
-                <fx:include source="@../../LegMotors.fxml" />
+                <fx:include source="@../../Legs.fxml" />
               </content>
             </Tab>
             <Tab text="Led">
@@ -87,19 +87,14 @@
                     <fx:include source="@../../AudioPlayer.fxml" />
                 </content>
             </Tab>
-            <Tab text="Events">
+            <Tab text="Sp/Fa/Be">
                <content>
-                  <fx:include source="@../../Events.fxml" />
+                  <fx:include source="@../../SpeechFaceBehavior.fxml" />
                </content>
             </Tab>
-             <Tab text="Events 2">
+             <Tab text="Events">
                  <content>
-                     <fx:include source="@../../Events2.fxml" />
-                 </content>
-             </Tab>
-             <Tab text="Behavior">
-                 <content>
-                     <fx:include source="@../../Behavior.fxml" />
+                     <fx:include source="@../../Events.fxml" />
                  </content>
              </Tab>
              <Tab text="Auto Life">
@@ -107,11 +102,11 @@
                      <fx:include source="@../../AutonomousLife.fxml" />
                  </content>
              </Tab>
-             <Tab text="Touch">
-                 <content>
-                     <fx:include source="@../../Touch.fxml" />
-                 </content>
-             </Tab>
+<!--             <Tab text="Touch">-->
+<!--                 <content>-->
+<!--                     <fx:include source="@../../Touch.fxml" />-->
+<!--                 </content>-->
+<!--             </Tab>-->
          </tabs>
          <opaqueInsets>
             <Insets />

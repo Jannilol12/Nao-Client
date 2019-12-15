@@ -7,7 +7,7 @@ public class SendMessages {
     private static Thread a;
     private static Thread x;
 
-    public static synchronized void sendAudioPlayer(){
+    public static synchronized void sendAudioPlayerPositionOfFile(){
         if(a != null){
             return;
         }
@@ -29,20 +29,20 @@ public class SendMessages {
         a.start();
     }
 
-    public static synchronized void stopAudioPlayer(){
+    public static synchronized void stopAudioPlayerPositionOfFile(){
         if(a == null) return;
         a.interrupt();
         a = null;
     }
 
-    public static synchronized void sendVolume(){
+    public static synchronized void sendAudioPlayerVolume(){
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "getVolume");
         sender.sendMessage(jsonObject.toJSONString());
     }
 
-    public static synchronized void sendFileRequest(){
+    public static synchronized void sendAudioFiles(){
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "getFiles");
@@ -56,7 +56,7 @@ public class SendMessages {
         sender.sendMessage(jsonObject.toJSONString());
     }
 
-    public static synchronized void sendFaces(){
+    public static synchronized void sendFaceNames(){
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "Events");
         jsonObject.add("function", "getFaces");

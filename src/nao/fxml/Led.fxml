@@ -11,26 +11,24 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane hgap="10.0" maxWidth="1.7976931348623157E308" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nao.controllers.controller_led">
+<GridPane hgap="10.0" maxWidth="1.7976931348623157E308" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nao.controllers.Led">
    <columnConstraints>
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
+      <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <TextField fx:id="Fade" maxWidth="1.7976931348623157E308" promptText="Fade" GridPane.rowIndex="7" />
-      <ColorPicker fx:id="Colour" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-      <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#Start_btn" text="Start" GridPane.columnIndex="1" GridPane.rowIndex="8">
+      <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#startButton" text="Start" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="8">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -38,33 +36,110 @@
             <Insets right="10.0" />
          </GridPane.margin>
       </Button>
-      <ComboBox fx:id="Gehirn" maxWidth="1.7976931348623157E308" promptText="Gehirn" />
-      <ComboBox fx:id="Ohr_Links" maxWidth="1.7976931348623157E308" promptText="Ohr Links" GridPane.rowIndex="1" />
-      <ComboBox fx:id="Ohr_Rechts" maxWidth="1.7976931348623157E308" promptText="Ohr Rechts" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <ComboBox fx:id="Auge_Links" maxWidth="1.7976931348623157E308" promptText="Auge Links" GridPane.rowIndex="2" />
-      <ComboBox fx:id="Auge_Rechts" maxWidth="1.7976931348623157E308" promptText="Auge Rechts" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <ComboBox fx:id="Fuss_Links" maxWidth="1.7976931348623157E308" promptText="Fuß Links" GridPane.rowIndex="3" />
-      <ComboBox fx:id="Fuss_Rechts" maxWidth="1.7976931348623157E308" promptText="Fuß Rechts" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <ComboBox fx:id="method" maxWidth="1.7976931348623157E308" promptText="Methode" GridPane.rowIndex="8" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Random Eyes" GridPane.rowIndex="4">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Random Eyes" GridPane.rowIndex="7" />
+      <TextField fx:id="durationEyesRandom" maxWidth="-Infinity" promptText="Duration" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rotate Eyes" GridPane.rowIndex="5" />
+      <GridPane hgap="2.0" maxWidth="-Infinity" vgap="5.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="rotationEyesRotate" maxWidth="-Infinity" promptText="Amount of rotations" />
+            <TextField fx:id="durationEyesRotate" maxWidth="-Infinity" promptText="Duration" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="OR" GridPane.rowIndex="4">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <TextField fx:id="random_duration" maxWidth="1.7976931348623157E308" promptText="dauer" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rotate Eyes" GridPane.rowIndex="5" />
-      <GridPane hgap="2.0" vgap="5.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="OR" GridPane.rowIndex="6">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="LEDs + RGB + Fade + Method" GridPane.columnIndex="1" GridPane.halignment="LEFT" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Amount + Duration + RGB" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Only Duration" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <ColorPicker fx:id="colour" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.rowIndex="8" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="EITHER">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <GridPane hgap="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="rotate_rotation" promptText="Rotat. time" />
-            <TextField fx:id="rotate_duration" promptText="Zeitdauer" GridPane.columnIndex="1" />
+            <ComboBox fx:id="rightEar" maxWidth="1.7976931348623157E308" promptText="Right ear" GridPane.columnIndex="1" />
+            <ComboBox fx:id="leftEar" maxWidth="1.7976931348623157E308" promptText="Left ear" />
+         </children>
+      </GridPane>
+      <GridPane hgap="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ComboBox fx:id="rightEye" maxWidth="1.7976931348623157E308" promptText="Right eye" GridPane.columnIndex="1" />
+            <ComboBox fx:id="leftEye" maxWidth="1.7976931348623157E308" promptText="Left eye" />
+         </children>
+      </GridPane>
+      <GridPane hgap="10.0" GridPane.rowIndex="2">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+         <children>
+            <ComboBox fx:id="leftFoot" maxWidth="1.7976931348623157E308" promptText="Left foot" GridPane.rowIndex="2" />
+            <ComboBox fx:id="rightFoot" maxWidth="1.7976931348623157E308" promptText="Right foot" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         </children>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+      </GridPane>
+      <GridPane hgap="14.0" GridPane.rowIndex="1">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ComboBox fx:id="brain" maxWidth="1.7976931348623157E308" promptText="Brain" GridPane.columnIndex="2" />
+         </children>
+      </GridPane>
+      <GridPane hgap="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ComboBox fx:id="method" maxWidth="1.7976931348623157E308" promptText="Method" GridPane.columnIndex="1" />
+            <TextField fx:id="fade" maxWidth="1.7976931348623157E308" promptText="Fade" />
          </children>
       </GridPane>
    </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
 </GridPane>

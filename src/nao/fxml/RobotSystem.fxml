@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" fx:controller="nao.controllers.controller_commands" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nao.controllers.RobotSystem">
    <top>
       <GridPane hgap="10.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -23,14 +23,14 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#Reboot" text="Reboot" GridPane.columnIndex="3" />
-            <Button mnemonicParsing="false" onAction="#Shutdown" text="Shutdown" GridPane.columnIndex="4" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Batterie:">
+            <Button mnemonicParsing="false" onAction="#systemReboot" text="Reboot" GridPane.columnIndex="3" />
+            <Button mnemonicParsing="false" onAction="#systemShutdown" text="Shutdown" GridPane.columnIndex="4" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Battery:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <Text fx:id="BatteryLoad" strokeType="OUTSIDE" strokeWidth="0.0" text="Leer" GridPane.columnIndex="1" />
+            <Text fx:id="batteryLevel" strokeType="OUTSIDE" strokeWidth="0.0" text="Empty" GridPane.columnIndex="1" />
          </children>
          <BorderPane.margin>
             <Insets left="10.0" right="10.0" top="10.0" />
@@ -38,7 +38,7 @@
       </GridPane>
    </top>
    <center>
-      <GridPane hgap="5.0" vgap="10.0" BorderPane.alignment="CENTER">
+      <GridPane hgap="20.0" vgap="8.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
@@ -90,38 +90,41 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="LAnkleRoll:" GridPane.columnIndex="2" GridPane.rowIndex="8" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RAnklePitch:" GridPane.columnIndex="4" GridPane.rowIndex="7" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RAnkleRoll:" GridPane.columnIndex="4" GridPane.rowIndex="8" />
-            <Text fx:id="HeadCPU" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" />
-            <Text fx:id="HeadYaw" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Text fx:id="LElbowYaw" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Text fx:id="LShoulderPitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Text fx:id="LHand" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Text fx:id="RHand" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Text fx:id="LHipPitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Text fx:id="HeadPitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Text fx:id="Battery" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" />
-            <Text fx:id="LElbowRoll" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Text fx:id="LShoulderRoll" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <Text fx:id="LWristYaw" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Text fx:id="RWristYaw" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <Text fx:id="LHipRoll" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <Text fx:id="LKneePitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="9" />
-            <Text fx:id="RElbowYaw" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-            <Text fx:id="RElbowRoll" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-            <Text fx:id="RShoulderPitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-            <Text fx:id="RShoulderRoll" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-            <Text fx:id="RHipPitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-            <Text fx:id="RHipRoll" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-            <Text fx:id="LHipYawPitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <Text fx:id="LAnklePitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <Text fx:id="RHipYawPitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-            <Text fx:id="LAnkleRoll" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-            <Text fx:id="RAnklePitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="5" GridPane.rowIndex="7" />
-            <Text fx:id="RAnkleRoll" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="5" GridPane.rowIndex="8" />
-            <Text fx:id="RKneePitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Text fx:id="headCPU" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" />
+            <Text fx:id="headYaw" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Text fx:id="lElbowYaw" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Text fx:id="lShoulderPitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Text fx:id="lHand" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Text fx:id="rHand" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Text fx:id="lHipPitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Text fx:id="headPitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Text fx:id="battery" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" />
+            <Text fx:id="lElbowRoll" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Text fx:id="lShoulderRoll" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Text fx:id="lWristYaw" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Text fx:id="rWristYaw" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Text fx:id="lHipRoll" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <Text fx:id="lKneePitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+            <Text fx:id="rElbowYaw" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <Text fx:id="rElbowRoll" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <Text fx:id="rShoulderPitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+            <Text fx:id="rShoulderRoll" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+            <Text fx:id="rHipPitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+            <Text fx:id="rHipRoll" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+            <Text fx:id="lHipYawPitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Text fx:id="lAnklePitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Text fx:id="rHipYawPitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <Text fx:id="lAnkleRoll" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+            <Text fx:id="rAnklePitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+            <Text fx:id="rAnkleRoll" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+            <Text fx:id="rKneePitch" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" />
          </padding>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </GridPane>
    </center>
 </BorderPane>

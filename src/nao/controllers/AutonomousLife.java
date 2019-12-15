@@ -13,7 +13,7 @@ import nao.sender;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class controller_AutonomousLife implements Initializable {
+public class AutonomousLife implements Initializable {
     @FXML
     private ComboBox<String> LifeMode;
 

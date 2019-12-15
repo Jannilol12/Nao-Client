@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nao.controllers.controller_walk">
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nao.controllers.Move">
    <top>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -32,18 +32,15 @@
                   <Insets right="10.0" />
                </GridPane.margin>
             </TextField>
-            <CheckBox fx:id="checkSteps" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" text="On/Off" GridPane.columnIndex="1" />
+            <CheckBox fx:id="checkSteps" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="On/Off" GridPane.columnIndex="1" />
             <TextField fx:id="degree" promptText="Grad" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
             </TextField>
-            <Button mnemonicParsing="false" onAction="#rotate" text="Drehen" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" onAction="#Wake_Up" text="Wake Up" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rotate" text="Rotate" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#wakeUp" text="Wake Up" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
       </GridPane>
    </top>
    <right>
@@ -72,7 +69,7 @@
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../icons/stop.png" />
+                        <Image url="@../../icons/Stop.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
@@ -102,7 +99,7 @@
                </graphic></Button>
          </children>
          <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" />
+            <Insets bottom="10.0" left="10.0" />
          </padding>
          <BorderPane.margin>
             <Insets />
@@ -121,10 +118,10 @@
           <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ComboBox fx:id="PostureBox" prefWidth="150.0" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" onAction="#PostureStart" text="Go!" GridPane.rowIndex="3" />
-            <TextField fx:id="PostureSpeed" promptText="Max Speed" GridPane.rowIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Position:">
+            <ComboBox fx:id="postureSelect" maxWidth="1.7976931348623157E308" GridPane.rowIndex="1" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#PostureStart" text="Go to Posture" GridPane.rowIndex="3" />
+            <TextField fx:id="PostureSpeed" maxWidth="1.7976931348623157E308" promptText="Max Speed" GridPane.rowIndex="2" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Posture:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -133,6 +130,12 @@
          <opaqueInsets>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </opaqueInsets>
+         <BorderPane.margin>
+            <Insets right="50.0" />
+         </BorderPane.margin>
       </GridPane>
    </center>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
 </BorderPane>
