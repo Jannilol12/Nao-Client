@@ -213,15 +213,17 @@
    <bottom>
       <GridPane alignment="TOP_RIGHT" hgap="10.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
+          <ColumnConstraints />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#unloadAllFiles" text="Unload All Files" />
-            <Button mnemonicParsing="false" onAction="#deleteAllFiles" text="Delete All Files" textFill="RED" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" onAction="#unloadAllFiles" text="Unload All Files" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" onAction="#deleteAllFiles" text="Delete All Files" textFill="RED" GridPane.columnIndex="2" />
+            <Button mnemonicParsing="false" onAction="#reloadDirectory" text="Reload directory" />
          </children>
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

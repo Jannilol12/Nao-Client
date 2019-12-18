@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nao.controllers.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="794.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nao.controllers.MainController">
    <left>
       <ListView fx:id="list" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -100,6 +100,11 @@
              <Tab text="Auto Life">
                  <content>
                      <fx:include source="@../../AutonomousLife.fxml" />
+                 </content>
+             </Tab>
+             <Tab text="Audio Recorder">
+                 <content>
+                     <fx:include source="@../../AudioRecorder.fxml" />
                  </content>
              </Tab>
 <!--             <Tab text="Touch">-->

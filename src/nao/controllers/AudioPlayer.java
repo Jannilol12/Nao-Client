@@ -118,6 +118,11 @@ public class AudioPlayer implements Initializable {
     }
 
     @FXML
+    void reloadDirectory(ActionEvent event) {
+        SendMessages.sendAudioFiles();
+    }
+
+    @FXML
     void unloadAllFiles(ActionEvent event) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "audioPlayer");
