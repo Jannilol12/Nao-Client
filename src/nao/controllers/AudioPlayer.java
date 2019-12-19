@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 public class AudioPlayer implements Initializable {
     public static AudioPlayer caP;
     private File file;
-    private String fileName;
+    private String fileNameForUpload;
 
     public AudioPlayer(){
         caP = this;
@@ -49,14 +49,12 @@ public class AudioPlayer implements Initializable {
     @FXML
     private ComboBox<String> fileLoadSelect;
 
+    @FXML
+    private Text fileName;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.add("type", "audioPlayer");
-        jsonObject.add("function", "getVolume");
-        sender.sendMessage(jsonObject.toJSONString());
-
         volume.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
@@ -76,7 +74,8 @@ public class AudioPlayer implements Initializable {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Hier du müssen Datei auswählen!");
         file = fileChooser.showOpenDialog(MainFrame.stage);
-        fileName = file.getName();
+        fileNameForUpload = file.getName();
+        fileName.setText(fileNameForUpload);
     }
 
     @FXML
@@ -90,7 +89,7 @@ public class AudioPlayer implements Initializable {
                 byte[] base64 = Base64.getEncoder().encode(Arrays.copyOf(bytes, length));
                 jsonObject.add("type", "audioPlayer");
                 jsonObject.add("function", "file");
-                jsonObject.add("name", fileName);
+                jsonObject.add("name", fileNameForUpload);
                 jsonObject.add("bytes", new String(base64, "UTF-8"));
                 sender.sendMessage(jsonObject.toJSONString());
 
@@ -99,6 +98,7 @@ public class AudioPlayer implements Initializable {
             e.printStackTrace();
         }
         SendMessages.sendAudioFiles();
+        SendMessages.sendAllFiles();
     }
 
     @FXML

@@ -102,9 +102,14 @@
                      <fx:include source="@../../AutonomousLife.fxml" />
                  </content>
              </Tab>
-             <Tab text="Audio Recorder">
+             <Tab text="Recorder">
                  <content>
-                     <fx:include source="@../../AudioRecorder.fxml" />
+                     <fx:include source="@../../Recorder.fxml" />
+                 </content>
+             </Tab>
+             <Tab text="Files">
+                 <content>
+                     <fx:include minHeight="0.0" minWidth="0.0" source="@../../Files.fxml" />
                  </content>
              </Tab>
 <!--             <Tab text="Touch">-->

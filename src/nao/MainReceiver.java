@@ -5,6 +5,11 @@ import components.json.parser.JSONParser;
 import nao.controllers.*;
 import nao.controllers.RobotSystem;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Base64;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -59,6 +64,7 @@ public class MainReceiver {
                         List<String> list = new LinkedList<>();
                         list = (List<String>) JSONFinder.getList("File",json);
                         AudioPlayer.caP.loadFiles(list);
+                        Files.cF.loadFiles(list);
                         break;
                 }
                 break;
@@ -100,6 +106,28 @@ public class MainReceiver {
                 String Battery = JSONFinder.getString( "Battery", json);
 
                 RobotSystem.cc.setTemperatureText(Battery, LHand, HeadCPU, HeadYaw, LElbowYaw, LShoulderPitch, RHand, LHipPitch, HeadPitch, LElbowRoll, LShoulderRoll, LWristYaw, RWristYaw, LHipRoll, LKneePitch, RElbowYaw, RElbowRoll, RShoulderPitch, RShoulderRoll, RHipPitch, RHipRoll, LHipYawPitch, LAnklePitch, RHipYawPitch, LAnkleRoll, RAnklePitch, RAnkleRoll, RKneePitch);
+                break;
+
+            case "getAllFiles":
+                List<String> list = new LinkedList<>();
+                list = (List<String>) JSONFinder.getList("File",json);
+                AudioPlayer.caP.loadFiles(list);
+                Files.cF.loadFiles(list);
+                break;
+
+            case "downloadFile":
+                String base64 = JSONFinder.getString("bytes",json);
+                byte[] bytes = Base64.getDecoder().decode(base64);
+                try{
+                    File fileUpload = new File(Files.cF.getDirectory(), JSONFinder.getString("name", json));
+                    FileOutputStream fileOutputStream = new FileOutputStream(fileUpload, true);
+                    fileOutputStream.write(bytes);
+                    fileOutputStream.close();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
 
             default:

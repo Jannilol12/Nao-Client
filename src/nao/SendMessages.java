@@ -123,4 +123,11 @@ public class SendMessages {
         x.interrupt();
         x = null;
     }
+
+    public static synchronized void sendAllFiles(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.add("type", "Files");
+        jsonObject.add("function", "getAllFiles");
+        sender.sendMessage(jsonObject.toJSONString());
+    }
 }

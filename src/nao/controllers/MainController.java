@@ -77,6 +77,7 @@ public class MainController implements Initializable {
             SendMessages.sendVocabulary();
             SendMessages.sendFaceNames();
             SendMessages.sendBehavior();
+            SendMessages.sendAllFiles();
         }
         catch(Exception err) {}
     }
