@@ -27,7 +27,7 @@ public class SpeechFaceBehavior {
     }
 
     public void setNames(List<String> list){
-        faceBox.getItems().removeAll();
+        faceBox.getItems().clear();
         faceBox.getItems().addAll(list);
     }
 
@@ -163,7 +163,7 @@ public class SpeechFaceBehavior {
     }
 
     public void loadBehaviors(List<String> strings){
-        behaviorFileSelector.getItems().removeAll();
+        behaviorFileSelector.getItems().clear();
         behaviorFileSelector.getItems().addAll(strings);
     }
 

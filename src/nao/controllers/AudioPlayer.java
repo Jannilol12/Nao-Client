@@ -113,7 +113,7 @@ public class AudioPlayer implements Initializable {
     }
 
     public void loadFiles(List<String> strings){
-        fileLoadSelect.getItems().removeAll();
+        fileLoadSelect.getItems().clear();
         fileLoadSelect.getItems().addAll(strings);
     }
 

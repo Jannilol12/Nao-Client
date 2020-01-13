@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Base64;
 import java.util.LinkedList;
 import java.util.List;
-
+//moooooin hier war der zzuxi lul
 public class MainReceiver {
     public static void receiveText(String text){
         abstractJSON json = JSONParser.parse(text);
@@ -74,7 +74,7 @@ public class MainReceiver {
                 SpeechFaceBehavior.cE.loadBehaviors(listBehaviors);
                 break;
             case "temperature":
-                java.lang.System.out.println("Receiving Temperatures!");
+                System.out.println("Receiving Temperatures!");
 
                 String HeadYaw = JSONFinder.getString( "HeadYaw", json);
                 String HeadPitch = JSONFinder.getString( "HeadPitch", json);
@@ -119,8 +119,10 @@ public class MainReceiver {
                 String base64 = JSONFinder.getString("bytes",json);
                 byte[] bytes = Base64.getDecoder().decode(base64);
                 try{
-                    File fileUpload = new File(Files.cF.getDirectory(), JSONFinder.getString("name", json));
-                    FileOutputStream fileOutputStream = new FileOutputStream(fileUpload, true);
+                    String fileName =  JSONFinder.getString("name",json);
+                    File direction = new File(Files.cF.getDirectory() + "/" +  fileName);
+                    direction.getParentFile().mkdirs();
+                    FileOutputStream fileOutputStream = new FileOutputStream(direction, true);
                     fileOutputStream.write(bytes);
                     fileOutputStream.close();
                 } catch (FileNotFoundException e) {
@@ -131,7 +133,7 @@ public class MainReceiver {
                 break;
 
             default:
-                java.lang.System.out.println("Nothing to do O.o");
+                System.out.println("Nothing to do O.o");
                 break;
         }
     }

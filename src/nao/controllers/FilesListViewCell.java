@@ -29,7 +29,7 @@ public class FilesListViewCell implements Initializable {
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "Files");
         jsonObject.add("function", "deleteFile");
-        jsonObject.add("filename",  nameOfFile);
+        jsonObject.add("filename",  fileName);
         sender.sendMessage(jsonObject.toJSONString());
     }
 
@@ -38,7 +38,7 @@ public class FilesListViewCell implements Initializable {
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "Files");
         jsonObject.add("function", "downloadFile");
-        jsonObject.add("filename",  nameOfFile);
+        jsonObject.add("filename",  fileName);
         sender.sendMessage(jsonObject.toJSONString());
     }
 

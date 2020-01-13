@@ -1,6 +1,7 @@
 package nao.controllers;
 
 import components.json.JSONObject;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -99,8 +100,10 @@ public class Files implements Initializable {
     }
 
     public void loadFiles(List<String> strings){
-        fileListView.getItems().removeAll();
-        fileListView.getItems().addAll(strings);
+        Platform.runLater(() -> {
+            fileListView.getItems().clear();
+            fileListView.getItems().addAll(strings);
+        });
     }
 
     @FXML
