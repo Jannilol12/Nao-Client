@@ -26,7 +26,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#audioRecorderPlay" GridPane.columnIndex="1">
                <graphic>
-                  <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="audioRecorderImageView" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../icons/Record.png" />
                      </image>
@@ -46,7 +46,7 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Video recorder:" wrappingWidth="82.130859375" GridPane.rowIndex="2" />
             <Button mnemonicParsing="false" onAction="#videoRecorderPlay" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <graphic>
-                  <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="videoRecorderImageView" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../icons/Record.png" />
                      </image>

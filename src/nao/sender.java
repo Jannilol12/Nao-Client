@@ -30,6 +30,7 @@ public class sender {
         try {
             socket = new Socket(ip , port);
             online = true;
+            socket.setSoTimeout(3000);
             socket.setKeepAlive(false);
             
             dout = new DataOutputStream(socket.getOutputStream());
@@ -48,7 +49,8 @@ public class sender {
 
     public static void sendMessage(String text){
         if(isClosed())
-            reconnect();
+            return;
+//            reconnect();
         
         if(text != null && dout != null ) {
         	if(Debugger.isEnable())
@@ -101,7 +103,9 @@ public class sender {
         if(socket != null){
         	try {
 				socket.close();
-			} catch (IOException e) {}
+			} catch (IOException e) {
+        	    e.printStackTrace();
+            }
         }
         
         socket = null;
@@ -112,7 +116,7 @@ public class sender {
     public static boolean isClosed() {
     	if(socket == null) return true;
     	if(socket.isClosed()) return true;
-    	
+
     	return false;
     }
 }

@@ -21,7 +21,9 @@ public class SendMessages {
                     sender.sendMessage(jsonObject.toJSONString());
                     try {
                         Thread.sleep(1000);
-                    } catch (InterruptedException e) {}
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 a = null;
             }
@@ -81,7 +83,9 @@ public class SendMessages {
                     sender.sendMessage("{\"type\":\"battery\"}");
                     try {
                         Thread.sleep(30000);
-                    } catch (InterruptedException e) {}
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 t = null;
             }
@@ -109,7 +113,9 @@ public class SendMessages {
                     sender.sendMessage(jsonObject.toJSONString());
                     try {
                         Thread.sleep(30000);
-                    } catch (InterruptedException e) {}
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 x = null;
             }
