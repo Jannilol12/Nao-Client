@@ -336,12 +336,12 @@
                         </Button>
                      </children>
                   </GridPane>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Schulter" GridPane.columnIndex="1">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Shoulder" GridPane.columnIndex="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ellbogen" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Elbow" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

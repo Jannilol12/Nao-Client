@@ -21,6 +21,11 @@ public class MainReceiver {
         if(type == null) return;
 
         switch (type){
+            case "Console":
+                String consoleText = JSONFinder.getString("String",json);
+                Console.c.setText(consoleText);
+                System.out.println("Console: " + consoleText);
+                break;
             case "Names":
                 List<String> names = (List<String>) JSONFinder.getList("Names",json);
                 SpeechFaceBehavior.cE.setNames(names);

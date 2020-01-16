@@ -62,7 +62,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="LEDs + RGB + Fade + Method" GridPane.columnIndex="1" GridPane.halignment="LEFT" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="LEDs+ Fade + Method  + RGB " GridPane.columnIndex="1" GridPane.halignment="LEFT" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Amount + Duration + RGB" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Only Duration" GridPane.columnIndex="1" GridPane.rowIndex="6" />
       <ColorPicker fx:id="colour" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.rowIndex="8" />

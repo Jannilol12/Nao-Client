@@ -30,7 +30,7 @@ public class sender {
         try {
             socket = new Socket(ip , port);
             online = true;
-            socket.setSoTimeout(3000);
+//            socket.setSoTimeout(3000);
             socket.setKeepAlive(false);
             
             dout = new DataOutputStream(socket.getOutputStream());

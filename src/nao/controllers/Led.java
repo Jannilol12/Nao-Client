@@ -71,11 +71,11 @@ public class Led implements Initializable {
 
         leftEye.getItems().add("Alle");
         for(int i = 1; i <= 8; i++) 
-        	rightEar.getItems().add(i+"");
+        	leftEye.getItems().add(i+"");
 
         rightEye.getItems().add("Alle");
         for(int i = 1; i <= 8; i++) 
-        	rightEar.getItems().add(i+"");
+        	rightEye.getItems().add(i+"");
 
         leftFoot.getItems().addAll("Alle", "Blue", "Green", "Red");
         rightFoot.getItems().addAll("Alle", "Blue", "Green", "Red");

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="794.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nao.controllers.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="849.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nao.controllers.MainController">
    <left>
       <ListView fx:id="list" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -24,8 +24,8 @@
    <top>
       <GridPane hgap="10.0" vgap="10.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
@@ -34,10 +34,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="ip" promptText="Ip" />
-            <TextField fx:id="port" promptText="Port" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" onAction="#connect" text="Verbinden" GridPane.columnIndex="2" />
-            <Button mnemonicParsing="false" onAction="#destroy" text="Trennen" GridPane.columnIndex="3" />
+            <TextField fx:id="ip" promptText="Ip, press button on nao thereby he is telling you the ip" />
+            <TextField fx:id="port" promptText="Port, standard: 7777" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" onAction="#connect" text="Connect" GridPane.columnIndex="2" />
+            <Button mnemonicParsing="false" onAction="#destroy" text="Disconnect" GridPane.columnIndex="3" />
             <ImageView fx:id="connected" fitHeight="30.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
                <image>
                   <Image url="@../../icons/getrennt.png" />
@@ -110,6 +110,11 @@
              <Tab text="Files">
                  <content>
                      <fx:include minHeight="0.0" minWidth="0.0" source="@../../Files.fxml" />
+                 </content>
+             </Tab>
+             <Tab text="Console">
+                 <content>
+                     <fx:include minHeight="0.0" minWidth="0.0" source="@../../Console.fxml" />
                  </content>
              </Tab>
 <!--             <Tab text="Touch">-->
