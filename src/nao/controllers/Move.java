@@ -87,6 +87,7 @@ public class Move implements Initializable {
 
     @FXML
     void PostureStart(ActionEvent event) {
+        postureSelect.getSelectionModel().clearSelection();
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "Posture");
         jsonObject.add("position", postureSelect.getSelectionModel().getSelectedItem());

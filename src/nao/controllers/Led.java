@@ -6,6 +6,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import nao.events.ButtonLongPress;
+import nao.events.PromptButtonCell;
 import nao.sender;
 
 import java.net.URL;
@@ -57,29 +61,46 @@ public class Led implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        brain.getItems().add("Alle");
+        brain.getItems().add("All");
         for(int i = 0; i <= 11; i++) 
         	brain.getItems().add(i+"");
 
-        leftEar.getItems().add("Alle");
+        leftEar.getItems().add("All");
         for(int i = 1; i <= 10; i++) 
         	leftEar.getItems().add(i+"");
 
-        rightEar.getItems().add("Alle");
+        rightEar.getItems().add("All");
         for(int i = 1; i <= 10; i++) 
         	rightEar.getItems().add(i+"");
 
-        leftEye.getItems().add("Alle");
+        leftEye.getItems().add("All");
         for(int i = 1; i <= 8; i++) 
         	leftEye.getItems().add(i+"");
 
-        rightEye.getItems().add("Alle");
+        rightEye.getItems().add("All");
         for(int i = 1; i <= 8; i++) 
         	rightEye.getItems().add(i+"");
 
-        leftFoot.getItems().addAll("Alle", "Blue", "Green", "Red");
-        rightFoot.getItems().addAll("Alle", "Blue", "Green", "Red");
+        leftFoot.getItems().addAll("All", "Blue", "Green", "Red");
+        rightFoot.getItems().addAll("All", "Blue", "Green", "Red");
         method.getItems().addAll("rgb", "on", "off");
+
+        brain.setPromptText("Brain");
+        brain.setButtonCell(new PromptButtonCell<>("Brain"));
+        leftFoot.setPromptText("Left foot");
+        leftFoot.setButtonCell(new PromptButtonCell<>("Left foot"));
+        rightFoot.setPromptText("Right foot");
+        rightFoot.setButtonCell(new PromptButtonCell<>("Right foot"));
+        leftEar.setPromptText("Left ear");
+        leftEar.setButtonCell(new PromptButtonCell<>("Left ear"));
+        rightEar.setPromptText("Right ear");
+        rightEar.setButtonCell(new PromptButtonCell<>("Right ear"));
+        leftEye.setPromptText("Left eye");
+        leftEye.setButtonCell(new PromptButtonCell<>("Left eye"));
+        rightEye.setPromptText("Right eye");
+        rightEye.setButtonCell(new PromptButtonCell<>("Right eye"));
+        method.setPromptText("Method");
+        method.setButtonCell(new PromptButtonCell<>("Method"));
     }
 
     @FXML
@@ -111,10 +132,11 @@ public class Led implements Initializable {
             	jsonObject.add("Fade", Float.parseFloat(fade.getText()));
             	
                 if (brain.getSelectionModel().getSelectedItem() != null) {
-                    if (brain.getSelectionModel().getSelectedItem().equalsIgnoreCase("Alle")) {
+                    if (brain.getSelectionModel().getSelectedItem().equalsIgnoreCase("All")) {
                         for (int i = 0; i < 12; i++) {
                         	jsonObject.add("ledname", "Brain" + i);
                         	sender.sendMessage(jsonObject.toJSONString());
+                        	System.out.println("You are here");
                         }
                     } else {
                     	jsonObject.add("ledname", "Brain" + brain.getSelectionModel().getSelectedItem());
@@ -123,7 +145,7 @@ public class Led implements Initializable {
                 }
                 
                 if (leftEar.getSelectionModel().getSelectedItem() != null) {
-                    if (leftEar.getSelectionModel().getSelectedItem().equalsIgnoreCase("Alle")) {
+                    if (leftEar.getSelectionModel().getSelectedItem().equalsIgnoreCase("All")) {
                         for (int i = 1; i < 11; i++) {
                         	jsonObject.add("ledname", "LeftEarLed" + i);
                         	sender.sendMessage(jsonObject.toJSONString());
@@ -135,7 +157,7 @@ public class Led implements Initializable {
                 }
                 
                 if (rightEar.getSelectionModel().getSelectedItem() != null) {
-                    if (rightEar.getSelectionModel().getSelectedItem().equalsIgnoreCase("Alle")) {
+                    if (rightEar.getSelectionModel().getSelectedItem().equalsIgnoreCase("All")) {
                         for (int i = 1; i < 11; i++) {
                         	jsonObject.add("ledname", "RightEarLed" + i);
                         	sender.sendMessage(jsonObject.toJSONString());
@@ -159,7 +181,7 @@ public class Led implements Initializable {
                 }
                 
                 if (rightEye.getSelectionModel().getSelectedItem() != null) {
-                    if (rightEye.getSelectionModel().getSelectedItem().equalsIgnoreCase("Alle")) {
+                    if (rightEye.getSelectionModel().getSelectedItem().equalsIgnoreCase("All")) {
                         for (int i = 1; i < 9; i++) {
                         	jsonObject.add("ledname", "RightFaceLed" + i);
                         	sender.sendMessage(jsonObject.toJSONString());
@@ -171,7 +193,7 @@ public class Led implements Initializable {
                 }
                 
                 if (leftFoot.getSelectionModel().getSelectedItem() != null) {
-                    if (leftFoot.getSelectionModel().getSelectedItem().equalsIgnoreCase("Alle")) {
+                    if (leftFoot.getSelectionModel().getSelectedItem().equalsIgnoreCase("All")) {
                     	jsonObject.add("ledname", "LeftFootLedsBlue");
                     	sender.sendMessage(jsonObject.toJSONString());
                     	
@@ -187,7 +209,7 @@ public class Led implements Initializable {
                 }
                 
                 if (rightFoot.getSelectionModel().getSelectedItem() != null) {
-                    if (rightFoot.getSelectionModel().getSelectedItem().equalsIgnoreCase("Alle")) {
+                    if (rightFoot.getSelectionModel().getSelectedItem().equalsIgnoreCase("All")) {
                     	jsonObject.add("ledname", "RightFootLedsBlue");
                     	sender.sendMessage(jsonObject.toJSONString());
                     	
@@ -201,18 +223,53 @@ public class Led implements Initializable {
                     	sender.sendMessage(jsonObject.toJSONString());
                     }
                 }
+
+                fade.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+                method.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+                rotationEyesRotate.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+                durationEyesRotate.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
             }
         }catch (NumberFormatException err){
+            if(method.getSelectionModel().getSelectedItem() == null && fade.getText().equalsIgnoreCase("") && rotationEyesRotate.getText().equalsIgnoreCase("") && durationEyesRotate.getText().equalsIgnoreCase("")){
+                fade.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
+                method.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
+                rotationEyesRotate.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+                durationEyesRotate.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+            } else if(method.getSelectionModel().getSelectedItem() == null && rotationEyesRotate.getText().equalsIgnoreCase("") && durationEyesRotate.getText().equalsIgnoreCase("")){
+                method.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
+                fade.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+                rotationEyesRotate.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+                durationEyesRotate.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+            }else if(fade.getText().equalsIgnoreCase("") && rotationEyesRotate.getText().equalsIgnoreCase("") && durationEyesRotate.getText().equalsIgnoreCase("")){
+                fade.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
+                method.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+                rotationEyesRotate.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+                durationEyesRotate.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+            } else if(rotationEyesRotate.getText().equalsIgnoreCase("") && !durationEyesRotate.getText().equalsIgnoreCase("")){
+                rotationEyesRotate.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
+                method.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+                fade.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+                durationEyesRotate.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+            } else if(!rotationEyesRotate.getText().equalsIgnoreCase("") && durationEyesRotate.getText().equalsIgnoreCase("")){
+                durationEyesRotate.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
+                method.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+                fade.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+                rotationEyesRotate.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+            }
             System.out.println("NumberFormatException");
         }
         brain.getSelectionModel().clearSelection();
-        brain.setPromptText("Brain");
-        rightEar.setPromptText("Right ear");
-        leftEar.setPromptText("Left ear");
-        rightEye.setPromptText("Right Eye");
-        leftEye.setPromptText("Left Eye");
-        rightFoot.setPromptText("Right foot");
-        leftFoot.setPromptText("Left foot");
+        rightEar.getSelectionModel().clearSelection();
+        leftEar.getSelectionModel().clearSelection();
+        rightEye.getSelectionModel().clearSelection();
+        leftEye.getSelectionModel().clearSelection();
+        rightFoot.getSelectionModel().clearSelection();
+        leftFoot.getSelectionModel().clearSelection();
+        method.getSelectionModel().clearSelection();
+        fade.clear();
+        rotationEyesRotate.clear();
+        durationEyesRotate.clear();
+        durationEyesRandom.clear();
     }
 
 }

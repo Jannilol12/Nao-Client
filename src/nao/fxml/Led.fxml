@@ -122,7 +122,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ComboBox fx:id="brain" maxWidth="1.7976931348623157E308" promptText="Brain" GridPane.columnIndex="2" />
+            <ComboBox fx:id="brain" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" />
          </children>
       </GridPane>
       <GridPane hgap="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3">

@@ -41,7 +41,10 @@
                   <Insets right="10.0" />
                </GridPane.margin>
             </TextField>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rotate" text="Rotate" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rotate" text="Rotate" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <tooltip>
+                  <Tooltip text="Let the robot rotate" />
+               </tooltip></Button>
          </children>
       </GridPane>
    </top>
@@ -132,9 +135,15 @@
                   <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <ComboBox fx:id="postureSelect" maxWidth="1.7976931348623157E308" GridPane.rowIndex="1" />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#PostureStart" text="Go to Posture" GridPane.rowIndex="3" />
-                  <TextField fx:id="PostureSpeed" maxWidth="1.7976931348623157E308" promptText="Max Speed" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="postureSelect" maxWidth="1.7976931348623157E308" promptText="Select a posture" GridPane.rowIndex="1" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#PostureStart" text="Go to Posture" GridPane.rowIndex="3">
+                     <tooltip>
+                        <Tooltip text="Let the robot go into a position" />
+                     </tooltip></Button>
+                  <TextField fx:id="PostureSpeed" maxWidth="1.7976931348623157E308" promptText="Max Speed" GridPane.rowIndex="2">
+                     <tooltip>
+                        <Tooltip text="Speed as a Float, with point" />
+                     </tooltip></TextField>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Posture:">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -148,7 +157,10 @@
             <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#wakeUp" text="Wake Up" textFill="RED">
                <font>
                   <Font size="18.0" />
-               </font></Button>
+               </font>
+               <tooltip>
+                  <Tooltip text="Let the robot stand up" />
+               </tooltip></Button>
          </children>
          <BorderPane.margin>
             <Insets right="200.0" />
