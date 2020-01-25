@@ -7,9 +7,13 @@ import components.json.JSONObject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import nao.events.PromptButtonCell;
 import nao.sender;
 
 public class Move implements Initializable {
@@ -31,6 +35,9 @@ public class Move implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         postureSelect.getItems().addAll("Stand", "StandInit", "StandZero", "Crouch", "Sit", "SitRelax", "LyingBelly", "LyingBack");
+
+        postureSelect.setPromptText("Select a posture");
+        postureSelect.setButtonCell(new PromptButtonCell<>("Select a posture"));
     }
 
     @FXML
@@ -87,11 +94,32 @@ public class Move implements Initializable {
 
     @FXML
     void PostureStart(ActionEvent event) {
-        postureSelect.getSelectionModel().clearSelection();
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.add("type", "Posture");
-        jsonObject.add("position", postureSelect.getSelectionModel().getSelectedItem());
-        jsonObject.add("speed", Float.parseFloat(PostureSpeed.getText()));
-        sender.sendMessage(jsonObject.toJSONString());
+        try {
+            float postureSpeed = Float.parseFloat(PostureSpeed.getText());
+            if(postureSelect.getSelectionModel().getSelectedItem() != null) {
+                postureSelect.getSelectionModel().clearSelection();
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.add("type", "Posture");
+                jsonObject.add("position", postureSelect.getSelectionModel().getSelectedItem());
+                jsonObject.add("speed", postureSpeed);
+                sender.sendMessage(jsonObject.toJSONString());
+                PostureSpeed.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+                postureSelect.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+            }else{
+                throw new NullPointerException("Didn't selected a posture!");
+            }
+        } catch(NumberFormatException err){
+            if(postureSelect.getSelectionModel().getSelectedItem() == null){
+                PostureSpeed.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
+                postureSelect.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
+            } else{
+                postureSelect.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+                PostureSpeed.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
+            }
+        }
+        catch (NullPointerException err){
+                PostureSpeed.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+                postureSelect.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
+        }
     }
 }

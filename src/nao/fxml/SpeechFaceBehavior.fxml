@@ -37,7 +37,7 @@
             <TextField fx:id="speechVocText" promptText="Vokabel auf Englisch" GridPane.rowIndex="2" />
             <Button mnemonicParsing="false" onAction="#speechAddVoc" text="Vokabel Hinzufügen" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Button mnemonicParsing="false" onAction="#speechDeleteVoc" text="Vokabel Löschen" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ComboBox fx:id="speechVocList" prefWidth="150.0" promptText="Vokabel" GridPane.rowIndex="3" />
+            <ComboBox fx:id="speechVocList" prefWidth="150.0" GridPane.rowIndex="3" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gesichtserkennung:" GridPane.rowIndex="4" />
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="4">
               <columnConstraints>
@@ -55,8 +55,8 @@
             <TextField fx:id="faceName" promptText="Name" GridPane.rowIndex="5" />
             <Button mnemonicParsing="false" onAction="#faceAdd" text="Gesicht lernen" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Button mnemonicParsing="false" onAction="#faceDelete" text="Gesicht vergessen" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <ComboBox fx:id="faceBox" prefWidth="150.0" promptText="Gesicht" GridPane.rowIndex="6" />
-            <ComboBox fx:id="behaviorFileSelector" prefWidth="150.0" promptText="Behavior" GridPane.rowIndex="7" />
+            <ComboBox fx:id="faceBox" prefWidth="150.0" GridPane.rowIndex="6" />
+            <ComboBox fx:id="behaviorFileSelector" prefWidth="150.0" GridPane.rowIndex="7" />
             <GridPane hgap="10.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />

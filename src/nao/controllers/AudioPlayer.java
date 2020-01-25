@@ -5,13 +5,17 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import nao.MainFrame;
 import nao.SendMessages;
+import nao.events.PromptButtonCell;
 import nao.sender;
 
 import java.io.File;
@@ -52,6 +56,8 @@ public class AudioPlayer implements Initializable {
     @FXML
     private Text fileName;
 
+    @FXML
+    private Button fileUploadSelectButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -65,6 +71,9 @@ public class AudioPlayer implements Initializable {
                 sender.sendMessage(jsonObject.toJSONString());
             }
         });
+        fileName.setText("Filename");
+        fileLoadSelect.setPromptText("Select a file ");
+        fileLoadSelect.setButtonCell(new PromptButtonCell<>("Select a file"));
     }
 
     //---------------- FILES ------------------------------
@@ -72,7 +81,7 @@ public class AudioPlayer implements Initializable {
     @FXML
     void fileUploadSelect(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Hier du müssen Datei auswählen!");
+        fileChooser.setTitle("Select a file to upload!");
         file = fileChooser.showOpenDialog(MainFrame.stage);
         fileNameForUpload = file.getName();
         fileName.setText(fileNameForUpload);
@@ -92,10 +101,13 @@ public class AudioPlayer implements Initializable {
                 jsonObject.add("name", fileNameForUpload);
                 jsonObject.add("bytes", new String(base64, "UTF-8"));
                 sender.sendMessage(jsonObject.toJSONString());
-
             }
+            fileName.setText("Filename");
+            fileUploadSelectButton.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+            fileNameForUpload = null;
+            file = null;
         } catch (Exception e) {
-            e.printStackTrace();
+            fileUploadSelectButton.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
         }
         SendMessages.sendAudioFiles();
         SendMessages.sendAllFiles();
@@ -103,13 +115,18 @@ public class AudioPlayer implements Initializable {
 
     @FXML
     void FileLoadButton(ActionEvent event) {
-        String name = fileLoadSelect.getSelectionModel().getSelectedItem();
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.add("type", "audioPlayer");
-        jsonObject.add("function", "setId");
-        jsonObject.add("filename", name );
-        System.out.println(name);
-        sender.sendMessage(jsonObject.toJSONString());
+        if(fileLoadSelect.getSelectionModel().getSelectedItem() != null) {
+            String name = fileLoadSelect.getSelectionModel().getSelectedItem();
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.add("type", "audioPlayer");
+            jsonObject.add("function", "setId");
+            jsonObject.add("filename", name);
+            sender.sendMessage(jsonObject.toJSONString());
+            fileLoadSelect.getSelectionModel().clearSelection();
+            fileLoadSelect.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+        } else{
+            fileLoadSelect.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
+        }
     }
 
     public void loadFiles(List<String> strings){
@@ -211,7 +228,6 @@ public class AudioPlayer implements Initializable {
         int minute = 0;
         int seconds = 0;
         int jumpSeconds = 0;
-
         try{
             minute = Integer.parseInt(jumpMinute.getText());
         }catch (NumberFormatException e) {}
@@ -220,7 +236,6 @@ public class AudioPlayer implements Initializable {
         }catch (NumberFormatException e) {}
 
         jumpSeconds = minute*60 + seconds;
-
         JSONObject jsonObject = new JSONObject();
         jsonObject.add("type", "audioPlayer");
         jsonObject.add("function", "jump");

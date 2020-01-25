@@ -36,13 +36,13 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onAction="#fileUploadSelect" text="Select file" GridPane.columnIndex="2" />
+                  <Button fx:id="fileUploadSelectButton" mnemonicParsing="false" onAction="#fileUploadSelect" text="Select file" GridPane.columnIndex="2" />
                   <Button maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#fileUpload" text="Upload file" GridPane.columnIndex="3">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
                   </Button>
-                  <Text fx:id="filenameForUpload" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename" GridPane.columnIndex="1">
+                  <Text fx:id="filenameForUpload" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>

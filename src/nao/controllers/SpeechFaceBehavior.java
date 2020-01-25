@@ -3,33 +3,26 @@ package nao.controllers;
 import components.json.JSONObject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import nao.SendMessages;
+import nao.events.PromptButtonCell;
 import nao.sender;
 
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
 
-public class SpeechFaceBehavior {
+public class SpeechFaceBehavior implements Initializable {
     private boolean isSpeechRecognitionButtonSelected = false;
     private boolean isFaceDetectionSelected = false;
     private boolean isFaceTrackingSelected = false;
     public static SpeechFaceBehavior cE;
-
-    public SpeechFaceBehavior(){
-        cE = this;
-    }
-
-    public void setVocabulary(List<String> list){
-        speechVocList.getItems().addAll(list);
-    }
-
-    public void setNames(List<String> list){
-        faceBox.getItems().clear();
-        faceBox.getItems().addAll(list);
-    }
 
     @FXML
     private TextField speechVocText;
@@ -55,24 +48,59 @@ public class SpeechFaceBehavior {
     @FXML
     private ComboBox<String> behaviorFileSelector;
 
+    public SpeechFaceBehavior(){
+        cE = this;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        speechVocList.setPromptText("Select vocable");
+        speechVocList.setButtonCell(new PromptButtonCell<>("Select vocable"));
+        faceBox.setPromptText("Select face");
+        faceBox.setButtonCell(new PromptButtonCell<>("Select face"));
+        behaviorFileSelector.setPromptText("Select behavior");
+        behaviorFileSelector.setButtonCell(new PromptButtonCell<>("Select behavior"));
+    }
+
+    public void setVocabulary(List<String> list){
+        speechVocList.getItems().addAll(list);
+    }
+
+    public void setNames(List<String> list){
+        faceBox.getItems().clear();
+        faceBox.getItems().addAll(list);
+    }
+
     @FXML
     void faceAdd(ActionEvent event) {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.add("type", "Events");
-        jsonObject.add("function", "LearnFace");
-        jsonObject.add("String",  faceName.getText());
-        sender.sendMessage(jsonObject.toJSONString());
-        SendMessages.sendFaceNames();
+        if(faceName.getText().compareToIgnoreCase("") > 0) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.add("type", "Events");
+            jsonObject.add("function", "LearnFace");
+            jsonObject.add("String", faceName.getText());
+            sender.sendMessage(jsonObject.toJSONString());
+            SendMessages.sendFaceNames();
+            faceName.setText("");
+            faceName.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+        } else{
+            faceName.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
+        }
     }
 
     @FXML
     void faceDelete(ActionEvent event) {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.add("type", "Events");
-        jsonObject.add("function", "DeleteFace");
-        jsonObject.add("Face",  faceBox.getSelectionModel().getSelectedItem());
-        sender.sendMessage(jsonObject.toJSONString());
-        SendMessages.sendFaceNames();
+        if(faceBox.getSelectionModel().getSelectedItem() != null) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.add("type", "Events");
+            jsonObject.add("function", "DeleteFace");
+            jsonObject.add("Face", faceBox.getSelectionModel().getSelectedItem());
+            sender.sendMessage(jsonObject.toJSONString());
+            SendMessages.sendFaceNames();
+            faceBox.getSelectionModel().clearSelection();
+            faceName.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+        } else{
+            faceBox.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
+        }
     }
 
     @FXML
@@ -121,20 +149,33 @@ public class SpeechFaceBehavior {
 
     @FXML
     void speechAddVoc(ActionEvent event) {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.add("type", "Events");
-        jsonObject.add("function", "AddVocabulary");
-        jsonObject.add("String",  speechVocText.getText());
-        sender.sendMessage(jsonObject.toJSONString());
+        if(speechVocText.getText().compareToIgnoreCase("") > 0) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.add("type", "Events");
+            jsonObject.add("function", "AddVocabulary");
+            jsonObject.add("String", speechVocText.getText());
+            sender.sendMessage(jsonObject.toJSONString());
+            speechVocText.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+            speechVocText.setText("");
+        } else{
+            speechVocText.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
+
+        }
     }
 
     @FXML
     void speechDeleteVoc(ActionEvent event) {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.add("type", "Events");
-        jsonObject.add("function", "DeleteVocabulary");
-        jsonObject.add("String",  speechVocList.getSelectionModel().getSelectedItem());
-        sender.sendMessage(jsonObject.toJSONString());
+        if(speechVocList.getSelectionModel().getSelectedItem() != null) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.add("type", "Events");
+            jsonObject.add("function", "DeleteVocabulary");
+            jsonObject.add("String", speechVocList.getSelectionModel().getSelectedItem());
+            sender.sendMessage(jsonObject.toJSONString());
+            speechVocList.getSelectionModel().clearSelection();
+            speechVocList.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+        } else{
+            speechVocList.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
+        }
     }
 
 
@@ -169,26 +210,39 @@ public class SpeechFaceBehavior {
 
     @FXML
     void behaviorPlay(ActionEvent event) {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.add("type", "Behavior");
-        jsonObject.add("function", "play");
-        jsonObject.add("name", behaviorFileSelector.getSelectionModel().getSelectedItem());
-        sender.sendMessage(jsonObject.toJSONString());
+        if(behaviorFileSelector.getSelectionModel().getSelectedItem() != null) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.add("type", "Behavior");
+            jsonObject.add("function", "play");
+            jsonObject.add("name", behaviorFileSelector.getSelectionModel().getSelectedItem());
+            sender.sendMessage(jsonObject.toJSONString());
+            behaviorFileSelector.getSelectionModel().clearSelection();
+            behaviorFileSelector.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+        }else{
+            behaviorFileSelector.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
+        }
     }
 
     @FXML
     void behaviorReload(ActionEvent event) {
         SendMessages.sendBehavior();
+        behaviorFileSelector.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
     }
 
     @FXML
     void behaviorRemove(ActionEvent event) {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.add("type", "Behavior");
-        jsonObject.add("function", "removeBehavior");
-        jsonObject.add("behaviorname", behaviorFileSelector.getSelectionModel().getSelectedItem() );
-        sender.sendMessage(jsonObject.toJSONString());
-        SendMessages.sendBehavior();
+        if(behaviorFileSelector.getSelectionModel().getSelectedItem() != null){
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.add("type", "Behavior");
+            jsonObject.add("function", "removeBehavior");
+            jsonObject.add("behaviorname", behaviorFileSelector.getSelectionModel().getSelectedItem() );
+            sender.sendMessage(jsonObject.toJSONString());
+            SendMessages.sendBehavior();
+            behaviorFileSelector.getSelectionModel().clearSelection();
+            behaviorFileSelector.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+        }else{
+            behaviorFileSelector.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
+        }
     }
 
     @FXML
@@ -197,7 +251,7 @@ public class SpeechFaceBehavior {
         jsonObject.add("type", "Behavior");
         jsonObject.add("function", "stop");
         sender.sendMessage(jsonObject.toJSONString());
+        behaviorFileSelector.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
     }
-
 
 }

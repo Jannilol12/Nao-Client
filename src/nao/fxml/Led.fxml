@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -37,7 +38,10 @@
          </GridPane.margin>
       </Button>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Random Eyes" GridPane.rowIndex="7" />
-      <TextField fx:id="durationEyesRandom" maxWidth="-Infinity" promptText="Duration" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7" />
+      <TextField fx:id="durationEyesRandom" maxWidth="-Infinity" promptText="Duration" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+         <tooltip>
+            <Tooltip text="As Float with point" />
+         </tooltip></TextField>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rotate Eyes" GridPane.rowIndex="5" />
       <GridPane hgap="2.0" maxWidth="-Infinity" vgap="5.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
         <columnConstraints>
@@ -49,7 +53,10 @@
         </rowConstraints>
          <children>
             <TextField fx:id="rotationEyesRotate" maxWidth="-Infinity" promptText="Amount of rotations" />
-            <TextField fx:id="durationEyesRotate" maxWidth="-Infinity" promptText="Duration" GridPane.columnIndex="1" />
+            <TextField fx:id="durationEyesRotate" maxWidth="-Infinity" promptText="Duration" GridPane.columnIndex="1">
+               <tooltip>
+                  <Tooltip text="As Float with point" />
+               </tooltip></TextField>
          </children>
       </GridPane>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="OR" GridPane.rowIndex="4">
@@ -80,8 +87,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ComboBox fx:id="rightEar" maxWidth="1.7976931348623157E308" promptText="Right ear" GridPane.columnIndex="1" />
-            <ComboBox fx:id="leftEar" maxWidth="1.7976931348623157E308" promptText="Left ear" />
+            <ComboBox fx:id="rightEar" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
+            <ComboBox fx:id="leftEar" maxWidth="1.7976931348623157E308" />
          </children>
       </GridPane>
       <GridPane hgap="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -93,8 +100,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ComboBox fx:id="rightEye" maxWidth="1.7976931348623157E308" promptText="Right eye" GridPane.columnIndex="1" />
-            <ComboBox fx:id="leftEye" maxWidth="1.7976931348623157E308" promptText="Left eye" />
+            <ComboBox fx:id="rightEye" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
+            <ComboBox fx:id="leftEye" maxWidth="1.7976931348623157E308" />
          </children>
       </GridPane>
       <GridPane hgap="10.0" GridPane.rowIndex="2">
@@ -103,8 +110,14 @@
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
          <children>
-            <ComboBox fx:id="leftFoot" maxWidth="1.7976931348623157E308" promptText="Left foot" GridPane.rowIndex="2" />
-            <ComboBox fx:id="rightFoot" maxWidth="1.7976931348623157E308" promptText="Right foot" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="leftFoot" maxWidth="1.7976931348623157E308" GridPane.rowIndex="2">
+               <tooltip>
+                  <Tooltip text="Red, Green and Blue are individual LEDs" />
+               </tooltip></ComboBox>
+            <ComboBox fx:id="rightFoot" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <tooltip>
+                  <Tooltip text="Red, Green and Blue are individual LEDs" />
+               </tooltip></ComboBox>
          </children>
          <rowConstraints>
             <RowConstraints />
@@ -112,9 +125,10 @@
             <RowConstraints />
          </rowConstraints>
       </GridPane>
-      <GridPane hgap="14.0" GridPane.rowIndex="1">
+      <GridPane hgap="14.0" maxWidth="1.7976931348623157E308" GridPane.rowIndex="1">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
         </columnConstraints>
@@ -122,7 +136,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ComboBox fx:id="brain" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" />
+            <ComboBox fx:id="brain" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" />
          </children>
       </GridPane>
       <GridPane hgap="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -134,8 +148,14 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ComboBox fx:id="method" maxWidth="1.7976931348623157E308" promptText="Method" GridPane.columnIndex="1" />
-            <TextField fx:id="fade" maxWidth="1.7976931348623157E308" promptText="Fade" />
+            <ComboBox fx:id="method" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1">
+               <tooltip>
+                  <Tooltip text="Not all LED support RGB" />
+               </tooltip></ComboBox>
+            <TextField fx:id="fade" maxWidth="1.7976931348623157E308" promptText="Fade">
+               <tooltip>
+                  <Tooltip text="How long the LED need to switch on" />
+               </tooltip></TextField>
          </children>
       </GridPane>
    </children>

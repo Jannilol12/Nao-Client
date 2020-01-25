@@ -125,6 +125,9 @@ public class Led implements Initializable {
                 sender.sendMessage(jsonObject.toJSONString());
                 
             } else {
+                if(method.getSelectionModel().getSelectedItem() == null){
+                    throw new Exception("no method selected!");
+                }
             	jsonObject.add("method", method.getSelectionModel().getSelectedItem());
             	jsonObject.add("red", (float) colour.getValue().getRed());
             	jsonObject.add("green", colour.getValue().getGreen());
@@ -223,13 +226,25 @@ public class Led implements Initializable {
                     	sender.sendMessage(jsonObject.toJSONString());
                     }
                 }
-
-                fade.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
-                method.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
-                rotationEyesRotate.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
-                durationEyesRotate.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
             }
-        }catch (NumberFormatException err){
+            brain.getSelectionModel().clearSelection();
+            rightEar.getSelectionModel().clearSelection();
+            leftEar.getSelectionModel().clearSelection();
+            rightEye.getSelectionModel().clearSelection();
+            leftEye.getSelectionModel().clearSelection();
+            rightFoot.getSelectionModel().clearSelection();
+            leftFoot.getSelectionModel().clearSelection();
+            method.getSelectionModel().clearSelection();
+            fade.clear();
+            rotationEyesRotate.clear();
+            durationEyesRotate.clear();
+            durationEyesRandom.clear();
+
+            fade.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+            method.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+            rotationEyesRotate.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+            durationEyesRotate.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+        }catch (Exception err){
             if(method.getSelectionModel().getSelectedItem() == null && fade.getText().equalsIgnoreCase("") && rotationEyesRotate.getText().equalsIgnoreCase("") && durationEyesRotate.getText().equalsIgnoreCase("")){
                 fade.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
                 method.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
@@ -258,18 +273,6 @@ public class Led implements Initializable {
             }
             System.out.println("NumberFormatException");
         }
-        brain.getSelectionModel().clearSelection();
-        rightEar.getSelectionModel().clearSelection();
-        leftEar.getSelectionModel().clearSelection();
-        rightEye.getSelectionModel().clearSelection();
-        leftEye.getSelectionModel().clearSelection();
-        rightFoot.getSelectionModel().clearSelection();
-        leftFoot.getSelectionModel().clearSelection();
-        method.getSelectionModel().clearSelection();
-        fade.clear();
-        rotationEyesRotate.clear();
-        durationEyesRotate.clear();
-        durationEyesRandom.clear();
     }
 
 }

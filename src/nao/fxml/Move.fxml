@@ -135,7 +135,7 @@
                   <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <ComboBox fx:id="postureSelect" maxWidth="1.7976931348623157E308" promptText="Select a posture" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="postureSelect" maxWidth="1.7976931348623157E308" GridPane.rowIndex="1" />
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#PostureStart" text="Go to Posture" GridPane.rowIndex="3">
                      <tooltip>
                         <Tooltip text="Let the robot go into a position" />

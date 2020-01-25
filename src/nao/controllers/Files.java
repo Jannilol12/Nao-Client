@@ -7,8 +7,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
@@ -31,10 +34,6 @@ public class Files implements Initializable {
     private String fileName;
     public static Files cF;
 
-    public Files(){
-        cF = this;
-    }
-
     @FXML
     private ListView<String> fileListView;
 
@@ -44,13 +43,19 @@ public class Files implements Initializable {
     @FXML
     private Text directorynameForDownloads;
 
+    @FXML
+    private Button fileUploadSelectButton;
+
+    public Files(){
+        cF = this;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fileListView.setCellFactory(t -> new ListCell<String>() {
             @Override
             protected void updateItem(String node, boolean empty) {
                 super.updateItem(node, empty);
-
                 if(empty) {
                     setGraphic(null);
                 }else if(node != null) {
@@ -69,6 +74,8 @@ public class Files implements Initializable {
                 }
             }
         });
+
+        filenameForUpload.setText("Filename");
     }
 
     @FXML
@@ -78,25 +85,31 @@ public class Files implements Initializable {
 
     @FXML
     void fileUpload(ActionEvent event) {
-        JSONObject jsonObject = new JSONObject();
-        try {
-            FileInputStream fileInputStream = new FileInputStream(file);
-            byte[] bytes = new byte[30000];
-            int length = 0;
-            while((length = fileInputStream.read(bytes)) != -1){
-                byte[] base64 = Base64.getEncoder().encode(Arrays.copyOf(bytes, length));
-                jsonObject.add("type", "Files");
-                jsonObject.add("function", "uploadFile");
-                jsonObject.add("name", fileName);
-                jsonObject.add("bytes", new String(base64, "UTF-8"));
-                sender.sendMessage(jsonObject.toJSONString());
+        if(!filenameForUpload.getText().equalsIgnoreCase("Filename")) {
+            JSONObject jsonObject = new JSONObject();
+            try {
+                FileInputStream fileInputStream = new FileInputStream(file);
+                byte[] bytes = new byte[30000];
+                int length = 0;
+                while ((length = fileInputStream.read(bytes)) != -1) {
+                    byte[] base64 = Base64.getEncoder().encode(Arrays.copyOf(bytes, length));
+                    jsonObject.add("type", "Files");
+                    jsonObject.add("function", "uploadFile");
+                    jsonObject.add("name", fileName);
+                    jsonObject.add("bytes", new String(base64, "UTF-8"));
+                    sender.sendMessage(jsonObject.toJSONString());
 
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            SendMessages.sendAudioFiles();
+            SendMessages.sendAllFiles();
+            filenameForUpload.setText("Filename");
+            fileUploadSelectButton.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+        }else{
+            fileUploadSelectButton.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
         }
-        SendMessages.sendAudioFiles();
-        SendMessages.sendAllFiles();
     }
 
     public void loadFiles(List<String> strings){
