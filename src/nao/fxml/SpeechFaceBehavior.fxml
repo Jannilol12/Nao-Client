@@ -81,7 +81,7 @@
                   </Button>
                </children>
             </GridPane>
-            <Button mnemonicParsing="false" onAction="#behaviorRemove" text="Delete Behavior" GridPane.rowIndex="8" />
+            <Button mnemonicParsing="false" onAction="#behaviorRemove" text="Delete behavior" GridPane.rowIndex="8" />
             <GridPane hgap="10.0" maxWidth="1.7976931348623157E308" GridPane.rowIndex="7">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
