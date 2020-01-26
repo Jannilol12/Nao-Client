@@ -72,6 +72,11 @@ public class SpeechFaceBehavior implements Initializable {
     }
 
     @FXML
+    void faceReload(ActionEvent event) {
+        SendMessages.sendFaceNames();
+    }
+
+    @FXML
     void faceAdd(ActionEvent event) {
         if(faceName.getText().compareToIgnoreCase("") > 0) {
             JSONObject jsonObject = new JSONObject();
@@ -148,6 +153,11 @@ public class SpeechFaceBehavior implements Initializable {
     }
 
     @FXML
+    void vocabularReload(ActionEvent event) {
+        SendMessages.sendVocabulary();
+    }
+
+    @FXML
     void speechAddVoc(ActionEvent event) {
         if(speechVocText.getText().compareToIgnoreCase("") > 0) {
             JSONObject jsonObject = new JSONObject();
@@ -177,8 +187,6 @@ public class SpeechFaceBehavior implements Initializable {
             speechVocList.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
         }
     }
-
-
 
     @FXML
     void speechRecognition(ActionEvent event) {

@@ -14,7 +14,7 @@
    <center>
       <GridPane hgap="10.0" vgap="10.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
         </columnConstraints>
         <rowConstraints>
@@ -30,17 +30,17 @@
             <ComboBox fx:id="LifeMode" prefWidth="150.0" GridPane.rowIndex="1" />
             <Button mnemonicParsing="false" onAction="#SetLifeMode" text="Set Life Mode" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="OffSetFromFloor" promptText="Meters as a Float" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" onAction="#setRobotOffsetFromFloor" text="set Robot Offset From Floor" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Actual Life Mode:" />
+            <Button mnemonicParsing="false" onAction="#setRobotOffsetFromFloor" text="Set robot offset from floor" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Actual life mode:" />
             <Text fx:id="ActualLifeMode" strokeType="OUTSIDE" strokeWidth="0.0" text="Self-Destruction" GridPane.columnIndex="1" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Meters From Floor:" GridPane.rowIndex="2" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Meters from floor:" GridPane.rowIndex="2" />
             <Text fx:id="OffsetFromFloor" strokeType="OUTSIDE" strokeWidth="0.0" text="Flying aboth you " GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button fx:id="SetExpressiveListeningButton" mnemonicParsing="false" onAction="#SetExpressiveListening" style="-fx-background-color: red;" text="set Expressive Listening" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="SetExpressiveListeningButton" mnemonicParsing="false" onAction="#SetExpressiveListening" style="-fx-background-color: red;" text="Set expressive listening" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Text fx:id="ExpressiveListening" strokeType="OUTSIDE" strokeWidth="0.0" text="Is it on?" GridPane.rowIndex="4" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Background Strategy:" GridPane.rowIndex="5" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Background strategy:" GridPane.rowIndex="5" />
             <Text fx:id="BackgroundStrategy" strokeType="OUTSIDE" strokeWidth="0.0" text="Weltherrschaft an sich reißen" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <ComboBox fx:id="StrategyList" prefWidth="150.0" GridPane.rowIndex="6" />
-            <Button mnemonicParsing="false" onAction="#SetBackgroundStrategy" text="Set Background Strategy" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" onAction="#SetBackgroundStrategy" text="Set background strategy" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

@@ -24,14 +24,14 @@
             <RowConstraints maxHeight="-Infinity" minHeight="10.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Barcodeleser:" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Landmark Erkennung:" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Barcode reader:" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Landmark detection:" GridPane.rowIndex="1" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Laser:" GridPane.rowIndex="2" />
-            <Button fx:id="BarcodeReaderButton" mnemonicParsing="false" onAction="#BarcodeReader" style="-fx-background-color: RED;" text="Barcoreader" textFill="WHITE" GridPane.columnIndex="1" />
-            <Button fx:id="LandmarkButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#Landmark" style="-fx-background-color: RED;" text="Landmark Detection" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="BarcodeReaderButton" mnemonicParsing="false" onAction="#BarcodeReader" style="-fx-background-color: RED;" text="Barcode reader" textFill="WHITE" GridPane.columnIndex="1" />
+            <Button fx:id="LandmarkButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#Landmark" style="-fx-background-color: RED;" text="Landmark detection" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Button fx:id="LaserButton" mnemonicParsing="false" onAction="#Laser" style="-fx-background-color: RED;" text="Laser" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ToggleButton fx:id="FeetContactButton" mnemonicParsing="false" onAction="#FeetContact" style="-fx-background-color: Red;" text="Feet Contact" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bodenkontakt:" GridPane.rowIndex="3" />
+            <ToggleButton fx:id="FeetContactButton" mnemonicParsing="false" onAction="#FeetContact" style="-fx-background-color: Red;" text="Feet contact" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Feet contact:" GridPane.rowIndex="3" />
             <ToggleButton fx:id="SonarButton" mnemonicParsing="false" onAction="#Sonar" prefHeight="14.0" prefWidth="47.0" style="-fx-background-color: RED;" text="Sonar" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sonar:" GridPane.rowIndex="4" />
          </children>
