@@ -86,10 +86,15 @@ public class Move implements Initializable {
 
     @FXML
     void rotate(ActionEvent event) {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.add("type", "Rotate");
-        jsonObject.add("value", Integer.parseInt(degree.getText()));
-        sender.sendMessage(jsonObject.toJSONString());
+        try{
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.add("type", "Rotate");
+            jsonObject.add("value", Integer.parseInt(degree.getText()));
+            sender.sendMessage(jsonObject.toJSONString());
+            degree.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(0))));
+        } catch(NumberFormatException err){
+            degree.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(2))));
+        }
     }
 
     @FXML
