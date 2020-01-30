@@ -23,8 +23,7 @@ public class MainReceiver {
         switch (type){
             case "Console":
                 String consoleText = JSONFinder.getString("String",json);
-                Console.c.setText(consoleText);
-                System.out.println("Console: " + consoleText);
+                Console.c.setServerConsoleText(consoleText);
                 break;
             case "Names":
                 List<String> names = (List<String>) JSONFinder.getList("Names",json);

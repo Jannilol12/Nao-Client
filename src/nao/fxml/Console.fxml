@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nao.controllers.Console">
    <center>
-      <TextArea fx:id="ConsoleTextArea" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" />
+      <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Server Console">
+              <TextArea fx:id="serverConsoleTextArea" editable="false" layoutX="-172.0" layoutY="-65.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+
+          </Tab>
+          <Tab text="Client Console">
+              <TextArea fx:id="clientConsoleTextArea" editable="false" layoutX="-172.0" layoutY="-65.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+          </Tab>
+
+        </tabs>
+      </TabPane>
    </center>
-   <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-   </padding>
 </BorderPane>

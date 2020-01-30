@@ -23,5 +23,7 @@ public class nao {
 
     	//start the window
         MainFrame.launching();
+
+        new ConsoleOutputStream();
     }
 }

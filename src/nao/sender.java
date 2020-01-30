@@ -68,7 +68,6 @@ public class sender {
         if(text != null && dout != null ) { //when a message and DataOutputStream is given
         	if(Debugger.isEnable())
         		System.out.println("Sending: " + text);
-        	
             try {
                 dout.writeUTF(text); //send message
                 dout.flush(); //and clear everything which could be between the Server and the Client
@@ -93,6 +92,7 @@ public class sender {
                         String str = dis.readUTF(); //read the DataInputStream
                         if(str.isEmpty())continue;
                         MainReceiver.receiveText(str); //give the received message to the MainReceiver
+                        System.out.println("Receive: " + str);
                     } catch (IOException e) {
                         System.out.println("Stop reading...");
                         destroy();

@@ -4,16 +4,27 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 
 public class Console {
+
+
     @FXML
-    private TextArea ConsoleTextArea;
+    private TextArea serverConsoleTextArea;
+
+    @FXML
+    private TextArea clientConsoleTextArea;
+
     public static Console c;
 
     public Console(){
         c = this;
     }
 
-    public void setText(String text){
-        ConsoleTextArea.appendText(text);
-        ConsoleTextArea.appendText("\n");
+    public void setServerConsoleText(String text){
+        serverConsoleTextArea.appendText(text);
+        serverConsoleTextArea.appendText("\n");
+    }
+
+    public void setClientConsoleTextArea(String text){
+        clientConsoleTextArea.appendText(text);
+        clientConsoleTextArea.appendText("\n");
     }
 }
