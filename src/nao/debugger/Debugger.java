@@ -15,6 +15,7 @@ public class Debugger {
 	
 	private static boolean enable = false;
 	private static PrintStream oldPrintStream;
+	private static String path;
 	
 	/**
 	 * 
@@ -35,9 +36,8 @@ public class Debugger {
 			if(pathBuilder.length() > 0)
 				pathBuilder.append("/errlogs");
 			
-			final String path = pathBuilder.toString();
-			System.out.println("Error Log Files in " + ((path == null || path.isEmpty()) ? "<No File available>" : path));
-			
+			path = pathBuilder.toString();
+
 			PrintStream errorPrintStream = new PrintStream(new OutputStream() {
 				@Override
 				public void write(int b) throws IOException {
@@ -83,5 +83,9 @@ public class Debugger {
 	
 	public static boolean isEnable() {
 		return enable;
+	}
+
+	public static String getLogFilesDirectory(){
+		return "Error Log Files in " + ((path == null || path.isEmpty()) ? "<No File available>" : path);
 	}
 }

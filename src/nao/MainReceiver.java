@@ -31,8 +31,8 @@ public class MainReceiver {
                 break;
             case "ProgAdd":
                 if(MainController.cmain != null){
-                    Zwischenspeicher zwischenspeicher = new Zwischenspeicher(json);
-                    MainController.cmain.addProg(zwischenspeicher);
+                    CachForPrograms cach = new CachForPrograms(json);
+                    MainController.cmain.addProg(cach);
                 }
                 break;
             case "battery":

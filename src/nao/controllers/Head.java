@@ -11,6 +11,9 @@ import javafx.scene.control.Slider;
 import nao.sender;
 import nao.events.ButtonLongPress;
 
+/**
+ * Control the Head of the nao
+ */
 public class Head implements Initializable{
 	@FXML
     private Slider headSpeed;
@@ -26,9 +29,16 @@ public class Head implements Initializable{
 	
 	@FXML
 	private Button headYawRight;
-	
+
+	/**
+	 * Initialize is like a constructor for JavaFX
+	 * @param arg0 never used
+	 * @param arg1 never used
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		//When pressing a button long, normally its method is called only once, so we wrote our own Listener
+
 		new ButtonLongPress(headPitchDown, () -> {
 			sender.sendMessage(getJsonString("headPitchDown"));
 		});
@@ -45,7 +55,12 @@ public class Head implements Initializable{
 			sender.sendMessage(getJsonString("headYawRight"));
 		});
 	}
-	
+
+	/**
+	 * Generate the JSONObject with all information for sending it to the robot
+	 * @param motorname which motor is used
+	 * @return return a JSONObject with the motor name and the speed for the motors
+	 */
 	private String getJsonString(String motorname) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.add("type", "Motors");
