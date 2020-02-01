@@ -12,74 +12,68 @@ import java.io.IOException;
 import java.util.Base64;
 import java.util.LinkedList;
 import java.util.List;
-//moooooin hier war der zzuxi lul
+
+/**
+ * Receives all messages from the robot
+ */
 public class MainReceiver {
     public static void receiveText(String text){
         abstractJSON json = JSONParser.parse(text);
 
         String type = JSONFinder.getString("type", json);
+
+        //if message has no type -> do nothing
         if(type == null) return;
 
         switch (type){
-            case "Console":
+            case "Console": //writes the sever console
                 String consoleText = JSONFinder.getString("String",json);
                 Console.c.setServerConsoleText(consoleText);
                 break;
-            case "Names":
-                List<String> names = (List<String>) JSONFinder.getList("Names",json);
-                SpeechFaceBehavior.cE.setNames(names);
+            case "ProgAdd": //add a program of the list on the left side
+                    CachForPrograms cache = new CachForPrograms(json);
+                    MainController.cmain.addProg(cache);
                 break;
-            case "ProgAdd":
-                if(MainController.cmain != null){
-                    CachForPrograms cach = new CachForPrograms(json);
-                    MainController.cmain.addProg(cach);
-                }
+            case "battery": //get the battery load of the nao
+                    int battery = JSONFinder.getInt("battery", json);
+                    RobotSystem.cc.setBatteryText(battery);
                 break;
-            case "battery":
-                if(RobotSystem.cc != null){
-                    int batt = JSONFinder.getInt("battery", json);
-                    RobotSystem.cc.setBatteryText(batt);
-                }
-                break;
-            case "SpeechRecognition":
+            case "SpeechRecognition": //get the installed vocabulary
                 List<String> voc = (List<String>) JSONFinder.getList("Voc",json);
                 SpeechFaceBehavior.cE.setVocabulary(voc);
                 break;
-            case "FaceDetection":
+            case "FaceDetection": //get the names of the learned faces
                 List<String> faces = (List<String>) JSONFinder.getList("Faces",json);
                 SpeechFaceBehavior.cE.setNames(faces);
                 break;
-            case "audioPlayer":
+            case "audioPlayer": //everything for the audio player
                 String function = JSONFinder.getString("function", json);
                 switch(function){
-                    case "getVol":
+                    case "getVol": //set the slider to the volume of the audio player
                         double volume = JSONFinder.getDouble("getVol", json);
                         AudioPlayer.caP.setVolume(volume);
                         break;
-                    case "getLength":
+                    case "getLength": //get the length of the file, which is playing
                         double length = JSONFinder.getDouble("Length", json);
                         AudioPlayer.caP.setPositionTime(length);
                         break;
-                    case "getPosition":
+                    case "getPosition": //get the position of the file, which is playing
                         double position = JSONFinder.getDouble("Position", json);
                         AudioPlayer.caP.setPosition(position);
                         break;
-                    case "getFiles":
+                    case "getFiles": //set the installed audio files in the audio player
                         List<String> list = new LinkedList<>();
                         list = (List<String>) JSONFinder.getList("File",json);
                         AudioPlayer.caP.loadFiles(list);
-                        Files.cF.loadFiles(list);
                         break;
                 }
                 break;
-            case "Behavior":
+            case "Behavior": //load the installed behaviors into the comboBox
                 List<String> listBehaviors = new LinkedList<>();
                 listBehaviors = (List<String>) JSONFinder.getList("Behaviors",json);
                 SpeechFaceBehavior.cE.loadBehaviors(listBehaviors);
                 break;
-            case "temperature":
-                System.out.println("Receiving Temperatures!");
-
+            case "temperature": //get the temperatures of all motors
                 String HeadYaw = JSONFinder.getString( "HeadYaw", json);
                 String HeadPitch = JSONFinder.getString( "HeadPitch", json);
                 String LElbowYaw = JSONFinder.getString( "LElbowYaw", json);
@@ -112,20 +106,26 @@ public class MainReceiver {
                 RobotSystem.cc.setTemperatureText(Battery, LHand, HeadCPU, HeadYaw, LElbowYaw, LShoulderPitch, RHand, LHipPitch, HeadPitch, LElbowRoll, LShoulderRoll, LWristYaw, RWristYaw, LHipRoll, LKneePitch, RElbowYaw, RElbowRoll, RShoulderPitch, RShoulderRoll, RHipPitch, RHipRoll, LHipYawPitch, LAnklePitch, RHipYawPitch, LAnkleRoll, RAnklePitch, RAnkleRoll, RKneePitch);
                 break;
 
-            case "getAllFiles":
+            case "getAllFiles": //load the list in the "files" tab with all files on the robot
                 List<String> list = new LinkedList<>();
                 list = (List<String>) JSONFinder.getList("File",json);
-                AudioPlayer.caP.loadFiles(list);
                 Files.cF.loadFiles(list);
                 break;
 
-            case "downloadFile":
+            case "downloadFile": //add the downloaded file from the robot in the selected directory
                 String base64 = JSONFinder.getString("bytes",json);
+                /*
+					how this works:
+					The File is decoded in Base64 and is split into many Messages
+					Every time a message is received the file will be written until it's finished
+					So the file will be written step by step
+				 */
                 byte[] bytes = Base64.getDecoder().decode(base64);
                 try{
                     String fileName =  JSONFinder.getString("name",json);
                     File direction = new File(Files.cF.getDirectory() + "/" +  fileName);
                     direction.getParentFile().mkdirs();
+                    //append is true, so the new bytes will be attached at the end of the file
                     FileOutputStream fileOutputStream = new FileOutputStream(direction, true);
                     fileOutputStream.write(bytes);
                     fileOutputStream.close();
@@ -136,7 +136,7 @@ public class MainReceiver {
                 }
                 break;
 
-            default:
+            default: //do nothing
                 System.out.println("Nothing to do O.o");
                 break;
         }

@@ -5,7 +5,7 @@ import components.json.abstractJSON;
 import components.json.finder.JSONFinder;
 
 /**
- * This is used to save all information from the program into one class
+ * This is used to save all information of the program (from the list on the left side) into one class
  */
 public class CachForPrograms {
     String name;
